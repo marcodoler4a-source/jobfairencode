@@ -1,0 +1,774 @@
+                <!DOCTYPE html>
+                <html lang="en">
+                <head>
+                <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+                <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+                <link rel="icon" type="image/png" href="/favicon.png">
+                <script src="auth-guard.js"></script>
+                <title>CGEC Reports</title>
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+                <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+                <style>
+                :root{--blue:#0d6efd;--blue2:#245984;--ink:#17324d;--side:270px}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 10%,rgba(13,110,253,.12),transparent 28%),#f5f9ff;font-family:Arial,sans-serif;color:var(--ink);text-transform:uppercase;overflow-x:hidden}#programSidebar{position:fixed;inset:0 auto 0 0;width:var(--side);z-index:1040;padding:16px 12px;background:linear-gradient(180deg,rgba(15,76,160,.94),rgba(9,55,125,.97));backdrop-filter:blur(18px);box-shadow:8px 0 30px rgba(18,60,110,.16);transition:.25s}.sidebar-head{display:flex;align-items:center;justify-content:space-between;color:#fff;padding:7px 8px 18px;font-weight:800}.sidebar-head button{border:0;background:rgba(255,255,255,.13);color:#fff;border-radius:12px;width:38px;height:38px}.menu{list-style:none;padding:0;margin:0}.menu li{margin:5px 0}.menu button{width:100%;border:1px solid transparent;background:transparent;color:#dceaff;border-radius:13px;padding:11px 12px;display:flex;gap:12px;align-items:center;font-size:.82rem;font-weight:700;text-align:left}.menu button i{width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:rgba(255,255,255,.11)}.menu button:hover{background:rgba(255,255,255,.12);color:#fff}.menu button.active{background:rgba(255,255,255,.96);color:#0d6efd;box-shadow:0 8px 22px rgba(0,0,0,.13)}.menu button.active i{background:#0d6efd;color:#fff}.menu .reserved{opacity:.48}#programPage{margin-left:var(--side);transition:.25s;min-height:100vh}body.side-hidden #programSidebar{transform:translateX(-100%)}body.side-hidden #programPage{margin-left:0}.top{position:sticky;top:0;z-index:1020;min-height:155px;margin:18px 8px 0;padding:28px;border-radius:25px;background:linear-gradient(120deg,rgba(28,119,226,.96),rgba(54,139,235,.93) 48%,rgba(91,166,245,.90));border:1px solid rgba(255,255,255,.62);box-shadow:inset 0 1px 0 rgba(255,255,255,.58),0 14px 34px rgba(28,106,199,.20);backdrop-filter:blur(24px) saturate(170%);display:flex;align-items:center;justify-content:space-between;gap:20px}.top-left{display:flex;align-items:center;gap:22px;min-width:0}.hamb{flex:0 0 50px;width:50px;height:50px;border-radius:15px;background:rgba(0,102,230,.55);color:#fff;border:1px solid rgba(255,255,255,.78);font-size:1.35rem}.title h1{font-size:2.15rem;line-height:1.05;font-weight:900;letter-spacing:-.4px;color:#fff;text-transform:none;margin:0}.title p{font-size:.92rem;margin:12px 0 0;color:rgba(255,255,255,.94);text-transform:none}.actions{display:flex;gap:10px;flex-wrap:wrap}.action{min-height:46px;padding:0 18px;border-radius:14px;background:rgba(255,255,255,.90);color:#0567e8;border:1px solid rgba(255,255,255,.95);font-size:.79rem;font-weight:900;box-shadow:0 6px 18px rgba(0,70,155,.10)}.action.active{background:#0878f9;color:#fff;border-color:#0878f9}.panel{margin:14px;padding:18px;border:1px solid rgba(13,110,253,.14);border-radius:20px;background:rgba(255,255,255,.82);backdrop-filter:blur(16px);box-shadow:0 16px 40px rgba(29,76,125,.10)}.filters{display:grid;grid-template-columns:220px 310px 160px 1fr;gap:12px;align-items:end;margin-bottom:14px}.field label{display:block;font-size:.7rem;font-weight:800;margin:0 0 5px}.field select{width:100%;height:39px;border:1px solid #cbd8e8;border-radius:10px;background:#fff;padding:0 10px;font-size:.78rem}.status{font-size:.73rem;color:#61758a;padding-bottom:10px;text-transform:none}.form-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:0 0 10px;flex-wrap:wrap}.form-heading h2{font-size:1rem;font-weight:900;margin:0;color:#245984;flex:1;min-width:300px}.form-tools{margin-left:auto;display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:wrap}.form-switches{display:flex;gap:9px}.form-tool-btn{min-height:42px;padding:0 14px;border-radius:12px;background:#fff;color:#0567e8;border:1px solid #cfe2ff;font-size:.72rem;font-weight:900;box-shadow:0 5px 14px rgba(0,70,155,.08)}.form-tool-btn.download{background:#0878f9;color:#fff;border-color:#0878f9}.badge-form{background:#eaf3ff;color:#0d6efd;border:1px solid #cfe2ff;border-radius:999px;padding:7px 12px;font-size:.68rem;font-weight:900}.summary{width:100%;border-collapse:collapse;font-size:.78rem}.summary th{background:#245984;color:#fff}.summary th,.summary td{border:1px solid #ccd7e4;padding:7px;text-align:center}.modal-content{border:0;border-radius:18px;overflow:hidden}.modal-header{background:#0d6efd;color:#fff}.table-wrap{height:calc(100vh - 300px);min-height:470px;overflow:auto;border:1px solid #cfdae7;border-radius:13px;background:#fff}.master{border-collapse:collapse;width:max-content;min-width:100%;table-layout:fixed;font-size:11px}.master th{position:sticky;background:#245984;color:#fff;border:1px solid #d8e0e8;padding:7px 5px;text-align:center;vertical-align:middle;line-height:1.15;white-space:normal}.master thead tr:first-child th{top:0;height:42px;z-index:5}.master thead tr:nth-child(2) th{top:42px;height:42px;z-index:6}.master thead th[rowspan="2"]{top:0;height:84px}.master td{height:35px;border:1px solid #d9e1ea;padding:5px;background:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:260px}.empty{text-align:center!important;color:#7b8da1!important;padding:30px!important;text-transform:none}.loading{text-align:center!important;padding:30px!important;text-transform:none}.form-page{display:none}.form-page.active{display:block}@media(max-width:900px){#programSidebar{transform:translateX(-100%)}#programSidebar.mobile{transform:none}#programPage{margin-left:0}.filters{grid-template-columns:1fr 1fr}.top{align-items:flex-start;flex-direction:column;min-height:auto}.table-wrap{height:65vh}.title h1{font-size:1.55rem}}@media(max-width:560px){.filters{grid-template-columns:1fr}.actions{width:100%}.action{flex:1}.panel{margin:8px;padding:10px}.top{margin:8px;padding:18px}}
+
+                /* Floating report actions + header favicon */
+                .actions{display:none!important}
+                .floating-reports{position:fixed;right:28px;bottom:24px;z-index:1060;display:flex;gap:12px;align-items:center}
+                .floating-report-btn{min-height:48px;padding:0 20px;border:0;border-radius:999px;background:#0878f9;color:#fff;font-size:.76rem;font-weight:900;box-shadow:0 10px 28px rgba(0,92,220,.28);white-space:nowrap}
+                .floating-report-btn:hover{background:#066ee8;transform:translateY(-1px)}
+                .header-favicon{height:82px;width:auto;max-width:120px;object-fit:contain;flex:0 0 auto}
+                .form-switches{align-items:center}
+                @media(max-width:700px){.floating-reports{right:12px;bottom:12px;gap:8px;flex-direction:column;align-items:flex-end}.floating-report-btn{min-height:44px;padding:0 15px}.header-favicon{height:64px}.top{padding-right:18px}}
+                </style><style id="ftja-matched-sidebar">
+:root{--program-sidebar-width:270px}
+#programSidebar{width:270px!important;padding:0!important;display:flex!important;flex-direction:column!important;background:linear-gradient(180deg,#0755b8 0%,#0d68d3 55%,#117ce6 100%)!important;border-right:1px solid rgba(255,255,255,.24)!important;box-shadow:10px 0 35px rgba(13,80,155,.18)!important;overflow:hidden!important}
+#programSidebar .program-sidebar-header{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;height:68px;min-height:68px;padding:0 16px;color:white;border-bottom:1px solid rgba(255,255,255,.16)}
+#programSidebar .program-sidebar-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px}
+#programSidebar .program-sidebar-brand i{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.16)}
+#programSidebar .program-sidebar-close{width:38px;height:38px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:white;cursor:pointer}
+#programSidebar .program-user-panel{display:flex;align-items:center;gap:10px;flex-shrink:0;margin:12px 11px 17px;min-height:69px;padding:12px;border-radius:15px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.27);color:white}
+#programSidebar .program-user-avatar{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:#1677ff;border:1px solid rgba(255,255,255,.35);font-size:21px}
+#programSidebar .program-user-details{display:flex;flex-direction:column;min-width:0;line-height:1.3}
+#programSidebar .program-user-caption{font-size:11px;color:#c8dfff}
+#programSidebar #programSidebarUsername{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+#programSidebar .program-sidebar-menu{list-style:none;display:flex;flex-direction:column;flex:1 1 auto;min-height:0;overflow-y:auto;gap:7px;margin:0;padding:3px 10px 20px}
+#programSidebar .program-sidebar-menu li{list-style:none;margin:0;padding:0}
+#programSidebar .program-sidebar-btn{width:100%;height:53px;min-height:53px;display:flex;align-items:center;gap:12px;padding:0 12px;border:1px solid rgba(255,255,255,.22);border-radius:13px;background:rgba(255,255,255,.10);color:white;text-align:left;font-size:13px;font-weight:750;cursor:pointer;transition:background .18s,transform .18s}
+#programSidebar .program-sidebar-btn i{width:35px;height:35px;flex:0 0 35px;display:grid;place-items:center;border-radius:11px;font-size:17px;background:#dceeff;color:#0968d7}
+#programSidebar .program-sidebar-menu li:nth-child(2) i{background:#d5f4ff;color:#0879a6}
+#programSidebar .program-sidebar-menu li:nth-child(3) i{background:#d9f7e9;color:#087e54}
+#programSidebar .program-sidebar-menu li:nth-child(4) i{background:#eee3ff;color:#7040c5}
+#programSidebar .program-sidebar-menu li:nth-child(5) i{background:#fff0d6;color:#ae6500}
+#programSidebar .program-sidebar-menu li:nth-child(6) i{background:#dbe9ff;color:#1559b7}
+#programSidebar .program-sidebar-menu li:nth-child(7) i{background:#d6f6f3;color:#087f83}
+#programSidebar .program-sidebar-menu li:nth-child(9) i{background:#e6e5ff;color:#5148b8}
+#programSidebar .program-sidebar-menu li:nth-child(10) i{background:#ffeadc;color:#ae501b}
+#programSidebar .program-sidebar-btn.active{background:#f5f9ff;color:#0869d7;border-color:white;box-shadow:0 3px 12px rgba(5,29,78,.16)}
+#programSidebar .program-sidebar-btn.active i{background:#1677ff;color:white}
+#programSidebar .program-sidebar-btn:not(.active):not(:disabled):hover{background:rgba(255,255,255,.22);transform:translateX(2px)}
+#programSidebar .program-sidebar-btn.reserved{opacity:.52;cursor:not-allowed}
+#programSidebar .program-sidebar-btn span{min-width:0}
+@media(min-width:901px){#programPage{margin-left:270px}body.side-hidden #programPage{margin-left:0}}
+@media(max-width:900px){#programSidebar{width:min(86vw,270px)!important}}
+@media(max-height:650px){#programSidebar .program-sidebar-menu{gap:4px}#programSidebar .program-sidebar-btn{height:48px;min-height:48px}}
+
+/* Kasambahay: preserve original page layout and collapse behavior */
+#programSidebar{inset:0 auto 0 0!important;z-index:1040!important;transition:transform .25s ease!important;}
+body.side-hidden #programSidebar{transform:translateX(-100%)!important;}
+@media(max-width:900px){#programSidebar{transform:translateX(-100%)!important}#programSidebar.mobile{transform:translateX(0)!important}#programPage{margin-left:0!important}}
+</style></head><body>
+                <aside id="programSidebar" aria-label="Programs navigation">
+<div class="program-sidebar-header"><div class="program-sidebar-brand"><i class="bi bi-grid-fill"></i><span>PROGRAMS</span></div><button type="button" class="program-sidebar-close" onclick="toggleSidebar()" aria-label="Hide sidebar"><i class="bi bi-chevron-bar-left"></i></button></div>
+<div class="program-user-panel" aria-label="Signed-in user"><div class="program-user-avatar"><i class="bi bi-person-fill" aria-hidden="true"></i></div><div class="program-user-details"><span class="program-user-caption">USER</span><strong id="programSidebarUsername">USER</strong></div></div>
+<ul class="program-sidebar-menu">
+      <li>
+        <button type="button" class="program-sidebar-btn"
+                onclick="window.location.assign('referral.html')">
+          <i class="bi bi-people-fill"></i><span>REFERRAL &amp; PLACEMENT</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="location.href='job-vacancies.html'">
+          <i class="bi bi-briefcase-fill"></i><span>JOB VACANCIES</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="location.href='kasambahay.html'">
+          <i class="bi bi-house-heart-fill"></i><span>KASAMBAHAY</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn active" aria-current="page" onclick="location.href='cgec.html'">
+          <i class="bi bi-mortarboard-fill"></i><span>CGEC</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="location.href='lra.html'">
+          <i class="bi bi-file-earmark-text-fill"></i><span>LRA</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="location.href='ftja.html'">
+          <i class="bi bi-person-workspace"></i><span>FTJA</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="location.href='spesx.html'">
+          <i class="bi bi-person-workspace"></i><span>SPES</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn reserved" disabled>
+          <i class="bi bi-lock-fill"></i><span>RESERVED 2</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="location.href='allsprs.html'">
+          <i class="bi bi-clipboard-data-fill"></i><span>SPRS (All Programs)</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn dashboard" onclick="location.href='/dashboard'">
+          <i class="bi bi-speedometer2"></i><span>DASHBOARD</span>
+        </button>
+      </li>
+    </ul>
+</aside>
+                <div id="programPage"><header class="top"><div class="top-left"><button class="hamb" onclick="toggleSidebar()"><i class="bi bi-list"></i></button><div class="title"><h1>CAREER GUIDANCE &amp; EMPLOYMENT COACHING</h1><p>Regional Office No. 4A</p></div></div><img class="header-favicon" src="/favicon.png" alt="CGEC"></header>
+                <main class="panel"><div class="filters"><div class="field"><label>PROVINCE</label><select id="province" onchange="updateOffices()"><option value="">-- SELECT PROVINCE --</option><option>BATANGAS</option><option>CAVITE</option><option>LAGUNA</option><option>QUEZON</option><option>RIZAL</option></select></div><div class="field"><label>IMPLEMENTING PESO / JPO</label><select id="office" onchange="loadCurrentForm()" disabled><option>-- SELECT PROVINCE FIRST --</option></select></div><div class="field"><label>REPORTING YEAR</label><select id="year" onchange="renderCurrent()"></select></div><div id="status" class="status">Select a province and implementing PESO / JPO.</div></div>
+                <section id="form1Page" class="form-page active"><div class="form-heading"><h2>CAREER GUIDANCE ACTIVITIES CONDUCTED IN SCHOOLS AND TRAINING INSTITUTIONS</h2><div class="form-tools"><div class="form-switches"><button id="form1Btn" class="action active" onclick="switchForm(1)"><i class="bi bi-table me-1"></i>CGEC FORM 1</button><button id="form2Btn" class="action" onclick="switchForm(2)"><i class="bi bi-table me-1"></i>CGEC FORM 2</button><button class="action active" onclick="downloadCGEC()"><i class="bi bi-file-earmark-excel me-1"></i>DOWNLOAD</button></div></div></div><div class="table-wrap"><table class="master"><colgroup><col style="width:95px"><col style="width:125px"><col style="width:120px"><col style="width:240px"><col style="width:150px"><col style="width:120px"><col style="width:140px"><col style="width:90px"><col style="width:90px"><col style="width:90px"><col style="width:90px"></colgroup><thead><tr><th rowspan="3">REPORTING YEAR</th><th rowspan="3">REPORTING MONTH</th><th rowspan="3">PROVINCE</th><th rowspan="3">SCHOOL / VENUE</th><th rowspan="3">SCHOOL CLASSIFICATION</th><th rowspan="3">DATE</th><th colspan="5">NO. OF PARTICIPANTS</th></tr><tr><th colspan="3">STUDENTS</th><th colspan="2">PARENTS</th></tr><tr><th>EDUCATION LEVEL</th><th>FEMALE</th><th>TOTAL</th><th>FEMALE</th><th>TOTAL</th></tr></thead><tbody id="form1Body"><tr><td colspan="11" class="empty">Select an office to load CGEC Form 1.</td></tr></tbody></table></div></section>
+                <section id="form2Page" class="form-page"><div class="form-heading"><h2>EMPLOYMENT COACHING ACTIVITIES CONDUCTED</h2><div class="form-tools"><div class="form-switches"><button class="action" onclick="switchForm(1)"><i class="bi bi-table me-1"></i>CGEC FORM 1</button><button class="action active" onclick="switchForm(2)"><i class="bi bi-table me-1"></i>CGEC FORM 2</button><button class="action active" onclick="downloadCGEC()"><i class="bi bi-file-earmark-excel me-1"></i>DOWNLOAD</button></div></div></div><div class="table-wrap"><table class="master"><colgroup><col style="width:95px"><col style="width:125px"><col style="width:120px"><col style="width:280px"><col style="width:180px"><col style="width:240px"><col style="width:120px"><col style="width:90px"><col style="width:90px"></colgroup><thead><tr><th rowspan="2">REPORTING YEAR</th><th rowspan="2">REPORTING PERIOD</th><th rowspan="2">PROVINCE</th><th rowspan="2">CLASSIFICATION</th><th rowspan="2">EMPLOYMENT COACHING CONDUCTED TO</th><th rowspan="2">VENUE</th><th rowspan="2">DATE</th><th colspan="2">NO. OF PARTICIPANTS</th></tr><tr><th>FEMALE</th><th>TOTAL</th></tr></thead><tbody id="form2Body"><tr><td colspan="9" class="empty">Select an office to load CGEC Form 2.</td></tr></tbody></table></div></section>
+                </main></div>
+                <div class="floating-reports" aria-label="Report actions"><button class="floating-report-btn" onclick="openMunicipalReports()"><i class="bi bi-building-check me-1"></i>MUNICIPALITY REPORTS</button><button class="floating-report-btn" onclick="openTabulated()"><i class="bi bi-table me-1"></i>TABULATED REPORT</button></div>
+                <div class="modal fade" id="tabulatedModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered" style="max-width:85vw;width:85vw"><div class="modal-content"><div class="modal-header"><h5 class="modal-title fw-bold">CGEC TABULATED REPORT</h5><button class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><div id="tabulatedLabel" class="small fw-bold mb-3"></div>
+                <h6 class="fw-bold text-primary">CGEC FORM 1</h6>
+                <div class="table-responsive mb-4"><table class="summary"><thead>
+                <tr><th rowspan="3">MONTH</th><th rowspan="3">NO. OF CG<br>CONDUCTED</th><th colspan="4">NO. OF PARTICIPANTS</th><th colspan="2">NO. OF SCHOOLS COVERED</th></tr>
+                <tr><th colspan="2">STUDENTS</th><th colspan="2">PARENTS</th><th rowspan="2">PUBLIC</th><th rowspan="2">PRIVATE</th></tr>
+                <tr><th>FEMALE</th><th>TOTAL</th><th>FEMALE</th><th>TOTAL</th></tr>
+                </thead><tbody id="tabulatedBody1"></tbody></table></div>
+                <h6 class="fw-bold text-primary">CGEC FORM 2</h6>
+                <div class="table-responsive"><table class="summary" style="min-width:1500px"><thead>
+                <tr><th rowspan="3">MONTH</th><th colspan="2">NO. OF EMPLOYMENT COACHING CONDUCTED</th><th colspan="4">TOTAL NO. OF PARTICIPANTS</th><th colspan="4">PARTICIPANTS (ORDINARY EC CONDUCTED TO GROUPS)</th><th colspan="4">PARTICIPANTS (ORDINARY EC CONDUCTED TO WALK-INS)</th><th colspan="4">PARTICIPANTS (INFUSED WITH OTHER ACTIVITIES)</th></tr>
+                <tr><th rowspan="2">ORDINARY</th><th rowspan="2">INFUSED WITH OTHERS</th><th colspan="2">STUDENTS</th><th colspan="2">JOBSEEKERS</th><th colspan="2">STUDENTS</th><th colspan="2">JOBSEEKERS</th><th colspan="2">STUDENTS</th><th colspan="2">JOBSEEKERS</th><th colspan="2">STUDENTS</th><th colspan="2">JOBSEEKERS</th></tr>
+                <tr><th>FEMALE</th><th>TOTAL</th><th>FEMALE</th><th>TOTAL</th><th>FEMALE</th><th>TOTAL</th><th>FEMALE</th><th>TOTAL</th><th>FEMALE</th><th>TOTAL</th><th>FEMALE</th><th>TOTAL</th><th>FEMALE</th><th>TOTAL</th><th>FEMALE</th><th>TOTAL</th></tr>
+                </thead><tbody id="tabulatedBody2"></tbody></table></div></div></div></div></div>
+                <div class="modal fade" id="municipalModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title fw-bold">MUNICIPALITIES / OFFICES WITH REPORTS</h5><button class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="d-flex gap-2 align-items-center mb-3"><select id="municipalMonth" class="form-select form-select-sm" style="max-width:220px"></select><button class="btn btn-primary btn-sm" onclick="scanMunicipalReports()"><i class="bi bi-arrow-clockwise me-1"></i>SCAN SELECTED PROVINCE</button></div><div id="municipalStatus" class="small text-muted mb-2 text-capitalize"></div><div class="table-responsive"><table class="summary"><thead><tr><th>NO.</th><th>IMPLEMENTING PESO / JPO</th><th>FORM</th><th>RECORDS</th></tr></thead><tbody id="municipalBody"><tr><td colspan="4">Click Scan Selected Province to check reports.</td></tr></tbody></table></div></div></div></div></div>
+
+                <script>
+                const CGEC_SOURCES={BATANGAS:{
+                  "AGONCILLO": {
+                    "form1": "1sgTo0yEuqPuZTXYPYY8cCXu_tb4c2K70QhA1h-zvZTc",
+                    "form2": "1icga0xWEnHjtQwXq8CR6VPwFrocQYS8lwsd6W_BSDgg"
+                  },
+                  "ALITAGTAG": {
+                    "form1": "1kVgMNPe3ghU_gf2GIjhdQLfx-N47olfIKpCq5KoDRf0",
+                    "form2": "1oG20dLJ4dWB8_GtH11xbyTLWwPiyjkueoydq28MerW0"
+                  },
+                  "BALAYAN": {
+                    "form1": "1bq25vaiT_wxdjRxd4QrP3zQsRs7rIZmynhAuG2H71RE",
+                    "form2": "1eLnxvHccTPtpnE00C1ZO_8JOz7cKKE9XmUdQxlFus2E"
+                  },
+                  "BALETE": {
+                    "form1": "121R6ZzSVcqK4tPrNxvInCVJc0etYdq6VimXBCmhte3k",
+                    "form2": "1jcRC01C_m_NjbQ1pG16WlOGP0SsgT2rsHlnNstYFXv4"
+                  },
+                  "BATANGAS CITY": {
+                    "form1": "1rxQ9bHRtf77mygp-pOVq4Od8h8fhI-LRqTCACDXvtIM",
+                    "form2": "1WpPZLTKNP1WM6qWADZyzv4_ZFhX4IDXZCptpdqoy0KM"
+                  },
+                  "BATANGAS PROVINCE": {
+                    "form1": "1tvQHVsM0NmGGZ8F_f8ouoczoA31JGrfsK1UYm0Lu5Cs",
+                    "form2": "1FTE7OTM55f-GYvoDavK2ZaegEB9PladeGz_38BP_QEQ"
+                  },
+                  "BATANGAS STATE UNIVERSITY": {
+                    "form1": "1kjvZJKy8-kg5omxO8R6JCZPr4jWbXYIPG6lrIJkfjok",
+                    "form2": "1RlwLR6Gb-Y7W6GaP5en1jc9S7lf6rTXmr8Ymwxg3qRE"
+                  },
+                  "BAUAN": {
+                    "form1": "1iUKdHwiyKlcwAkPqc6u68D9e7Z2Q1WnfIHnasyNTwvY",
+                    "form2": "13hQtKwMozH_Dl0tdT6qeXarrMjupL2FeM4LcP-sHWqE"
+                  },
+                  "CALACA": {
+                    "form1": "1I_NbHvr_9Ys1MiT74RYOoumj2x1T_xZPWwSuAaIX3tU",
+                    "form2": "1QzaCCwUZQROPsUdebCE8ensxhXEvkQKnrd6HzGHCWXo"
+                  },
+                  "CALATAGAN": {
+                    "form1": "1ZFjmEHHZGegDvMJuXTfldb_-ZAF0Eh8WE-OvTw67iuc",
+                    "form2": "145nuH0RfXql_cAD43ujezivDLbMuECo3XDaRAphPLB0"
+                  },
+                  "CUENCA": {
+                    "form1": "1pmUzt45LD6dg92JenUczG9qj_0S5pSWB0l8-MNeexWQ",
+                    "form2": "1N7SSEpUpdjGWZOcwp29rCf3PJHivlj_YI3KY9ue9R-k"
+                  },
+                  "IBAAN": {
+                    "form1": "1eYvRRXElQDlwzbxw0REC2YFCWGRqZXa36BvWYXzZXH4",
+                    "form2": "1XnKKFxQnPrx77CUBZujdbFA2JQ721kir3fOJuyF1CK4"
+                  },
+                  "LAUREL": {
+                    "form1": "17FRb_lqaC2NxycMA9m2Rgu2Idv2XnhvnTI1U3KM4NSo",
+                    "form2": "1C_jg0VUpn9GhTRiqiwBCi-mJ1_zldX6RNsh44IfQR-w"
+                  },
+                  "LEMERY": {
+                    "form1": "11vecjM_DmDxd969iEk-OEP6L58A_oFXRF3qMYVuLjus",
+                    "form2": "1FZdfzmc_crJlerQV1N8nirWGKCD_kkNB6cMN7wSOggs"
+                  },
+                  "LIAN": {
+                    "form1": "1QBTV6fWSRUkrV7zuPAvmCq5XXQv2uIMoYrEhZHmUaV0",
+                    "form2": "1mOCBOPfkGcml9XvKKWBG7XnpfUnRGC7PGrwCGmcNab0"
+                  },
+                  "LIPA CITY": {
+                    "form1": "1YcPoiHARVEZ8MMCqQjXH-cUg4viE61sTjmutI0dVOXc",
+                    "form2": "1mSpRqW631zVNFztKjrAc8kwIx0gUL7lRM3KhphSSvCA"
+                  },
+                  "LOBO": {
+                    "form1": "1NAQcqfQqDEAr_s07PTB9LYN2dWU6ODfqu-S6in0Mc8o",
+                    "form2": "1y6GtiIc5zIhx5nOTcSXC43wC4OAf7D6QnibIUYPlWzE"
+                  },
+                  "LYCEUM OF THE PHILIPPINES UNIVERSITY-BATANGAS": {
+                    "form1": "1KEOo4hf8EV9MdI9wPmB2XLkszV69G5eBLuugFsqy5FE",
+                    "form2": "1iCFhitvJjqq3tnAMFoSCtpBRluoQyULCzvneU4niti0"
+                  },
+                  "MABINI": {
+                    "form1": "1YrHNyseHcVPs4k1i3YkQK5wJElyYdTfw01IurpLFdKU",
+                    "form2": "1azaA3sf0n4seOPkVNcJn9yBaFvHkxS3gqAYDQJvACMY"
+                  },
+                  "MALVAR": {
+                    "form1": "1Stud-FPyVmU9ivRyHaepKQxK-qmTh-JsVXCQffxGrRY",
+                    "form2": "1yLXOxnttKqUBmq0u39R2sN0Z6zGfQv9PIeRABKfSY1Y"
+                  },
+                  "MATAASNAKAHOY": {
+                    "form1": "1GJq6lXDIrfTGvyhZ1JaniFFnK4CnWJt0wEkrli2g4ao",
+                    "form2": "17kuSa9fiLVjmK4p-NMYUdTRzBa-ROynmuGTDHiQifMc"
+                  },
+                  "NASUGBU": {
+                    "form1": "1tE48yNdx5rl1K0CBCr24zm3RwCxHWRDBUbFICVG2RQU",
+                    "form2": "1gVq6rJLYPFXufyJzgAsjmc16ZQ5azMRo-t-DIxk0K50"
+                  },
+                  "PADRE GARCIA": {
+                    "form1": "1IhPhHGPciVt4MPSQ_1xi__nNEBnyMkli6rNA8KFsYFY",
+                    "form2": "12it9wMmr-PLUzyLLQkZIFiOkzzs0pj9QpNAkvCeuRJE"
+                  },
+                  "RIZAL COLLEGE OF TAAL": {
+                    "form1": "1bT0z3cdL7ob9TeSvi0Nr7MhW4YnU9um8C5mWWDtW7Y0",
+                    "form2": "1b1bHtN58ZR9sR8WC4uOe-Wft446jFhIrAsVIcNAW928"
+                  },
+                  "ROSARIO": {
+                    "form1": "1cH7Xvp2mmvpTsAa3KgD5qOZCV6H94psGDW7MVI-608Q",
+                    "form2": "1BUSGHSYHYkqoM-AgZ1B4pHqsgVYXS9hIGICynVcu2ro"
+                  },
+                  "SAN JOSE": {
+                    "form1": "1oCwj1Hv_JZrsRy44mjVSF460dHAYEagZUZ4hVXkbXjw",
+                    "form2": "1ehnjeTzKCAMsAXq07jfsu58vH9uw-n1DBqpL27ebulE"
+                  },
+                  "SAN JUAN": {
+                    "form1": "1ER-tQn4qOS6j7JZJO9o8IfMMcYVxW5w1DuhjTPJXA7Y",
+                    "form2": "1Udf9FInLVtq3irNQWhcepf2AP3d_xcQnjA35VlH-5vs"
+                  },
+                  "SAN LUIS": {
+                    "form1": "1Gr4k0NrqVgQVg3SthMTBcuRnOypxwrbuo0sbOP48QBg",
+                    "form2": "1duG8x2IZscjL8iw6Jycbt0-DjdfAtZlJXQHGs7nPFF4"
+                  },
+                  "SAN NICOLAS": {
+                    "form1": "1S6E_UZO268blNQNA2VQkd3QT0lFkHXBsu380E0_Cz7Q",
+                    "form2": "1GnpUbIQosLLM2oOIaIZi3GKasuY-SUdLyvO5aOm0S2Y"
+                  },
+                  "SAN PASCUAL": {
+                    "form1": "1Oer-qllIdklo6Bx2WMyPzF_flP9Oy-5AtGHFNHfWqxs",
+                    "form2": "14jUZm0mWks3L2IlnTVchQUCa3iOY5VwpvQzQyh1xQNM"
+                  },
+                  "SANTA TERESITA": {
+                    "form1": "1zRtTdmulPwUAV9llfLxoygIohtPqfLEI5ybZ-Ok2be8",
+                    "form2": "1bHah6agQjskmQbwj2miSG0t-hp21t6GgulVEHuvVmbo"
+                  },
+                  "SANTO TOMAS": {
+                    "form1": "16MNhHVq2qPVeYYHkbNKHdUlHSC7mOpxWeLsxWmHpkj8",
+                    "form2": "1-dA8uXmfV4oRD1fzjhN-_Z_VpH153pNt5SYgEyEjTus"
+                  },
+                  "TAAL": {
+                    "form1": "1_ukuGJwEO_zPnif6OFfNnHsJ-K6e0fWs0WJ-iQdwdjY",
+                    "form2": "1Zqfta86qyui_3GQV85H-4IrVt4g_ivYscvrgv4jRnwg"
+                  },
+                  "TALISAY": {
+                    "form1": "1hWOYahX6l_EzTYTn-g_WKglzjqC_DuB6HHx-4xvUHps",
+                    "form2": "1HLSeHtQW6o9vJDw4rwuN7zEiqFR0uq7QW4BhHGEfcdc"
+                  },
+                  "TANAUAN": {
+                    "form1": "1FU2kSYY5LM0VqUD2Mc9xUONky8KHKTwerb_C_eYoXRo",
+                    "form2": "1Cc13tapMPXIuZZUgr8-UxLjD54YNQ1xkkn1yPYl22bA"
+                  },
+                  "TAYSAN": {
+                    "form1": "1YT7g-J8d89iCnEBghGhmVDI5-p5rd8KTBGQKRcenCto",
+                    "form2": "1IFPWCousuxYde-1dDr5SiBDNFgB95njiEhxHWP5qxaw"
+                  },
+                  "TINGLOY": {
+                    "form1": "1ozfE7XGN7ht2t0zX8aBlYd3HNRDgW55Rzxnw6qUL_fM",
+                    "form2": "1uWee9YvUUjQ39g3k5L-7UGCMDleH7hdNo0_oKQii-AU"
+                  },
+                  "TUY": {
+                    "form1": "1_gbfBdab4DMxv-odIbjbU9o7Q8daO0Lt9TosKM1lgKs",
+                    "form2": "1vzXwAQ3469JwxaSRcldUp4FPePHtqGeb6pAH0pcWn0Q"
+                  },
+                  "UNIVERSITY OF BATANGAS-MAIN": {
+                    "form1": "1c0ztqV8gf-lALreTSq3yGrUIQOtzqWcvMwtqiZaXgwY",
+                    "form2": "1CECgPwe91jU226t_vjLHz2MfcGzTPsE4KF7lB2LAUJc"
+                  }
+                },CAVITE:{
+                  "ALFONSO":{"form1":"1NF6EwtdGNcAdcmClLKvTvNoA4jiTRAa8IR1mibBOPQw","form2":"1cSFcwMZyShl9tLqedX__ydo8qC36yjR5NWq6mTzzXIQ"},
+                  "AMADEO":{"form1":"1yDkIoJ5Id8w-pG-t2E7x4p0861FECjpntz4_jtK0LYI","form2":"1OJMpuISGCozYaJ22b-eNUZBQ3vfIfXE9o1dAtPMJoSI"},
+                  "BACOOR CITY":{"form1":"1nM3Zls92FrxOvlYjKzYOAIsRwwFKq48kInJJ9p_fVK0","form2":"1r1N5aKbGsW1WZSHXXXBx_G1QoAIK_kszXCcmDLcO-mM"},
+                  "CARMONA":{"form1":"1YAJPBhaVkHjHbYSJSDWmyx9eOaOmjxP2K4BaFo2cVxs","form2":"1TJdtnVUArllL0eUHh2QnkfWxkKHjnhoBrAm5zcLp654"},
+                  "CAVITE CITY":{"form1":"10ne7mnSo75moB5SqryZdkMEjPHLOK3f3QntxFfTNaVM","form2":"11w_JwYGrGHh6NY660cQTHzuo8JUFmA8qInTT4meEP_c"},
+                  "DASMARIÑAS CITY":{"form1":"19LoT8xNqC3_RZPy5hByMnYMWn7iedBwzd9W1xSAWkBA","form2":"1MrBnrDgTeVA13YW5iLyPDLG8IHu6CuNR__LdmmkQvZ8"},
+                  "GENERAL EMILIO AGUINALDO":{"form1":"1kLzEPiwbOh-PYIMqv_CnsYz8P9JdbKu_yP5IL7oolc8","form2":"1XTJH4gH-vV1CXD7AeimLH9yCW03y6p6d8qR8_MVInfY"},
+                  "GENERAL MARIANO ALVAREZ":{"form1":"1_Ie9i6kEhPuRmSOC09Z0cOsu774ma6vnDLoqfvoROWw","form2":"1QVKFd05TLiDcGpMOS5_79zGmXY8Y_7KIukhHkKj9x-A"},
+                  "CITY OF GENERAL TRIAS":{"form1":"1hhSCoPyVu-evsAUgD4kC_ystwKlwgYg-RKKH-gojV8E","form2":"1AHZbv0wGVXYi_72kiOTw6Ccxwnzoh-F5B-JpF2asBus"},
+                  "IMUS CITY":{"form1":"1_-ce-VIp5rPTe_X_bt4yZ5DDzLE3u1G0c_CmiiwSAA4","form2":"1Y2wJ1eMutSG2w4X4vrtk437_aZh5PmF3YM-yiCBAyrY"},
+                  "INDANG":{"form1":"1eQx-pHIbAE-8HA-GmvD2xLNT9Yj-cexqkIki7YmsXec","form2":"1FdqpVOkxhVOWM22mdPWLLEfVO_8xcU0_jCKEjfPIbdA"},
+                  "KAWIT":{"form1":"1nVVI2vggBWybDR2GbXKEDOePjlcO4a4b3RPXHpYczPs","form2":"1o_fXiRoaZCVtX3asQmvlGbhMXtlhL4AI2v5kkpmlByE"},
+                  "MAGALLANES":{"form1":"1YLbyrbKG_RUGCdo4GwQHXhRugamsHDc-wXj45wwgBbc","form2":"1fB3XzeBEaDWQv9ZN_8EmsMUxE6_3JVVCl7SUVz1Slgc"},
+                  "MARAGONDON":{"form1":"19ZWM9uZ6ZfjPli_P7K9N3g8U9oIm0GTNBfjelXym_TI","form2":"1H5IX9xD_nN__T44PtS2Jnbh4FIRsKiMzH5KyJobpZLg"},
+                  "MENDEZ":{"form1":"1WuWH-WRkSI_dV33BZXNdmh8BPipVkQ9Ehik54tCQI_s","form2":"1Yfv1SQ6xfXHjIx3uXw6kbp1ZrL2zLjtSliJZxajBFMI"},
+                  "NAIC":{"form1":"1a0p1OAbIDeCBZ6TlrdUDzbuWowS0NEegwIfSmnkWuiA","form2":"1LcH4JI__i42JhKl1xmHwT19Q8DW1UVpke1rrmU37b00"},
+                  "NOVELETA":{"form1":"16_zvv0gJ3lW7aSTq1pJJWUton6gxe-7gXkAcHtZj5cQ","form2":"1Cjxh9eIOAIZ71Gf5dpHVVGl92Xjyti8fiF2_e4W1JOY"},
+                  "ROSARIO":{"form1":"1MMrhcAvsEHPCYhbHtHWOAxaJ3tlKOZKpaVFCKyqxUWQ","form2":"1w9rr45Nt3APYXd8F7zMgLUvqGxdkAcQ2gB59FAbBzG4"},
+                  "SILANG":{"form1":"1PBir4_rYZs3I-pFkIwBtIhAvc2cBiZKb4aj1REz_5ZI","form2":"12QR9tQoFrHzZ-OJjVgMNU5Kc3t1D322igE6twmzIV6M"},
+                  "TAGAYTAY CITY":{"form1":"1TfwTg8FjStCrGIXbAWcoN3t3EDPlIpteIzX8oepM4dM","form2":"1LEypH2Ak1or82tuXBYBWJ0eQgzRtsHtVLAEUKs7dLrc"},
+                  "TANZA":{"form1":"15y0GHb0bMDNJvgnKqL-H4qq_yzKjJbIwDDgCCRxbFxg","form2":"1H5nvClT4QlAYoTp14zjYkmdPYgikB_bmEf1fIExyibM"},
+                  "TERNATE":{"form1":"1SKhM_XugN1SlHRRJlI1JqpwbZc8vRJlnAePx5xeQP-A","form2":"1nEBDXzV8hvWvemXdyUvlvEvjYujGPW_rt8vwmAT3VEw"},
+                  "TRECE MARTIRES CITY":{"form1":"1AkiEYxUHt2zquEqVzz7GPWlDExsQI6V7OmzAUjD_2Oc","form2":"16APmNEDXUV1vB1q1LXBvJ1NxXjWuljNZyTXq58nbDiQ"},
+                  "CAVITE PROVINCE":{"form1":"1rhGInbOzXOKpGoCgPCexN_5e6ZgdBzCSrNZMiHURjvI","form2":"1Bt4_1r4BXD3qiE75LCnabxAKifFZM9q-w8XZVUAiD2U"}
+                },LAGUNA:{
+                  'ALAMINOS':{"form1":'1t4q5m-2NWtfqPggPT-jdNhBaew3dhiJNtAH28nhQczc',"form2":'1E4KPpojB85YtTyv8-fkTNpnlrYZ176NjhhjM82dHlMQ'},
+                  'BAY':{"form1":'1MtgmtgQe7sz2ElhMUNjLs5tVWvZiaRxcVCt4zPSbA_c',"form2":'17qJjaz6zHkxesSphVDc9eHPjhhQGs5Pt8ovqsqHTIbk'},
+                  'CITY OF BIÑAN':{"form1":'18A3-LcNUklCJgENrrLO5l47h29CeNYc5WjQWQ5eyJiw',"form2":'1mqGgx4YgZXLc5xXuhDxsGGQQpPwMW6eQpbKRN1MUj7s'},
+                  'CABUYAO CITY':{"form1":'1wi0WNWvfpowPQuK1yShg5qJdMy-1VjiGs0a1BLpC9R4',"form2":'1cmp6wFPhSx2myHfwldZa6_z8srUyVAWy54-DvdCZJxA'},
+                  'CALAUAN':{"form1":'1sDyinUfkdYmasVDYDfpVr5d1hrfOP5wKMZI4E6-gQSw',"form2":'1TVvYGGB4tL_-zHyQ0o5uFeAoxRmBzfNyWtugnA6sgGs'},
+                  'CITY OF CALAMBA':{"form1":'1tI62JM1ECIQKFSH5-LxYrusmxmOoAr1b7a8mX2uw93c',"form2":'19uVxX5pDVBMutrsHHFtSrjeQoi5VIURktsIzbZ-gFqE'},
+                  'CAVINTI':{"form1":'1seQ0LNeBvZ4hRTzqkso82__fh7uKf_3JmKvIVUtrao8',"form2":'1xiE4gNEfoSt6CvvdOBCZRWZvmKDtiYIEqMlMV4sECCQ'},
+                  'FAMY':{"form1":'1fZDgwV68PtEYcTDGFbiG0ynQyloTM_xeLifWGQYz3uo',"form2":'1mc1Yy8_S4_KnaF0HFDiImxAkxnziOwFG-e7d0qipgg4'},
+                  'KALAYAAN':{"form1":'1JBZC5wR25YtDOrAGfnQOQOfIqYG6ori6f1cJaFfj8Vc',"form2":'1fCjf3zq36o0vaguWd28xoI7ftbNy399GHuCIagxfN-I'},
+                  'LAGUNA PROVINCE':{"form1":'10DK54YtRc8j45AQmWsdwtOAmsl7cvrkyyM02m7ex5fg',"form2":'1Y2r4VSVe2uj7b9TOLUW6IsftXt2XvEiXjL27hAELFkw'},
+                  'LAGUNA STATE POLYTECHNIC UNIVERSITY-MAIN':{"form1":'1rcMx5Ofgszi8C1LnKmFQwAHaENpC1rk928IE7cxyzt0',"form2":'1CkbDH3af7E8_ceLMpJIIkk-cncF15FIugig2TgvpMTI'},
+                  'LAGUNA UNIVERSITY':{"form1":'1ZAy1aeBSSprKqy0eM_7fAWg9OqlA66uL5d4YrbmZEK8',"form2":'1mxxnLfZYGEwPx3FftGXaNnQcyeNDvDkbUNdM9u4YKtE'},
+                  'LILIW':{"form1":'1aPsX1xD1LZQPb-EFHqqZlU9j_EAEQtIMlyB5-kdnjm4',"form2":'1thMzAxILSDU-Tzfx5RRCOTe4vW_WqEWfYBe9FUWk00Y'},
+                  'LOS BAÑOS':{"form1":'1S0Dr-JqWdtkLb67DrTQsd-eXENUY_9tX7PQp2Ddkftk',"form2":'1E66QICPtc3iRAUTJm0f3m34QfNLGV2tS9GSFmLUa2m0'},
+                  'LUISIANA':{"form1":'1yDeu8f7L75B-mA5HRI2-7Wk84ST4yzs6cs5A_IPkSwc',"form2":'1aJqZr1syTBytXCxL8eWdnRmpCAPEUcYFPmYUSBcyYrM'},
+                  'LUMBAN':{"form1":'1nCU_e-ngoVjt8tnCVWUpxti4QvWqbkIoWJYKeFRzHmE',"form2":'1RODh7YpyX9he-giECpGfvGxdOv6RIcsABPd3RgE8X9I'},
+                  'MABITAC':{"form1":'1D7DqIMuVhz6mXSD_WlYKaSWXFObo-jU9CKQLo5D-iCc',"form2":'1CqeMjlR943Xmcel1kFWY0dkh7h_WikRkX7hlFwWf8K8'},
+                  'MAGDALENA':{"form1":'1cn-SAF7Cbc_W8M1HsL65TYHKEUfztyXWGvtJUkKMoxA',"form2":'1-RBWIJAv3xVwBvtO3HIRoZdygagwN_c6QVSyMwAu1cc'},
+                  'MAJAYJAY':{"form1":'1BsaafJbFWkYuIlHwePfJctKA5feqMCqAyL1OrXGRrjw',"form2":'1ugGRF_Io4WaAvhftw8xl6D8FegFsNlS3CwQAKLU7oFs'},
+                  'NAGCARLAN':{"form1":'1nZ1MT0yHsce7lvtAOC7Xip2uAdQOqOY0vj88Xa8ug8c',"form2":'1S8d6gj3dVafcwiImPy3O8TcN4iPF7dZhCSz9XVVZTtk'},
+                  'PAETE':{"form1":'1HHVA7Oq84m8OqPj52rmvhrHI301ljoy4xcHD4jlihWs',"form2":'1ei_JQGjSo5BThtTsK7na4OyyxJTuJ5ea5cvLYoRkCJI'},
+                  'PAGSANJAN':{"form1":'1zxAUqkccCkAqWjjUwDP-TAg-x3ukiCQp6yKWfh2vXic',"form2":'1EKOA3p3YqELMQcB-EFJTx8l-beqAmPEj3hKCIySo3mg'},
+                  'PAKIL':{"form1":'14NuFZ7D5_jpo6p9OoGL8jcyeQJHTLbeoJC9ZCfGLDc0',"form2":'1Cf-Vi8ec7gC6qN4BOGgsxXSSctPlUdmh5xBUNY2pkqc'},
+                  'PANGIL':{"form1":'1M5Hg6h0bdqmK528PKH57U6l1_BN7xWWtH7bzJgxmhCE',"form2":'177zYbgN01o027lz0d5joOQPRVf7w4O-elipJsj4e6pI'},
+                  'PILA':{"form1":'1JUdSr2zH-FuDsSkCWvxsm7TM759AuWrpRB4EGGdR3oA',"form2":'14_j8plKzV3WTJ7XedUCN0cMd3zWAxaHkglpSN_fET7g'},
+                  'RIZAL':{"form1":'1KrDbUTuF6cVILtqDtrTj3ek0D02ZUaXU9d7hc0V04EQ',"form2":'19Syjl0juWYB7UzoOzF8PrthbGTp0CMMc6OtwCdqlryg'},
+                  'SAN PABLO CITY':{"form1":'1jQ-ffTZpyJep-TbBDBVTvFMlRvYeJbic-41qlDVYViA',"form2":'1hnvvX3XFDnmyeXXNlLsrQF-E_D9BicCFbgV-XwBsrg4'},
+                  'SAN PEDRO CITY':{"form1":'12eRKdrg2__2XUE-J0tPYOaKEdxhZG13oj_IkBUp9rgA',"form2":'1AG_VNdq89gf6zY2qpuB4Tyeon-qN_SixKHOFS0wT14I'},
+                  'SANTA CRUZ':{"form1":'1WpIblZkBSDG8e2lwUzpTVFDv8lLXhkq9tfXs_8Kw8DQ',"form2":'1YlvpoQV7wXtmNJNUIqAPDEx1hbiVLCg1qVTPmQur4tM'},
+                  'SANTA MARIA':{"form1":'1t_F_S5Xf264JJYLiLLfH4u-DVa_nyOVj5mJMzHw97Kk',"form2":'15oxZDtfEvObSS1w0tLCyWhcnd94HePrrVxI6t_2RtXY'},
+                  'CITY OF SANTA ROSA':{"form1":'1nV5YkiCJDvE48VFa-hOYjvcQpoIyXzdK53A_IIfoPG0',"form2":'1ltGBNuLBtnd2skQ4rI-utC7e5tKnpW6m1I7gsV0Nbk0'},
+                  'SINILOAN':{"form1":'1bX4prj5Gv0umJ2AZuWNYhEvNPW9tqwDJGvHb11jNq1Y',"form2":'1btYKsSe3e0JofeFOaEVtUEe2HAY7XEJx30ZUfIYPO78'},
+                  'VICTORIA':{"form1":'1SigWxP8VROzu7wbiy-DW3h2UByr6L8g04_cKPD7tsZw',"form2":'1cv5n-G6iaF-bZfCjhrpl8eDmJvAyHAQZPdKTKrG6Xvw'},
+                  'PHINMA UNION COLLEGE OF LAGUNA':{"form1":'1tywdypE8JORI0aVhK1ZqXUQcKt5IUAXhQe85-3n8jn8',"form2":'16s9VOfBtgNP5cb5KB1oUaXl12aSUkZju8_3SEHmMKN4'},
+                  'PHINMA RIZAL COLLEGE OF LAGUNA':{"form1":'1TRRfJ9telqxu2VVgRT6qzLIyW17LEvYOCMkI6DRWHqE',"form2":'1W2ZX_KhWDej3S-tg1xuwsZV0MDEL633v9RCMvY5IxOE'},
+                  'TRIMEX COLLEGE INC':{"form1":'1aCv7dBCnuqn46ay7DmQ9Z0PuxqpxqLgPMcw5pzlKEss',"form2":''}
+                },QUEZON:{
+                  'AGDANGAN':{"form1":'1Ac8ev4H1ZkQXxtUv8t2ohBKod-91XC_5jVIwrDFIVao',"form2":'1t5DP3Sx2Ku4-galmTfwH1E0lMlged2vF_kYMFXx4RKY'},
+                  'ALABAT':{"form1":'1MPc6YONR7wIV2ClrqqYdvS-b-tiijC3W1Xifr_W5Ox8',"form2":'1Nl4oZZYhsp_gzJJ5zZ3ZkBF9x1lRBpagqo1fyGg7vqc'},
+                  'ATIMONAN':{"form1":'1tGWhbfPbj5e7dYcBQN6LFm2fOkeyGDoSTS2W59VPM80',"form2":'1vqW8SdjEDSIQLPMrJWlkUYJXVBKaD6gWlWRdGgOjqHM'},
+                  'BUENAVISTA':{"form1":'1x9RjwWP3JDTi5UAEyxmvbRpyRT47FwSJ4jaooAcrnKk',"form2":'15b81v5kFxnt5YqYn1WmURVK2pVGzSZCFV5ZfRKH2Tak'},
+                  'BURDEOS':{"form1":'12TYf0HMjIK-b2otK2paN5eCJFGbqMUHcAUZeEEpEwUI',"form2":'1ZgEwSBSDppzxD7w2taJPdm7_zNpTMbcsFBKPu-mLZhs'},
+                  'CALAUAG':{"form1":'1nQpmVWLRW12gO0MwysFncZBjqwu85kO1pC7PAGrnn4k',"form2":'1cz6i0piaciEuVbnleteuvLjkn-A8cXlDfVxf_YEtddM'},
+                  'CANDELARIA':{"form1":'10lTqsX_ALw5hIe54SKuPTqRqmQ76Mb5mug-KehYgdq0',"form2":'1uw7VACIUDh9YXAbtkh4oGagTpfcdLQAH2HQ2ENbW6is'},
+                  'CATANAUAN':{"form1":'1j3Ite5H9dIMpMXSzJiQlWwVyiVy9Hhag48Djef21Yyo',"form2":'1ecmmiOLczGB79ltrfDPfDFF-Jhu0a7B2JOEFdW0CuEo'},
+                  'DOLORES':{"form1":'1eHHro42TlUkfeGc5vSelKFgIInkvtxihG3ttWVb0zl8',"form2":'101OP4tVQATzcpPv6OTveuyxGSmqrnvcGQJrSRQSdoK4'},
+                  'GENERAL LUNA':{"form1":'1SjQ1UuFka3NttE51FvyYtgPH9MIIzaiIWBrdOBhB4v0',"form2":'15UjxQl5tF4Nl9jvxISgtJwbVQ4XnvF8CahKjrDmjdBE'},
+                  'GENERAL NAKAR':{"form1":'1X7hW5XPXsdfBSlZE-dzKmpbNXXyhZQWasBE2RPCMn1I',"form2":'1FjSP2mkEySpog2zPqPcB89Z-Xi4HS1XjAbsljIQeAzk'},
+                  'GUINAYANGAN':{"form1":'1iM-Nflf7QHTWUZTRMjJG22EMqut1QeGnQqPKVsyKOb0',"form2":'1URvlx1W4jx9t1GVcBeKxJBcd22QchWD7Yr0tlEFglXE'},
+                  'GUMACA':{"form1":'1cPYxLbkw95Rb-C8ROTIYUdKQw1Kj2kWmtwdeV7gXdDI',"form2":'1qIJeTkK0_iL2YF_jTrU0PIqD12_lGEzvAbQiCRbRAKY'},
+                  'INFANTA':{"form1":'1j-FmgLSHZopCHld_RUDzJTxyH50H_2djj_-4xrdpeJI',"form2":'19_LoXqFRzpk4Lt4qpyBB7Zrt1e4t0KYtJ-Nxsx5JZbc'},
+                  'JOMALIG':{"form1":'1y4boPZJgFqOeekG2OlXToi-egRfkaRnQ14qYoamXfaI',"form2":'1DsdPXYyrZ0xZVzspXPqrnfwdRDa_GfLUjGj9wscB7nc'},
+                  'LOPEZ':{"form1":'1PVFlRxTikr3N43KgpfBLVVGFzcQ0YZIKYiyMvF-xgdw',"form2":'1fwLR_O0t4VyfwWK4KITsWJqT8zqtrDQv_WMTHOkQpD0'},
+                  'LUCBAN':{"form1":'1bh48SzkLr0_fHtVsv9YIwB8bEKvwh4orol3yihXXu_s',"form2":'1x6nHw8bebaQyt8tuaN-UudglX2WMJof0JUoI0y4o6R4'},
+                  'LUCENA CITY':{"form1":'1t1JDKBdJuC9tnwAUlkZY7S8KS00RJPreCsHUw0XQ5XI',"form2":'1n23IzdMhRl_e2YRQ8X-hfpJgjikR2JYYrq0dKXRvD0k'},
+                  'MACALELON':{"form1":'1SDJXae2FphR30BD8p-zpEPlua3VY6MuOap-pBnOgFFM',"form2":'1Da0JAggJCOOJwNnYiK69giUncZFfubW95AeTw3m3VuE'},
+                  'MAUBAN':{"form1":'1xrzlFaxvRJuhGH-1oUzEIq3YSe0oAVBGekUGneX1cGs',"form2":'1d9wDRNaPqAdYJfaFkWHpLTQLuiFkcunu8Razft5Opqk'},
+                  'MULANAY':{"form1":'1lTsWca5EvHb-X2DwFCk2fkQYQcfKlX3AB25vJxtbNhQ',"form2":'192bHu-FUm40nTnyMf406MmxjKR8-4nUCQqVbLo0d1vY'},
+                  'PADRE BURGOS':{"form1":'1xtNVzORLvzCEz0ADoXxCQ8tONGVO0Ou8tPfTTEV7tyU',"form2":'1Plwoc-mq5YhZvbNne48-gmeQQPcyY3sj6F7YZCcDIl8'},
+                  'PAGBILAO':{"form1":'1fAu_kmQDweG-uMNhLBsq7nyOWLsDTVKxhp4AVO8nf88',"form2":'1V3KyGU92JHg2jto10joNJU64Ctmrp4VgCS1fkQH374s'},
+                  'PANUKULAN':{"form1":'1XIsTKQZ2at-SZeEnXPfUamgVqNUxYnulT-BJqZ5GVyQ',"form2":'1bu81vPTFasiGVZhWkXd9BegMxHRhhmEgj7msVDg3cnc'},
+                  'PATNANUNGAN':{"form1":'1d8pIbpR1LQ34FPHnUVIId7SzjP0AMnLh2tfRoi-CQYk',"form2":'1LyzQQu--QKLpKjLFdnm_27F8vfobiV6CVRDAIEM-8IU'},
+                  'PEREZ':{"form1":'1xGdhOJ7Aa_GyIBkF7C-IjTYaIQnERHIdPub32IFrigw',"form2":'1XQ2r7jmyRQRkbfPAQ0n70NWzn3Ek6yE9gqG-0uxa8TQ'},
+                  'PITOGO':{"form1":'1oEKsC5-Fb17vcwXz6K6VNaBNWQQP9nLEcds7li0Q-XI',"form2":'1loVirtcZH01d1DnIpOXyHeOObjzwdYZjKSokZf9AX04'},
+                  'PLARIDEL':{"form1":'16rPbsVow8i2FeNOxZQabOFlHYecpXY45UIVKc9z-0D8',"form2":'1L_r2hR6OsY-YLlcKr4X79URQh-RaAIK5ojw42myHTOo'},
+                  'POLILLO':{"form1":'19W3eeGz8j0cdqJjtmmx_0VUiEP_yloGMQzg6oVL92tY',"form2":'1OW9YardtXHYSeq27xCyx3_3pK0vLsGlpLTUJOuFp5tA'},
+                  'QUEZON':{"form1":'1pSa_5eyjqlY9Q_0hnlhxEATtuCvkjDG4bb73Y-Exswo',"form2":'1KHNcyj_qyuyEQ-TiP11FpcwsHb_v1Cel6cBd7cpALsY'},
+                  'QUEZON PROVINCE':{"form1":'1kOiKtljt2x2237IBFeRMFmaO1AZFMtO59NQX9eOpdm4',"form2":'13WH-VVFCX-7onIRH3UhL0_jErzYfj5jbMJYwHQRav2c'},
+                  'REAL':{"form1":'1onorTCnwfDY3ybOviLYnjvnhpQLU-v74J0JVxos2_Ho',"form2":'1Dd0B87K7Q1lQjKdQcVx3ZKONFxQb06f84uvwIVU1bEc'},
+                  'SAMPALOC':{"form1":'1MOfVPlV1xgm_IY4RYmjFStVtb9mBsu2MFuDJBd5_N2U',"form2":'1L86hEyPNk7rLpOy13cAbzP1su4C16LNAz0Uc6FuzndM'},
+                  'SAN ANDRES':{"form1":'1FD0D0cf9pHpvgd5ORTF1js5IFKLAOQ6YHSadLYSL7gY',"form2":'1Sakk90gHekcigpgmXrbMbbCmKkmbQa7ugke_uSz9Pw0'},
+                  'SAN ANTONIO':{"form1":'1lKJw00mnudWgoE7v-GM_QqhL-b4jNVV5fBWjHavrh0M',"form2":'1XHUAbsosFP91UJcQZMnyI5XwisvomLwNowfLBY__ELw'},
+                  'SAN FRANCISCO':{"form1":'179fdp3ruUHfIBlqVuTDBqnVohFEvaDIF-hCkNzzcZrA',"form2":'1haXcYWXSK5DHgXS9rhpGFO7_XAnLst8XFSOgGZlr2TI'},
+                  'SAN NARCISO':{"form1":'1oSLqW2qPRKzgQj3SJi67CUjMiEufpX_S03AN-2bd46Q',"form2":'1ZvESpGwmb9xDnfoOPzjcB4s47HQlWvWCF-mZkDVRe3Q'},
+                  'SARIAYA':{"form1":'1r01StGd2PuvgT5pGeNaTDQpOXt_I9m1noe7GvetKcp4',"form2":'1xxjxpJ0JVYYxWT48870l0GTtuC7uzKHEcPTYVP-q5Wk'},
+                  'TAGKAWAYAN':{"form1":'1f3lA6LyXB6RWNjItS5Hsk26AzqiNqpjI49_cFdC00Gg',"form2":'1rq50XlNLzs3K9M8wSFJmV5hH-rmU7iT19Tcc-uwQbyU'},
+                  'TAYABAS CITY':{"form1":'1aVVu97dFzfkcgmxEjc54i3q4AnHYqrc-N1RiQc1qil8',"form2":'1IlL4Si_S927Qf36RzYRmA0Mw_LlXUFLUlZRAc6xmvSg'},
+                  'TIAONG':{"form1":'1bx1uJWE-YH2t-iVYc8S8xO3mOydespIAYQ94SKuDoXg',"form2":'1WXLqnFAbViolCYA0OJ__1su_iByDT4HjVuKlyVxMK0o'},
+                  'UNISAN':{"form1":'1p6toen3twHsN67aCJCr0rH1f5xbncztCzTnkt-7orBo',"form2":'1fnOCGVJ2_sv96WIzgVTSYAeGm7YZblVyJS3lZPhXe9Y'},
+                  'ACEBA SCIENCE AND TECHNOLOGY INSTITUTE-MAUBAN':{"form1":'12mSUGSBWb7oub8FJIbJq419Qjsp4xcFSTqwggrcMkl4',"form2":'1Cvyh4EHMLu-U6j3RqFT4aym34FqoAvNSi41GHTK8MHk'},
+                  'SOUTHERN LUZON STATE UNIVERSITY-LUCBAN':{"form1":'1ccYJbbc4q9lF2K5YUkwOvCWA0soqdZkIbfGMOEWieo4',"form2":'1OxwuxxVqbbnTMtwuoOoMELe0HRXLPZYACv_WJ1t_zAc'},
+                  'Manuel S. Enverga University Foundation':{"form1":'1BUiCw63X7DTd6DO10wCtbEw2Y0bR4tsCP1Ivg6XqOfw',"form2":'1UjnxvNYNfGveSGtEU016-bEtBUW1uncqOuYt_CIukHA'}
+                },RIZAL:{
+                  'ANGONO':{"form1":'1zSrTUeiHeDh7W0jerGzGQ_o2U96SeH3S0sdGKB2ZHo8',"form2":'1GpGfnZAN1hxe78dmCywtrzDRqZSL-1demKCNpBNaeww'},
+                  'CITY OF ANTIPOLO':{"form1":'1UAlJ5IGvmKwpJc0gc7EOTosciXnUNDnyKa7RgnXwUTA',"form2":'18tnZv8Scr4dHY44dBLjN0LQm9PKZE4mHj13fxgKsxrk'},
+                  'BARAS':{"form1":'102qQnLzlkqTOfOYFTBjWIJlNZ5-eNBjhdKsZIsxXlB0',"form2":'1fNnGLW7n1TjhG5jQIwsqG3Vh7peDGfdih5KqScLUPZA'},
+                  'BINANGONAN':{"form1":'1BPBY-cDNyVBGa-Z7U-aMUVS_nV8TKDlf7Ioymm0_VAw',"form2":'1JdT3ofp3_MFIUCDjNyjfm9bZ_HkKlJtYYonGQeGze_g'},
+                  'CAINTA':{"form1":'1e5XEWp5EZPrN7dsGcxSLjo6oMYIDzwd1CSvupE03m3o',"form2":'1Ozvky2Am3uXeWl_BvRvaESaLSxi2Kk7DXhi1gXyRb9U'},
+                  'CARDONA':{"form1":'1Za1CVqkKehMv3IRysEVtFToCsR6JuoQAn-ld_iznWZ8',"form2":'1DvXEv33UmHau3oWE-xUybbpRyavwRNxsrMiVZ9S9b4o'},
+                  'JALAJALA':{"form1":'1gPleONLSv6Z6Hk4C8PjMEo4qBbzc_lny3cOtbT8w26E',"form2":'1RY8QXBBvr6yJBBc9ELkmpplhFlhGUOvXMqp0IBwkFKg'},
+                  'MORONG':{"form1":'1kgRtJh6GD2l7rpc0N-r3Hrw475Q5uB5hCA21YU62QOc',"form2":'1xiVDsfu8uoT5CgTVR_8LYeIM3jliPaEeoaasI9sq_dE'},
+                  'PILILLA':{"form1":'12Sg6shZCECVChgWNs7IIm2F_KrfmtTwnGULlv1wV0jk',"form2":'1trQNrTLfauAQfL7vjBpFHz0Lca6FGRgnAIpiBO9I3Qc'},
+                  'RODRIGUEZ':{"form1":'17XbSWdT0dW3jMiBWCqxenY3_PAaM0d_OPh6IHQe8mpc',"form2":'1Ia9kFGceDXr7wEHNFpZVWctsA3KkYJ6_dqftlsg58fY'},
+                  'SAN MATEO':{"form1":'1mIrKMcv7etsNP0kgogOiqzLboXuaLbV0JGa5bnAq5JA',"form2":'1R__J5xLLdrLKYzF5nQ9rAZK9xqNX--N06FSp3A6SYIQ'},
+                  'TANAY':{"form1":'16wKQNyiZdxRPEc1AvGGkAVwa9SNsY5AdVWdQbEC6-o0',"form2":'17i1AYbD2LI7y6B-fJL0DoMim2zfNndyO4_Oue73FSYk'},
+                  'TAYTAY':{"form1":'1fhsMq7WkUj8aQkbdZLUhB1eVc8cFfmvdFIPw6lbcCVA',"form2":'1rmsbKn2SBFlGq54oYMx9gbW14ujB6xujiifZX00_Ego'},
+                  'TERESA':{"form1":'1Gi7Doi7EaBvM0dPxROiMAgelel8OB_a0L-kNYtuK_S0',"form2":'1fPHkwy0-7hbIrRTPwsUSZF6Gyd_0e5AX9rc1XCHYL7A'},
+                  'RIZAL PROVINCE':{"form1":'1crnI2mvyZ9uqwgdobmx5F00UijtxjYyfDqlfnCq_r1U',"form2":'1cpTfTXCOF3sEWBEcrYZ67fvRUvomovWoo1RWKzqXKbA'}
+                }};
+                let activeForm=1, form1Rows=[], form2Rows=[];
+                function toggleSidebar(){const s=document.getElementById('programSidebar');if(window.innerWidth<=900)s.classList.toggle('mobile');else document.body.classList.toggle('side-hidden')}
+                function switchForm(n){activeForm=n;document.getElementById('form1Page').classList.toggle('active',n===1);document.getElementById('form2Page').classList.toggle('active',n===2);loadCurrentForm()}
+                function initYears(){const y=document.getElementById('year'),now=new Date().getFullYear();y.innerHTML='<option value="">ALL YEARS</option>';for(let n=now+1;n>=2021;n--)y.add(new Option(n,n))}
+                function updateOffices(){const p=province.value,o=office;o.innerHTML='<option value="">-- SELECT IMPLEMENTING PESO / JPO --</option>';Object.keys(CGEC_SOURCES[p]||{}).sort().forEach(n=>o.add(new Option(n,n)));o.disabled=!p||Object.keys(CGEC_SOURCES[p]||{}).length===0;if(!p)status.textContent='Select a province and implementing PESO / JPO.';else if(!Object.keys(CGEC_SOURCES[p]||{}).length)status.textContent=p+' has no CGEC source links yet.';else status.textContent=Object.keys(CGEC_SOURCES[p]).length+' '+p+' source(s) available.';form1Rows=[];form2Rows=[];renderForm(1);renderForm(2)}
+                function gvizRows(spreadsheetId,form){return new Promise((resolve,reject)=>{const cb='cgec_'+Date.now()+'_'+Math.random().toString(36).slice(2);const script=document.createElement('script');let done=false;const finish=(err,data)=>{if(done)return;done=true;try{delete window[cb]}catch(e){}script.remove();err?reject(err):resolve(data)};window[cb]=resp=>{try{if(resp.status==='error')throw new Error(resp.errors?.[0]?.detailed_message||'Google Sheet returned an error.');const rows=(resp.table?.rows||[]).map(r=>(r.c||[]).map(c=>c?(c.f??c.v??''):'')).filter(r=>r.some(v=>String(v).trim()!==''));finish(null,rows)}catch(e){finish(e)}};script.onerror=()=>finish(new Error('Unable to load Google Sheet. Make sure it is shared/published for viewing.'));const range=form===1?'B2:L':'B2:J';script.src=`https://docs.google.com/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=responseHandler:${cb}&range=${range}&headers=0&_=${Date.now()}`;document.head.appendChild(script);setTimeout(()=>finish(new Error('Google Sheet request timed out.')),15000)})}
+                async function loadCurrentForm(){const p=province.value,o=office.value;if(!p||!o){renderCurrent();return}const src=CGEC_SOURCES[p]?.[o];if(!src){status.textContent='No source configured for '+p+' / '+o+'.';return}const key=activeForm===1?'form1':'form2';const body=document.getElementById(activeForm===1?'form1Body':'form2Body');body.innerHTML=`<tr><td colspan="${activeForm===1?11:9}" class="loading"><span class="spinner-border spinner-border-sm me-2"></span>Loading CGEC Form ${activeForm}...</td></tr>`;status.textContent=`Loading ${o} - CGEC Form ${activeForm}...`;try{const rows=await gvizRows(src[key],activeForm);if(activeForm===1)form1Rows=rows;else form2Rows=rows;renderCurrent();status.textContent=`${o}: ${rows.length} CGEC Form ${activeForm} row(s) loaded.`}catch(e){body.innerHTML=`<tr><td colspan="${activeForm===1?11:9}" class="empty">${escapeHtml(e.message)}</td></tr>`;status.textContent=e.message}}
+                function renderCurrent(){renderForm(activeForm)}
+                function renderForm(form){const body=document.getElementById(form===1?'form1Body':'form2Body'),rows=form===1?form1Rows:form2Rows,cols=form===1?11:9,y=year.value;let data=rows.filter(r=>!y||String(r[0]).trim()===String(y));if(!data.length){body.innerHTML=`<tr><td colspan="${cols}" class="empty">${province.value&&!Object.keys(CGEC_SOURCES[province.value]||{}).length?'No source links configured for '+escapeHtml(province.value)+'.':'No records to display.'}</td></tr>`;return}body.innerHTML=data.map(r=>'<tr>'+Array.from({length:cols},(_,i)=>`<td title="${escapeHtml(r[i]??'')}">${escapeHtml(r[i]??'')}</td>`).join('')+'</tr>').join('')}
+                function escapeHtml(v){return String(v??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+
+                const MONTH_NAMES=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+                function monthIndex(v){const s=String(v||'').trim().toUpperCase();if(!s)return -1;let i=MONTH_NAMES.findIndex(m=>s===m||s===m.slice(0,3)||s.includes(m)||s.includes(m.slice(0,3)));if(i>=0)return i;const d=new Date(v);return Number.isNaN(d.getTime())?-1:d.getMonth();}
+                function numeric(v){const n=parseFloat(String(v??'').replace(/,/g,''));return Number.isFinite(n)?n:0;}
+                async function openTabulated(){
+                  const p=province.value,o=office.value,y=year.value;
+                  if(!p||!o){alert('Please select a province and implementing PESO / JPO first.');return;}
+                  const source=CGEC_SOURCES[p]?.[o];
+                  if(!source){alert('No CGEC source configured for the selected office.');return;}
+
+                  const norm=v=>String(v??'').trim().toUpperCase().replace(/\s+/g,' ');
+                  const pair=()=>({female:0,total:0});
+                  const add=(obj,r)=>{obj.female+=numeric(r[7]);obj.total+=numeric(r[8]);};
+
+                  const buildForm1=rows=>{
+                    const data=rows.filter(r=>!y||String(r[0]).trim()===String(y));
+                    const out=MONTH_NAMES.map(m=>({m,cg:0,sf:0,st:0,pf:0,pt:0,pub:0,pri:0}));
+                    data.forEach(r=>{
+                      const i=monthIndex(r[1]); if(i<0)return;
+                      const x=out[i];
+                      x.cg++;
+                      x.sf+=numeric(r[7]); x.st+=numeric(r[8]);
+                      x.pf+=numeric(r[9]); x.pt+=numeric(r[10]);
+                      const cls=norm(r[4]);
+                      if(cls.includes('PUBLIC')) x.pub++;
+                      if(cls.includes('PRIVATE')) x.pri++;
+                    });
+                    const g=out.reduce((a,x)=>({cg:a.cg+x.cg,sf:a.sf+x.sf,st:a.st+x.st,pf:a.pf+x.pf,pt:a.pt+x.pt,pub:a.pub+x.pub,pri:a.pri+x.pri}),{cg:0,sf:0,st:0,pf:0,pt:0,pub:0,pri:0});
+                    return out.map(x=>`<tr><td>${x.m.slice(0,3)}</td><td>${x.cg}</td><td>${x.sf}</td><td>${x.st}</td><td>${x.pf}</td><td>${x.pt}</td><td>${x.pub}</td><td>${x.pri}</td></tr>`).join('')+
+                      `<tr class="fw-bold"><td>TOTAL</td><td>${g.cg}</td><td>${g.sf}</td><td>${g.st}</td><td>${g.pf}</td><td>${g.pt}</td><td>${g.pub}</td><td>${g.pri}</td></tr>`;
+                  };
+
+                  const buildForm2=rows=>{
+                    const data=rows.filter(r=>!y||String(r[0]).trim()===String(y));
+                    const fresh=m=>({m,ordinary:0,infused:0,ts:pair(),tj:pair(),gs:pair(),gj:pair(),ws:pair(),wj:pair(),is:pair(),ij:pair()});
+                    const out=MONTH_NAMES.map(fresh);
+
+                    data.forEach(r=>{
+                      const i=monthIndex(r[1]); if(i<0)return;
+                      const x=out[i], classification=norm(r[3]), conductedTo=norm(r[4]);
+                      const student=conductedTo.includes('STUDENT');
+                      const jobseeker=conductedTo.includes('JOBSEEKER')||conductedTo.includes('JOB SEEKER');
+                      const infused=classification.includes('INFUSED');
+                      const walkin=classification.includes('WALK-IN')||classification.includes('WALK IN');
+
+                      if(infused)x.infused++;else x.ordinary++;
+                      if(student)add(x.ts,r); if(jobseeker)add(x.tj,r);
+
+                      if(infused){
+                        if(student)add(x.is,r); if(jobseeker)add(x.ij,r);
+                      }else if(walkin){
+                        if(student)add(x.ws,r); if(jobseeker)add(x.wj,r);
+                      }else{
+                        if(student)add(x.gs,r); if(jobseeker)add(x.gj,r);
+                      }
+                    });
+
+                    const cells=x=>[x.m.slice(0,3),x.ordinary,x.infused,x.ts.female,x.ts.total,x.tj.female,x.tj.total,x.gs.female,x.gs.total,x.gj.female,x.gj.total,x.ws.female,x.ws.total,x.wj.female,x.wj.total,x.is.female,x.is.total,x.ij.female,x.ij.total];
+                    const g=fresh('TOTAL');
+                    out.forEach(x=>{
+                      g.ordinary+=x.ordinary; g.infused+=x.infused;
+                      ['ts','tj','gs','gj','ws','wj','is','ij'].forEach(k=>{g[k].female+=x[k].female;g[k].total+=x[k].total;});
+                    });
+                    return out.map(x=>`<tr>${cells(x).map(v=>`<td>${v}</td>`).join('')}</tr>`).join('')+
+                      `<tr class="fw-bold">${cells(g).map(v=>`<td>${v}</td>`).join('')}</tr>`;
+                  };
+
+                  tabulatedLabel.textContent=`${o} • ${y||'ALL YEARS'} • Loading both forms...`;
+                  tabulatedBody1.innerHTML='<tr><td colspan="8"><span class="spinner-border spinner-border-sm me-2"></span>Loading Form 1...</td></tr>';
+                  tabulatedBody2.innerHTML='<tr><td colspan="19"><span class="spinner-border spinner-border-sm me-2"></span>Loading Form 2...</td></tr>';
+                  bootstrap.Modal.getOrCreateInstance(document.getElementById('tabulatedModal')).show();
+
+                  const results=await Promise.allSettled([
+                    source.form1?gvizRows(source.form1,1):Promise.reject(new Error('No Form 1 source configured.')),
+                    source.form2?gvizRows(source.form2,2):Promise.reject(new Error('No Form 2 source configured.'))
+                  ]);
+
+                  if(results[0].status==='fulfilled'){form1Rows=results[0].value;tabulatedBody1.innerHTML=buildForm1(form1Rows);}
+                  else tabulatedBody1.innerHTML=`<tr><td colspan="8">${escapeHtml(results[0].reason?.message||'Unable to load Form 1.')}</td></tr>`;
+
+                  if(results[1].status==='fulfilled'){form2Rows=results[1].value;tabulatedBody2.innerHTML=buildForm2(form2Rows);}
+                  else tabulatedBody2.innerHTML=`<tr><td colspan="19">${escapeHtml(results[1].reason?.message||'Unable to load Form 2.')}</td></tr>`;
+
+                  tabulatedLabel.textContent=`${o} • ${y||'ALL YEARS'} • CGEC FORMS 1 & 2`;
+                }
+                function openMunicipalReports(){
+                  municipalMonth.innerHTML='<option value="">ALL MONTHS</option>'+MONTH_NAMES.map((m,i)=>`<option value="${i}">${m}</option>`).join('');
+                  municipalStatus.textContent=province.value&&Object.keys(CGEC_SOURCES[province.value]||{}).length?`Ready to scan ${province.value} CGEC Form 1 and Form 2.`:'No CGEC source links configured for the selected province.';
+                  bootstrap.Modal.getOrCreateInstance(document.getElementById('municipalModal')).show();
+                }
+                async function scanMunicipalReports(){
+                  const prov=province.value;
+                  const sources=CGEC_SOURCES[prov]||{};
+                  if(!prov||!Object.keys(sources).length){
+                    municipalBody.innerHTML='<tr><td colspan="4">No source links configured for this province.</td></tr>';
+                    municipalStatus.textContent='No source links configured for the selected province.';
+                    return;
+                  }
+                  const entries=Object.entries(sources), mi=municipalMonth.value, y=String(year.value||'').trim();
+                  municipalBody.innerHTML=`<tr><td colspan="4"><span class="spinner-border spinner-border-sm me-2"></span>Scanning ${escapeHtml(prov)} CGEC Form 1 and Form 2...</td></tr>`;
+                  municipalStatus.textContent=`Scanning ${entries.length} offices / institutions...`;
+
+                  const yearMatches=(v)=>{
+                    if(!y) return true;
+                    const m=String(v??'').match(/(?:19|20)\d{2}/);
+                    return m ? m[0]===y : String(v??'').trim()===y;
+                  };
+                  const periodMatches=(v)=> mi==='' || monthIndex(v)===Number(mi);
+                  const validRows=(rows)=>rows.filter(r=>{
+                    if(!r || !r.some(v=>String(v??'').trim()!=='')) return false;
+                    // GViz reads from column B, so r[0]=B (year), r[1]=C (reporting period).
+                    // Read the whole columns instead of assuming a fixed first data row because source sheets differ.
+                    const yr=String(r[0]??'').trim();
+                    if(!/(?:19|20)\d{2}/.test(yr)) return false; // ignores title/header rows
+                    return yearMatches(yr) && periodMatches(r[1]);
+                  });
+
+                  const found=[];
+                  // Scan in small parallel batches so one slow/inaccessible sheet does not block all municipalities.
+                  for(let base=0;base<entries.length;base+=6){
+                    const batch=entries.slice(base,base+6);
+                    municipalStatus.textContent=`Scanning ${Math.min(base+6,entries.length)} of ${entries.length} offices / institutions...`;
+                    const checks=batch.map(async ([name,src])=>{
+                      const jobs=[];
+                      if(src.form1) jobs.push(gvizRows(src.form1,1).then(rows=>({form:1,rows})).catch(()=>({form:1,rows:[]})));
+                      if(src.form2) jobs.push(gvizRows(src.form2,2).then(rows=>({form:2,rows})).catch(()=>({form:2,rows:[]})));
+                      const forms=await Promise.all(jobs);
+                      for(const f of forms){
+                        const rows=validRows(f.rows);
+                        if(rows.length) found.push([name,f.form,rows.length]);
+                      }
+                    });
+                    await Promise.all(checks);
+                  }
+
+                  found.sort((a,b)=>a[0].localeCompare(b[0])||a[1]-b[1]);
+                  municipalBody.innerHTML=found.length
+                    ? found.map((x,i)=>`<tr><td>${i+1}</td><td>${escapeHtml(x[0])}</td><td>CGEC FORM ${x[1]}</td><td>${x[2]}</td></tr>`).join('')
+                    : '<tr><td colspan="4">No reports found for the selected year/month. Try ALL MONTHS or check that the Google Sheets are shared for viewing.</td></tr>';
+                  const offices=new Set(found.map(x=>x[0])).size;
+                  municipalStatus.textContent=`Scan complete. ${offices} office(s) / institution(s), ${found.length} form report(s) found.`;
+                }
+                async function downloadCGEC(){
+      const p=province.value,o=office.value,y=year.value;
+      if(!p||!o){alert('Please select a province and implementing PESO / JPO first.');return;}
+      const source=CGEC_SOURCES[p]?.[o];
+      if(!source?.form1||!source?.form2){alert('Both CGEC Form 1 and Form 2 sources are required.');return;}
+
+      const norm=v=>String(v??'').trim().toUpperCase().replace(/\s+/g,' ');
+      const num=v=>numeric(v);
+      const selectedYear=r=>!y||String(r[0]).trim()===String(y);
+
+      try{
+        status.textContent='Preparing CGEC Form 1 and Form 2...';
+
+        // Always load BOTH forms before creating the workbook.
+        const [rows1,rows2]=await Promise.all([
+          gvizRows(source.form1,1),
+          gvizRows(source.form2,2)
+        ]);
+        form1Rows=rows1;
+        form2Rows=rows2;
+
+        const data1=rows1.filter(selectedYear);
+        const data2=rows2.filter(selectedYear);
+        if(!data1.length&&!data2.length){
+          alert('No CGEC data to download for the selected year.');
+          status.textContent='No data found.';
+          return;
+        }
+
+        // Load the existing Excel template from /public without rebuilding it.
+        // Keep both names as fallbacks so GitHub can use either filename.
+        const templateCandidates=[
+          '/CGEC Report Form.xlsx',
+          '/CGEC%20Report%20Form.xlsx',
+          '/CGEC Report Form(1).xlsx',
+          '/CGEC%20Report%20Form(1).xlsx'
+        ];
+        let templateBuffer=null,lastError=null;
+        for(const url of templateCandidates){
+          try{
+            const res=await fetch(url,{cache:'no-store'});
+            if(res.ok){
+              templateBuffer=await res.arrayBuffer();
+              break;
+            }
+            lastError=new Error(`${url}: HTTP ${res.status}`);
+          }catch(err){lastError=err;}
+        }
+        if(!templateBuffer)throw new Error('CGEC Report Form.xlsx template was not found in /public. '+(lastError?.message||''));
+
+        const wb=new ExcelJS.Workbook();
+        await wb.xlsx.load(templateBuffer);
+
+        const ws1=wb.getWorksheet('CGEC Form 1');
+        const ws2=wb.getWorksheet('CGEC Form 2');
+        if(!ws1||!ws2)throw new Error('Template must contain sheets named "CGEC Form 1" and "CGEC Form 2".');
+
+        // Header information in the EXISTING template.
+        ws1.getCell('C6').value=p;
+        ws1.getCell('C7').value=o;
+        ws1.getCell('F6').value=y?Number(y):'ALL YEARS';
+
+        ws2.getCell('C7').value=p;
+        ws2.getCell('C8').value=o;
+        ws2.getCell('E7').value=y?Number(y):'ALL YEARS';
+
+        // Plot detailed records starting at ROW 13.
+        // FORM 1 = A:K
+        data1.forEach((r,i)=>{
+          const row=13+i;
+          for(let c=0;c<11;c++)ws1.getCell(row,c+1).value=r[c]??'';
+        });
+
+        // FORM 2 = A:I
+        data2.forEach((r,i)=>{
+          const row=13+i;
+          for(let c=0;c<9;c++)ws2.getCell(row,c+1).value=r[c]??'';
+        });
+
+        // ---------- CGEC FORM 1 TABULATED REPORT ----------
+        // Template location: M13:T25 (JAN-DEC + TOTAL)
+        const f1=MONTH_NAMES.map(m=>({m,cg:0,sf:0,st:0,pf:0,pt:0,pub:0,pri:0}));
+        data1.forEach(r=>{
+          const i=monthIndex(r[1]);if(i<0)return;
+          const x=f1[i];
+          x.cg++;
+          x.sf+=num(r[7]); x.st+=num(r[8]);
+          x.pf+=num(r[9]); x.pt+=num(r[10]);
+          const cls=norm(r[4]);
+          if(cls.includes('PUBLIC'))x.pub++;
+          if(cls.includes('PRIVATE'))x.pri++;
+        });
+        const f1total=f1.reduce((a,x)=>({
+          m:'TOTAL',
+          cg:a.cg+x.cg,sf:a.sf+x.sf,st:a.st+x.st,
+          pf:a.pf+x.pf,pt:a.pt+x.pt,pub:a.pub+x.pub,pri:a.pri+x.pri
+        }),{m:'TOTAL',cg:0,sf:0,st:0,pf:0,pt:0,pub:0,pri:0});
+
+        [...f1,f1total].forEach((x,i)=>{
+          const row=13+i;
+          const vals=[i<12?x.m.slice(0,3):'TOTAL',x.cg,x.sf,x.st,x.pf,x.pt,x.pub,x.pri];
+          vals.forEach((v,j)=>ws1.getCell(row,13+j).value=v); // M:T
+        });
+
+        // ---------- CGEC FORM 2 TABULATED REPORT ----------
+        // Template location: K13:AC25 (JAN-DEC + TOTAL)
+        const pair=()=>({female:0,total:0});
+        const add=(obj,r)=>{obj.female+=num(r[7]);obj.total+=num(r[8]);};
+        const fresh=m=>({
+          m,ordinary:0,infused:0,
+          ts:pair(),tj:pair(),gs:pair(),gj:pair(),
+          ws:pair(),wj:pair(),is:pair(),ij:pair()
+        });
+        const f2=MONTH_NAMES.map(fresh);
+
+        data2.forEach(r=>{
+          const i=monthIndex(r[1]);if(i<0)return;
+          const x=f2[i];
+          const classification=norm(r[3]);
+          const conductedTo=norm(r[4]);
+          const student=conductedTo.includes('STUDENT');
+          const jobseeker=conductedTo.includes('JOBSEEKER')||conductedTo.includes('JOB SEEKER');
+          const infused=classification.includes('INFUSED');
+          const walkin=classification.includes('WALK-IN')||classification.includes('WALK IN');
+
+          if(infused)x.infused++;else x.ordinary++;
+
+          if(student)add(x.ts,r);
+          if(jobseeker)add(x.tj,r);
+
+          if(infused){
+            if(student)add(x.is,r);
+            if(jobseeker)add(x.ij,r);
+          }else if(walkin){
+            if(student)add(x.ws,r);
+            if(jobseeker)add(x.wj,r);
+          }else{
+            if(student)add(x.gs,r);
+            if(jobseeker)add(x.gj,r);
+          }
+        });
+
+        const f2total=fresh('TOTAL');
+        f2.forEach(x=>{
+          f2total.ordinary+=x.ordinary;
+          f2total.infused+=x.infused;
+          ['ts','tj','gs','gj','ws','wj','is','ij'].forEach(k=>{
+            f2total[k].female+=x[k].female;
+            f2total[k].total+=x[k].total;
+          });
+        });
+
+        const f2vals=x=>[
+          x.m==='TOTAL'?'TOTAL':x.m.slice(0,3),
+          x.ordinary,x.infused,
+          x.ts.female,x.ts.total,x.tj.female,x.tj.total,
+          x.gs.female,x.gs.total,x.gj.female,x.gj.total,
+          x.ws.female,x.ws.total,x.wj.female,x.wj.total,
+          x.is.female,x.is.total,x.ij.female,x.ij.total
+        ];
+        [...f2,f2total].forEach((x,i)=>{
+          const row=13+i;
+          f2vals(x).forEach((v,j)=>ws2.getCell(row,11+j).value=v); // K:AC
+        });
+
+        // Preserve the template workbook/sheets and download both forms together.
+        const out=await wb.xlsx.writeBuffer();
+        const blob=new Blob([out],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+        const a=document.createElement('a');
+        a.href=URL.createObjectURL(blob);
+        a.download='CGEC Report Form.xlsx';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);
+        status.textContent=`Downloaded CGEC Form 1 and Form 2 using the template • ${o} • ${y||'ALL YEARS'}`;
+      }catch(err){
+        console.error(err);
+        alert('Download failed: '+(err?.message||err));
+        status.textContent='Download failed.';
+      }
+    }
+
+                initYears();renderForm(1);renderForm(2);
+                </script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><script id="signed-in-sidebar-user">
+(function(){
+ function refreshUser(){
+  const el=document.getElementById('programSidebarUsername');if(!el)return;
+  let name='';
+  for(const key of ['userContext','currentUser','loggedUser','loggedInUser','user','username']){
+   let raw;try{raw=sessionStorage.getItem(key)||localStorage.getItem(key)}catch(e){continue}
+   if(!raw)continue;
+   try{const v=JSON.parse(raw);if(typeof v==='string')name=v;else if(v&&typeof v==='object'){const u=(v.user&&typeof v.user==='object')?v.user:v;name=u.firstName||u.firstname||u.first_name||u.displayName||u.name||u.username||u.userName||''}}catch(e){name=raw}
+   if(name)break;
+  }
+  el.textContent=String(name||'USER').trim().split(/\s+/)[0].toUpperCase();
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refreshUser);else refreshUser();
+})();
+</script><script defer src="/epms-table-pagination.js"></script>
+</body></html>

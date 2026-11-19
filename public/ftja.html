@@ -1,0 +1,4542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="auth-guard.js"></script>
+
+    <title>RA 11261 - FIRST TIME JOBSEEKERS ACT</title>
+
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>RA 11261 - FIRST TIME JOBSEEKERS ACT</title>
+
+  <!-- ANTI-BACK-BUTTON AUTHENTICATION & BFCACHE SESSION GUARD -->
+  <script>
+
+    const REFERRAL_SOURCES = {
+  "RIZAL": {
+    "ANGONO": "1IhiQ0FpejtL2ASdTGAqUfNSjeGo3yOAl3z48D4hFFUw",
+    "CITY OF ANTIPOLO": "11aMWsGqh1lv-u0vEEkDIbD_lfmRgYaUPAZ6o0kSAOUs",
+    "BARAS": "1325kT_lQBZl5PQKmktRKSpZs7ba1yBs_s7px7GgVCl8",
+    "BINANGONAN": "16P64FzI6r943pX07c8RHRHnFKIQj7DpbMjc463GHO8A",
+    "CAINTA": "1AlcdgDxuwX-19gxilkot71dDtN3iLQSGGz6q71NX-1g",
+    "CARDONA": "1Gb4qg4vWFFC6HPK-lw6wG7TAdBk1YVk35aFNMWzxhTs",
+    "JALAJALA": "1mEf5KwrWxgUY6m5XavVXhoC5_PNvRxW-Ing4r1DQrwc",
+    "MORONG": "1hBdRVcqXjjjJ4krTyCQrczoj7vpBbsbqk74zxeZs01k",
+    "PILILLA": "1Rw8wbfKY8izi2t4_wC09ikE9airbS5gio8SkA2nxZEg",
+    "RODRIGUEZ": "1Q2OEbHcaSBGx-UBatPTWiavfZpKUqBfBa7JOzsbKv8Y",
+    "SAN MATEO": "1cmcHU95d8i8eF-_pGepI2Tsf_cMag8wYF051a1yZ180",
+    "TANAY": "1J86VXNpyjdAVTWOj0A1QvOs0D7z1LtE3MruCFDl8wlo",
+    "TAYTAY": "1ON7IJIOh9NS8-XJ7S9sRVXmu3_-zmf2nrXOJ1l6qGhk",
+    "TERESA": "1zGBmKrqY_ZE5FQ7FymRt7WaWXBVyG3ChvT1CziUFxV0"
+  },
+  "BATANGAS": {
+    "RIZAL PROVINCE": "1AmdoOgcngeY9Ro9Cqr_SazD9Lhu4j2yIx0J2__PeELU",
+    "AGONCILLO": "1LapAMk6-osOwnDLXTy5t9lrBVSHniLUNKidrB6awBQ4",
+    "ALITAGTAG": "1Xxb2RH7QJgTLOHyGF6kxpV8XJ5PlozpzG7FMZbgTKIs",
+    "BALAYAN": "1eMChnLEkproGh0ZEjqcTqnOTLsgfTeTDOvVY0w4jJrQ",
+    "BALETE": "17x3WHIcu7exL28opfJKnBHYVTtSPvNZGw8ze4FCtbCc",
+    "BATANGAS CITY": "1WSUgwvMw0Lj2L9mgvRp4pgH40l9wEO5-e8njdH-svcM",
+    "BAUAN": "1UkJ1FnC2_N5iBskaBIIU8GHeEtQaY-xcWxncz_xpXdk",
+    "CALACA": "1anFmKD_eYMwgvHptbWVTptf1PrVVgpg-mXEDZQc3dzU",
+    "CALATAGAN": "1uwaaWtr8PxEJb3gSfeIpnxnROC7FkmLt95Ms0odOs5g",
+    "CUENCA": "1rIfitwB8cR_L1xw_IY1ukcBGpRrHPlsB_W3kSLk0FBQ",
+    "IBAAN": "1OJcUZKjXWUghDKhvZ2QgSe1IeYa-o6lZKoNVrRhmr6Y",
+    "LAUREL": "1PsnLPz8d-mHByBWZZsMqk3ciXWL_-dTNik8n5Mz7n9s",
+    "LEMERY": "1KhS_hx2fa4Fmcg5TCUptH34hXLzg_tiiefPmKFAW9Pc",
+    "LIAN": "1hlPQrwxZc-3Yt37XdaRFxQVn8Ce28hHSZ6-_viR1aJE",
+    "LIPA CITY": "1F-cqdkw-Il7oywYYsFnHHMadL9PYE8_X2tnq95qc-Vk",
+    "LOBO": "129xzLUad__RwmLgqDwbtMJWOl0IPF9QPpQw3xX8uaR0",
+    "MABINI": "1JHbH6ortHm6D_kJgusLAVUb3BKB2JDDzeJuicTH8o3g",
+    "MALVAR": "1KQBqD21zO9VjnkutEorn2yqkTzp1pqP_EAR1Z2d41hY",
+    "MATAASNAKAHOY": "1QXKWODTUSlfmddX2Ib5rDt-lwQxoqovl9tjirRm3Nwg",
+    "NASUGBU": "1Kar_RB8FYGG3UeXL_RtgqduldntUhZCM7PhaQE5STwY",
+    "PADRE GARCIA": "1A5eKS7Byuym1BKpPHj3K1faFj6m4h66X_6wGOoGY6tA",
+    "ROSARIO": "1UCl78w2Cvdo5z0iFjm2TjTDQVkLRbeLORHxqP4mz0pI",
+    "SAN JOSE": "12ODIOhxENDqSJEWtcqSKyAogsiFwIgUi-oEZY6axFhQ",
+    "SAN JUAN": "1yADRDcqYc_WRVeOZQcA6VE-J1yZxD1N_REgBCJZy_uE",
+    "SAN LUIS": "1rlnmJoVBKG9uUleFrpWp1xBwoK3XInc4OkCZG-fysco",
+    "SAN NICOLAS": "1ecPjnDoyAJjpHq2azoIhbSRgd8uwtaDAGdqSfz-zYok",
+    "SAN PASCUAL": "1ggOQfMtMQqp2UL1u7Z7aQOj2c7DzdAMAzvR7sNjEoHg",
+    "SANTA TERESITA": "1U88Y_QNwr7CJuFiDXawCfi5cVlxIvVNYCaQuaKEz3ns",
+    "SANTO TOMAS": "1wllrlPCKLeTfXRkTlDs5T6xRrdzXlSWlkVbjLKpRYXs",
+    "TAAL": "1fpk1FezRiI5-jFejJpUii5u9dQHwwet6A9JBEJ6qhHM",
+    "TALISAY": "1m66ey9lF9js_L78izcHoX6WecduU6Rls9hlxEbM117k",
+    "TANAUAN CITY": "1tyyL3ULbjj4urePDn51JrDW3DlhraF_-2QrrW7kAwSc",
+    "TAYSAN": "1VO7SSyWDItZDkWLXjAHWH-O3jOcmpUZyjY8YRPNpo0E",
+    "TINGLOY": "1GGZWRsWf_rqi9Hy0Vga4C83VtjqX6tGP-0AGpZ-N_Bk",
+    "TUY": "12_cY12cqmVW_Ag3MgZXQB_Iq8rcZQI3Wm6FXLVxiroQ",
+    "BATANGAS PROVINCE": "1oAXHSyMeQmvpJFpKFmOU4g9kErhoQe-zk09RntPH6eE",
+    "BATANGAS STATE UNIVERSITY": "15SXlPK9tuLJS99mA51F3EKNU9kagWD0OuSKO-gtW7Es",
+    "UNIVERSITY OF BATANGAS-MAIN": "1gz-uDAtCZWNIXmFI2amNVhqrcZpZw5jtspTqxqzZjZw",
+    "RIZAL COLLEGE OF TAAL": "1MhWK_ARA3rVR-D-vuxImiaRT0x0z2XkD3jtxTnl8dxw"
+  },
+  "CAVITE": {
+    "ALFONSO": "1NvFrNHWkZhcq-0NPIdDLR-E4h9gORV71CFdfsY4IMBg",
+    "AMADEO": "16OqRf240KCQhfXRdD7xeZ9rHm7XF5NuRBB_Ez9O4TPg",
+    "BACOOR CITY": "15_LMOL7dEK_oI9PRn07JjOfoLb4Gb4zN_OfAW89DZ7A",
+    "CARMONA": "1bL0H29OwG6rDJCn3-XAKJGjSHjibq5KfW_Tu0dlDg48",
+    "CAVITE CITY": "163n_vp5SXKxT1NTjpPObPar-coQPp-O4uE1Gq_3eINA",
+    "DASMARIÑAS CITY": "163wRJyiXyHTv-ma2rkzuAM9z-K51MDFREes3-Cq9NFY",
+    "GENERAL EMILIO AGUINALDO": "1FxZc5AqYGD0ja1uXcSbAM0BabkL7zW3f2pEj_dzexKU",
+    "GENERAL MARIANO ALVAREZ": "1aZMAKT27mzjK6Ov8yXBLBb4aPZ3TxIapJtqajx0AFhs",
+    "CITY OF GENERAL TRIAS": "1JNp5wy_J33AUfdxwB7wVkycQ4yU6ssQFTgO7AOzvSfs",
+    "IMUS CITY": "1RjtAHZeLRrKKocxxESycZn6DazGDlO3VeStjinHV-ko",
+    "INDANG": "1uiKs2hhd9U4hdg2KL0PfBxxSTm6KEhUqwf7egLAYLFU",
+    "KAWIT": "1--nueA4h56DV-WzE3NAG3daIHbg2ev0Fz-kTKc2r_Ho",
+    "MAGALLANES": "1UxUa8-QIN6gbYoxfaoB52vTou41raPTxJtEJkj6wBYI",
+    "MARAGONDON": "1u_fZyOM_FLQuthODq8IYo2wlHLxg2f4MHh2fnIO9U1k",
+    "MENDEZ": "1dA8qas1037GmSzT3xODL43bPyrdef0AnUBJ7QEvQWN0",
+    "NAIC": "1IIcMBGJAQsMZela5mRrE_nYRTQh8_kcu9Guojz97qms",
+    "NOVELETA": "1zQSpVBfL48OzKxTpAEqYvwblaZ8qJ6cRGui20vhbxAQ",
+    "ROSARIO": "1xqTtQj2IPSn4EcdtRxq-MIKCkQsqsHVI1EO5DfdYwjk",
+    "SILANG": "1ro0km2ql2ImMug-CbmjWTXgqqRuX6TW0yQtn-Mf-Ojg",
+    "TAGAYTAY CITY": "1kigpJVF5yp3g3D9zMsRM26q_AD1uaPRotTJZFFYzU5g",
+    "TANZA": "1qRPUnKGm1t_oEF1DOEJR0JDSlxhbwbeg_7Zj1TuQA2g",
+    "TERNATE": "1HaBj0nhVzvP6C6e_O45MLe7sq4Fg7-V8BPKtrnxxVrw",
+    "TRECE MARTIRES CITY": "19r2zr-78yyfQdZuQeKDibGcO2xCor8eluXTM3n0TGls",
+    "CAVITE PROVINCE": "1S77MJWonf4TEnr56e6i195G4huIy-UcgTOwyVpNO43g"
+  },
+  "LAGUNA": {
+    "ALAMINOS": "1MvDPwEz-Q8Z7JSKurRWM_jUb2_kgkPvCRqT9zIOH-ss",
+    "BAY": "1O8Yjqgho9CpDvISu05tVQedbRoV0D3P80BZE7DpPAZQ",
+    "CITY OF BIÑAN": "1YLKVOs5kBv65BaqFsgpcd-CK9AUvOQC7Q0YcDaUWMwI",
+    "CABUYAO CITY": "16PuTX80-uGMuHvn2mC69KhnIYJVN6Vrl7QMmmLhAdfo",
+    "CITY OF CALAMBA": "1RbJf1Vtwl5s5vDVuWuRzvnyCtKqIk8PLf2sTBkpijCs",
+    "CALAUAN": "1mJ2g0UD0GhFmO7E4G5PAsgT3LHlnopuBO7CZwjhDxK4",
+    "CAVINTI": "198iwRm4qzU9zu16FcP-5jcrLbV52xnv_PpS1AS0SU7Q",
+    "FAMY": "1WstH-SHzVglLwski8A2_4vmDAo002RbVtDtexwDFZVQ",
+    "KALAYAAN": "12CGqMtSsi30To9SPiLseZPy8gz9LBCEiGsJws7vIStI",
+    "LILIW": "18soHG92D4Md-FDqDoYKB8vyRkh6cW_abD9jjohA1Eho",
+    "LOS BAÑOS": "14CmcY1HoiEMdlPW2c2Rw3yAzrtEAl27x_AIg5Qbh_f8",
+    "LUISIANA": "1tzg_zsd8eycIO0p241MU1t_yj516HMtiBuyLQ3rgbOs",
+    "LUMBAN": "1dqX1dUHMZKWd5nQYy8WunT6zN0v8-1VUJzVEXPG3ibA",
+    "MABITAC": "1B3bm9uZ72eM7kVSl1zKP-AiRC5enRjljMJRYMQccYRU",
+    "MAGDALENA": "1j2Un90kBq_e_dKfeGqn898xiUjgm9_cL3jOe3vGIJak",
+    "MAJAYJAY": "1VOTcj4GO8kKkUcpgjg22KebaM-ONzQtwkXfCr81fwpo",
+    "NAGCARLAN": "1PYFgs_QZfuBiLJxuiYcSeXjkc7rmLOrG_cVju46Awc8",
+    "PAETE": "1T_ogXKB3ySoOXAH2pl0SKLoSI379LwaDnWntHzzidgI",
+    "PAGSANJAN": "1vhOXNwj3lL1dPHsBYAEAipJgSCQYKrKWM-Fc-H2a2iw",
+    "PAKIL": "1UXxh4A-ILqpthHln5PoKa-RE73zY41KemSd6CIiG9No",
+    "PANGIL": "1nN9LeJ_6BiunqLknuQCHXUWF-HxQdyySh11_wXJrOi0",
+    "PILA": "1lqT-tc9_MEuWWSY9BcP9p6UTGYaYDjtmne_WR_brQUE",
+    "RIZAL": "1I7ezXbG8s5QJFJVimA5S8Jgzov3ESqJ4VvJSTg9DgDI",
+    "SAN PABLO CITY": "155fUIW184fe-3BABes_9VwTHGsvmKPklLMI4El3L5kg",
+    "SAN PEDRO CITY": "1f0CWKegv9fQHgF_KeHRT2q-fxE8rissFiuQMe1eoiIE",
+    "SANTA CRUZ": "1uCQ_8QVny3GytpwLWlIqT68a218N2RG4Z-Go_zGQ7w4",
+    "SANTA MARIA": "1lEykLxZxFbtLSoMctu6elo5S-AdhQDAlVZ6zGY2CTLM",
+    "CITY OF SANTA ROSA": "1VdZm79PIOI5s2yVGIQ-XEo2nfPVFLbKJIhr_Rpe_bz4",
+    "SINILOAN": "1FNDRR4kIjTNIszvdbmc68V5lQ4mfmZUaqAHPQ9I-hpM",
+    "VICTORIA": "1l1dEMoUVyoOK1w76eQ-_GZR8OndHKJIlzbExNuiHYRQ",
+    "LAGUNA PROVINCE": "1M5sHz9b_aD-5xSCLkdu10GieQCvYiOPXROQioNCI1_Q",
+    "LAGUNA STATE POLYTECHNIC UNIVERSITY-MAIN": "1h5Rzdlko5daOc30Acr9a2YUSk5JBibnN5m6GxexhT8c"
+  },
+  "QUEZON": {
+    "AGDANGAN": "14DdSeeZuMP_HLfljsRIlZwSzY7fBa9MpfHF7PUk68nc",
+    "ALABAT": "1vcTAgVP72M6PHtX_-wEXNeNXTirzsyjwmjHMLt7HryQ",
+    "ATIMONAN": "1Nx_SpSkM97pGDFoc_kfZPlmAFxQonvRcHFdM8fMbzfs",
+    "BUENAVISTA": "17NEiSZlQS5dTxuuTFuPigpaWHrs4jXQQif_8mWt6N8Y",
+    "BURDEOS": "1rM2mD667SpoSI-BLwxU2ICzkhyvyUPxTC2ynbIiCeN8",
+    "CALAUAG": "1h3-8gWjXlDu-6a7PqrdvbJk9zZec8BOmMpjp6zF2i18",
+    "CANDELARIA": "1JpGCAuyfB7V6s94J6ZXwsUJAqe5vLTOxwIh5fzJALzA",
+    "CATANAUAN": "15im17qc_YM5gtGM3j_rRs2jtK36l9gD-bi7LGhzAEI8",
+    "DOLORES": "1iUtsgLXxgQRqwI8gT2GHHtB-hawiBK0cMrTjhi3O3uM",
+    "GENERAL LUNA": "1HR3rJ5lknZBk69wAgzimfZviHlc5he-aHofg_a_I5DM",
+    "GENERAL NAKAR": "1Sxve_C8BmTDDmx0W4vVh3DeGh8TReIvn8b8mXlrkq_A",
+    "GUINAYANGAN": "1vHkJemF5rampXhUc28N4kdWSh7cmdPdc3jFmk2xbiIo",
+    "GUMACA": "1csv_nwLFc5CjPXhKi-9FBj2o84IHoSpGRjA5PwzRz7E",
+    "INFANTA": "1acO8peIxlI2TaBwHXyPRnzvwuJiSiuRRxoXYjOPY2ok",
+    "JOMALIG": "1r7C79fYThhs5-MxG9ZILEM-9b7niS8242tgU1boeebQ",
+    "LOPEZ": "17zZhmDehBNZFb8Sc3z6vehHG3W-cUIGR8qKp8qNxEkY",
+    "LUCBAN": "16zxDszfZMAWTFTo-HoSIg4pNZX1Ws1bWtmfV71uuXXM",
+    "LUCENA CITY": "18bxlSrgbToXklB6hkSCcntKokvsBg5kEWZSCOzqbbCw",
+    "MACALELON": "1NTwdXy92ngOI7UHPKjhzyZnqBYdSoyEwghdmwTP9bl0",
+    "MAUBAN": "1ypiMkEd6pHKIJwMtyWAgy6wgKkWTN1yw8XuKGi9D0zg",
+    "MULANAY": "1QOmoLQTmZll5O1IlWGLcfFMDrVerX89geWPPng2GVWM",
+    "PADRE BURGOS": "11cnA0ylZcjLP45gRSi8FRVlur0G-Sd9aYHGHGMBYln8",
+    "PAGBILAO": "1yOtmU_I57x5CcZKFQ4QuTSh2EFTSKAJFY0q3k0cYqY0",
+    "PANUKULAN": "1z9GONyyxzv9IiGhXKZzR1eZWR0mlDYu_y94e0FAJ0Z8",
+    "PATNANUNGAN": "16KoRSklnoIK3OCNNezgzb2NaJpxf_oDslCfDvjim8T8",
+    "PEREZ": "1pNYl0uSq0EgJwJoCLgya3ohbcyXrvl9R22cU4Lt9Lc0",
+    "PITOGO": "1R7ha-Bw_5rO-se7slZqOobO1QIDjR16hQ28552JyMg8",
+    "PLARIDEL": "1Yv1SD2TeaDE--nSEhF8NOc-W7dOWc0iKWsZvkLJnq2w",
+    "POLILLO": "1uwZb_znwPFrMxjPdfSQjaqgjvTxfBlatGcMndaDAh98",
+    "QUEZON": "1El1LLHJd0s8ZsSWSlL-MG0oqzggY_rfNRC90MGoGEhE",
+    "REAL": "1-L4ufn3imnaeJhO8d2Q6YTlGLqIfHo463Fv0Ue_s-E8",
+    "SAMPALOC": "195y2v3GTe9mCk2PuL4ufei3CtPL5Z4ZzwiDLgGj8zA4",
+    "SAN ANDRES": "1PjDyzbBe-9pemVpiU_Z1gGJIgM91NNWKG2SlwY-njhM",
+    "SAN ANTONIO": "1Hdv6yRAyxa0H7gJa4Bb5q0msi5OwZ3b_bDs1Q_TLJWI",
+    "SAN FRANCISCO": "1oNMpxv9BT17F15aXLMMMcJxYclFlbF1U7343eXQy5aw",
+    "SAN NARCISO": "1WClv_WuDakpL85kadOwLPEbqijcEkfrMk-JUJH0SZuc",
+    "SARIAYA": "1ot1fsSur2EDTVq3N6vrSRBz89hMWUjgLi1VPxDtwTrI",
+    "TAGKAWAYAN": "1SK009oVoeKUoOQGWgFCQuBXk6cb3BU3jqRKrabMZ1SI",
+    "TAYABAS CITY": "1QFqr8Ab-0v7ZUMeApSWno21bYWFkVWo7CMJed6J4fR0",
+    "TIAONG": "1fZidUdGKX24b_C_5G4loCJjcs4XXfRZxt2c_YTfFqQ4",
+    "UNISAN": "1VBP1jel2at9HeXrJdjefI7u8BBxqjBnaomHZ3uHN6_M",
+    "QUEZON PROVINCE": "1hnCWp-hOfx0fvOvr8IVDR38nj0x_rT_tRfIwNSR-BrQ",
+    "ACEBA SCIENCE AND TECHNOLOGY INSTITUTE-MAUBAN": "1FclVjmt2cMtfenj14hevwoOgEYE7biQnfAltiBsQ9Oc",
+    "SOUTHERN LUZON STATE UNIVERSITY-LUCBAN": "13hGXgeE7bmuoTk4yQCRYHC2V_eFMAD1YmdIlJ_DXmIo",
+    "LAGUNA POLYTECHNIQUE UNIVERSITY-BATANGAS": "19NUtFl_5Svu3kN9qr48cEnWjiIunfT4BZm36kLCrAzc",
+    "LAGUNA UNIVERSITY": "1m3jTo_-5YBJ2R53w0F2ZhhdPa1wFMIAVVJBYZLQu_E8",
+    "MANUEL S. ENVERGA UNIVERSITY FOUNDATION": "1yLCtuoHGSB3-Vj5sojLPIVQw4IWR-W1ywNBurcSE2yU"
+  }
+};
+
+    function updateReferralMunicipalities() {
+      const province = document.getElementById('referralProvinceFilter').value;
+      const municipality = document.getElementById('referralMunicipalityFilter');
+      const status = document.getElementById('referralSourceStatus');
+
+      municipality.innerHTML = '';
+      if (!province) {
+        municipality.disabled = true;
+        municipality.innerHTML = '<option value="">-- SELECT PROVINCE FIRST --</option>';
+        status.textContent = 'SELECT A PROVINCE AND MUNICIPALITY / OFFICE.';
+        clearReferralRows();
+        return;
+      }
+
+      const entries = REFERRAL_SOURCES[province] || {};
+      const names = Object.keys(entries).sort();
+
+      municipality.disabled = false;
+      municipality.innerHTML = '<option value="">-- SELECT MUNICIPALITY / OFFICE --</option>';
+
+      if (!names.length) {
+        municipality.innerHTML = '<option value="">-- NO SOURCES ADDED YET --</option>';
+        municipality.disabled = true;
+        status.textContent = 'NO GOOGLE SHEET SOURCES HAVE BEEN ADDED FOR ' + province + ' YET.';
+        clearReferralRows();
+        return;
+      }
+
+      names.forEach(name => {
+        const opt = document.createElement('option');
+        opt.value = name;
+        opt.textContent = name;
+        municipality.appendChild(opt);
+      });
+
+      status.textContent = names.length + ' ' + province + ' SOURCE(S) AVAILABLE.';
+      clearReferralRows();
+    }
+
+    let rosterSourceRows = [];
+    function clearReferralRows() {
+      rosterSourceRows = [];
+      const tbody = document.getElementById('referralPlacementTableBody');
+      if (tbody) tbody.innerHTML = '<tr><td colspan="17" class="text-center py-4">NO DATA LOADED.</td></tr>';
+      if (typeof buildTabulatedReports === 'function') buildTabulatedReports([]);
+    }
+
+    function getReferralSourceSheetName(office) {
+      const officeName = String(office || '').trim().toUpperCase();
+
+      // CARMONA and RIZAL PROVINCE store referral records in the REGISTRATION sheet.
+      if (officeName === 'CARMONA' || officeName === 'RIZAL PROVINCE') {
+        return 'REGISTRATION';
+      }
+
+      return 'REFERRAL & PLACEMENT';
+    }
+
+    async function loadReferralSource() {
+      const province = document.getElementById('referralProvinceFilter').value;
+      const office = document.getElementById('referralMunicipalityFilter').value;
+      const status = document.getElementById('referralSourceStatus');
+      if (!province || !office) return;
+      const spreadsheetId = (REFERRAL_SOURCES[province] || {})[office];
+      if (!spreadsheetId) { status.textContent = 'NO SOURCE CONFIGURED FOR ' + office; return; }
+      const requestKey = province + '/' + office + '/' + Date.now();
+      window._rosterRequestKey = requestKey;
+      clearReferralRows();
+      status.textContent = 'LOADING ' + office + ' FROM GOOGLE SHEETS...';
+      // Confirmed RA 11261 worksheet for the municipality sources.
+      const candidates = ['Encoding Form'];
+      let best = null, lastError = '';
+      for (const sheet of candidates) {
+        if (window._rosterRequestKey !== requestKey) return;
+        try {
+          const params = new URLSearchParams({spreadsheetId});
+          if (sheet) params.set('sheet', sheet);
+          const response = await fetch('/api/ra11261/roster?' + params.toString(),
+            {cache:'no-store',credentials:'same-origin'});
+          if (!response.ok) {
+            const body = await response.text();
+            let detail = body;
+            try { detail = JSON.parse(body).message || body; } catch (_) {}
+            lastError = 'HTTP ' + response.status + ': ' + String(detail).slice(0,180);
+            if (response.status === 404) break; // Server route not deployed.
+            continue;
+          }
+          const payload = await response.json();
+          if (!payload.success) { lastError = payload.message || 'Sheet request failed'; continue; }
+          const rows = (payload.records || payload.data || []).map(record =>
+            Array.isArray(record) ? record.slice(0,16) :
+            (Array.isArray(record.__values) ? record.__values.slice(0,16) : [
+              record.reportingMonth,record.barangay,record.certificateNumber,
+              record.lastName,record.firstName,record.middleName,record.suffix,
+              record.age,record.birthMonth,record.birthDay,record.birthYear,
+              record.male,record.female,record.maritalStatus,
+              record.educationalAttainment,record.pwd
+            ]).map(v => String(v == null ? '' : v).trim()));
+          const valid = rows.filter(r => r[3] || r[4]);
+          if (valid.length > 0) { best = {sheet:payload.sheet || sheet || 'DEFAULT',rows:valid}; break; }
+        } catch(e) { lastError = e.message || String(e); console.warn('RA 11261 roster:',sheet,e); }
+      }
+      if (window._rosterRequestKey !== requestKey) return;
+      if (!best) {
+        clearReferralRows();
+        status.textContent = office + ': NO BENEFICIARY DATA. ' +
+          (lastError || 'CHECK WORKSHEET, ACCESS PERMISSIONS AND ROW 11.');
+        return;
+      }
+      renderReferralRows(best.rows);
+      status.textContent = office + ': ' + best.rows.length +
+        ' BENEFICIARY RECORD(S) LOADED (' + best.sheet + ').';
+    }
+
+    function isRosterBeneficiaryRow(r) {
+      // Source spreadsheet columns: A reporting month, B barangay,
+      // C certificate, D last name, E first name, F middle name,
+      // G suffix, H age, I/J/K DOB, L/M sex, N marital, O education, P PWD.
+      const v = i => String(r[i] == null ? '' : r[i]).trim();
+      const months = /^(JANUARY|FEBRUARY|MARCH|APRIL|MAY|JUNE|JULY|AUGUST|SEPTEMBER|OCTOBER|NOVEMBER|DECEMBER)$/i;
+      return months.test(v(0)) && !!(v(3) || v(4));
+    }
+
+    function rosterCells(r) {
+      // Exact A:P mapping. Do not use legacy Referral & Placement offsets.
+      const cells = Array.from({length:16}, (_,i) => String(r[i] == null ? '' : r[i]).trim());
+      const selectedMarker = value => /^(x|yes|y|true|1|checked|✓|✔)$/i.test(value) ? 'X' : '';
+      cells[11] = selectedMarker(cells[11]);
+      cells[12] = selectedMarker(cells[12]);
+      cells[15] = selectedMarker(cells[15]);
+      // Display-only column Q: First Name + Middle Name + Last Name.
+      // Keep the original Google Sheets A:P data and column positions unchanged.
+      cells.push([cells[4], cells[5], cells[3]].filter(Boolean).join(' '));
+      return cells;
+    }
+
+    function parseReferralCSV(text) {
+      const rows = [];
+      let row = [], cell = '', quoted = false;
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        if (ch === '"') {
+          if (quoted && text[i + 1] === '"') { cell += '"'; i++; }
+          else quoted = !quoted;
+        } else if (ch === ',' && !quoted) {
+          row.push(cell); cell = '';
+        } else if ((ch === '\n' || ch === '\r') && !quoted) {
+          if (ch === '\r' && text[i + 1] === '\n') i++;
+          row.push(cell); cell = '';
+          if (row.some(v => String(v).trim() !== '')) rows.push(row);
+          row = [];
+        } else {
+          cell += ch;
+        }
+      }
+      if (cell.length || row.length) {
+        row.push(cell);
+        if (row.some(v => String(v).trim() !== '')) rows.push(row);
+      }
+
+      // The GViz request already starts at ROW 11 (A11:AA), so DO NOT slice again.
+      return rows.filter(r => r.some(v => String(v).trim() !== ''));
+    }
+
+    function renderReferralRows(rows) {
+      rosterSourceRows = rows;
+      const yearSelect = document.getElementById('rosterYearFilter');
+      if (yearSelect) {
+        // Column K is the beneficiary's BIRTH YEAR, not the reporting year.
+        // No reporting-year column exists in A:P; never filter by DOB year.
+        yearSelect.innerHTML = '<option value="">ALL YEARS</option>';
+        yearSelect.value = '';
+      }
+      filterRosterDisplay();
+      if (typeof buildTabulatedReports === 'function') buildTabulatedReports(rows);
+    }
+    function filterRosterDisplay() {
+      const tbody=document.getElementById('referralPlacementTableBody');
+      if (!tbody) return;
+      const month=document.getElementById('rosterMonthFilter')?.value || '';
+      const year=document.getElementById('rosterYearFilter')?.value || '';
+      const selected=rosterSourceRows.map(rosterCells).filter(c =>
+        (!month || c[0].toUpperCase()===month) &&
+        (!year));
+      tbody.replaceChildren();
+      if (!selected.length) {
+        tbody.innerHTML='<tr><td colspan="17" class="text-center py-4">NO BENEFICIARY RECORDS MATCH THE SELECTED FILTERS.</td></tr>';
+        return;
+      }
+      const frag=document.createDocumentFragment();
+      selected.forEach(c=>{const tr=document.createElement('tr');c.forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.appendChild(td)});frag.appendChild(tr)});
+      tbody.appendChild(frag);
+      if (typeof buildTabulatedReports === 'function') buildTabulatedReports(rosterSourceRows);
+    }
+
+    (function() {
+      function checkAuthSessionGuard() {
+        var path = window.location.pathname.toLowerCase();
+        var search = window.location.search.toLowerCase();
+        var isLoginPage = path.includes('login') || search.includes('page=login');
+
+        var isLoggedOut = sessionStorage.getItem('isLoggedOut') === 'true' || localStorage.getItem('isLoggedOut') === 'true';
+        var keys = ['username', 'userContext', 'currentUser', 'user', 'loggedUser', 'loggedInUser'];
+        var userFound = false;
+
+        for (var i = 0; i < keys.length; i++) {
+          var k = keys[i];
+          var s = sessionStorage.getItem(k);
+          var l = localStorage.getItem(k);
+          if ((s && s.trim() !== '') || (l && l.trim() !== '')) {
+            userFound = true;
+            break;
+          }
+        }
+
+        if (!isLoginPage) {
+          if (isLoggedOut || !userFound) {
+            window.location.replace('/login');
+            return false;
+          }
+        } else {
+          if (!isLoggedOut && userFound) {
+            window.location.replace('/dashboard');
+            return false;
+          }
+        }
+        return true;
+      }
+
+      checkAuthSessionGuard();
+
+      window.addEventListener('pageshow', function(event) {
+        if (event.persisted || (window.performance && (window.performance.navigation.type === 2 || (window.performance.getEntriesByType && window.performance.getEntriesByType('navigation')[0] && window.performance.getEntriesByType('navigation')[0].type === 'back_forward')))) {
+          if (!checkAuthSessionGuard()) return;
+          window.location.reload();
+        } else {
+          checkAuthSessionGuard();
+        }
+      });
+    })();
+  </script>
+  <!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- SheetJS Library for Excel Export -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      text-transform: uppercase;
+      overflow-x: hidden;
+      font-size: 0.9rem;
+    }
+
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 260px;
+      height: 100vh;
+      background-color: #1a365d;
+      color: white;
+      z-index: 1040;
+      transition: all 0.3s ease;
+      box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    #sidebar.collapsed { left: -260px; }
+    .sidebar-brand {
+      padding: 1.2rem 1.2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      background: #11223f;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .sidebar-user-box {
+      padding: 12px 14px;
+      margin: 10px 12px 6px 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+    }
+    .sidebar-user-avatar {
+      width: 36px;
+      height: 36px;
+      background: #0d6efd;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    .sidebar-menu {
+      list-style: none;
+      padding: 0.6rem 0.8rem;
+      margin: 0;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+    .sidebar-menu li { margin-bottom: 0.35rem; }
+    .sidebar-menu button.sidebar-btn {
+      background: transparent;
+      border: none;
+      color: #cbd5e1;
+      width: 100%;
+      padding: 10px 14px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .sidebar-menu button.sidebar-btn:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+    .sidebar-menu button.sidebar-btn.active {
+      background-color: #0d6efd;
+      color: #ffffff;
+      font-weight: 600;
+    }
+    .sidebar-menu button.sidebar-btn i { font-size: 1.1rem; }
+
+    #main-content {
+      margin-left: 260px;
+      transition: all 0.3s ease;
+      min-height: 100vh;
+    }
+    #main-content.expanded { margin-left: 0; }
+
+    .sidebar-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1030;
+    }
+
+    @media (max-width: 768px) {
+      #sidebar { left: -260px; }
+      #sidebar.mobile-show { left: 0; }
+      #sidebar:not(.collapsed) + .sidebar-backdrop { display: block; }
+      #main-content { margin-left: 0 !important; }
+    }
+
+    .header-banner {
+      background-color: #0d6efd;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 6px;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+    .header-banner h3 { font-size: 1.35rem; }
+    .nav-tabs {
+      border-bottom: 2px solid #dee2e6;
+      background-color: #ffffff;
+      padding-left: 15px;
+      margin-top: 10px;
+    }
+    .nav-tabs .nav-link {
+      color: #495057;
+      font-weight: 600;
+      border: none;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+    }
+    .nav-tabs .nav-link.active {
+      color: #0d6efd;
+      background-color: transparent;
+      border-bottom: 3px solid #0d6efd;
+    }
+    /* JOB FAIR OVERVIEW / SCHEDULE TAB */
+    #content-overview .content-card { padding: 14px 16px; }
+    .jf-overview-toolbar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+    .jf-overview-toolbar .form-select { min-width: 130px; }
+    #jfOverviewTable { min-width: 760px; }
+    #jfOverviewTable thead th { background:#1f73d8; color:#fff; border-color:#cfd8e3; font-size:.72rem; letter-spacing:.2px; white-space:nowrap; }
+    #jfOverviewTable tbody td { font-size:.78rem; border-color:#d9dee5; vertical-align:middle; }
+    #jfOverviewTable tbody tr:hover { background:#f4f8ff; }
+    .jf-overview-date { color:#0d6efd; font-weight:700; white-space:nowrap; }
+    .jf-overview-organizer, .jf-overview-venue { text-align:left; }
+    .jf-overview-empty { padding:28px !important; color:#6c757d; }
+
+    .form-title {
+      color: #0d6efd;
+      font-weight: bold;
+      font-size: 1.05rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .form-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 3px;
+    }
+    .form-label span { color: red; }
+    .form-control, .form-select {
+      background-color: #f8f9fa;
+      border: 1px solid #ced4da;
+      padding: 6px 10px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+    .form-control:focus, .form-select:focus {
+      background-color: #fff;
+      border-color: #0d6efd;
+      box-shadow: none;
+    }
+    .content-card {
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 20px 24px;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    .encoding-section-partition {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #0d6efd;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+    }
+
+    /* FULL WIDTH BRIGHT BLUE SECTION BAR STYLING */
+    .section-bar-full {
+      width: 100%;
+      background-color: #0d6efd;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 0.85rem;
+      padding: 8px 14px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ROUNDED ACTION BUTTONS */
+    .ble-action-btn {
+      min-height: 36px !important;
+      height: 36px !important;
+      padding: 0 18px !important;
+      border-radius: 20px !important;
+      font-weight: 700 !important;
+      font-size: 0.8rem !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.2s ease !important;
+    }
+    .ble-action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .section-divider {
+      border: 0;
+      height: 1px;
+      background-color: #0d6efd;
+      opacity: 0.2;
+      margin: 15px 0;
+      width: 100%;
+    }
+    table { font-size: 0.8rem !important; }
+    th, td { padding: 6px 8px !important; }
+
+    .btn:not(.btn-close):not(.ble-action-btn) {
+      min-height: 40px !important;
+      height: 40px !important;
+      padding: 0 20px !important;
+      margin: 0 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border-radius: 18px !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .sidebar-menu button.sidebar-btn {
+      width: 100% !important;
+      height: 40px !important;
+      padding: 10px 14px !important;
+      border-radius: 8px !important;
+    }
+
+    /* CENTERED SCREEN ALERT STYLING */
+    #screenAlertContainer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1055;
+      width: 90%;
+      max-width: 520px;
+      display: none;
+    }
+
+    /* PRINT SPECIFIC STYLING */
+    @media print {
+      @page {
+        size: landscape;
+        margin: 8mm;
+      }
+      body * {
+        visibility: hidden !important;
+      }
+      .print-ble-only, .print-ble-only * {
+        visibility: visible !important;
+      }
+      .print-ble-only {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .no-print, #sidebar, .header-banner, .nav-tabs, .btn, select, label, .ble-action-btn, #screenAlertContainer {
+        display: none !important;
+      }
+      #printableBleReportArea .row {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        width: 100% !important;
+        margin: 0 !important;
+      }
+      #printableBleReportArea .col-lg-8, #printableBleReportArea .col-md-12:first-child {
+        width: 72% !important;
+        flex: 0 0 72% !important;
+        max-width: 72% !important;
+        padding-right: 8px !important;
+      }
+      #printableBleReportArea .col-lg-4, #printableBleReportArea .col-md-12:last-child {
+        width: 27% !important;
+        flex: 0 0 27% !important;
+        max-width: 27% !important;
+        padding-left: 8px !important;
+      }
+      #printableBleReportArea table {
+        font-size: 0.7rem !important;
+        width: 100% !important;
+      }
+      #printableBleReportArea th, #printableBleReportArea td {
+        padding: 4px 6px !important;
+      }
+    }
+  .input-group .input-group-text {
+    min-width: 38px;
+    justify-content: center;
+  }
+
+        .employers-vacancies-row {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+            width: 100%;
+        }
+        @media (max-width: 900px) {
+            .employers-vacancies-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+
+<style>
+  html, body {
+    min-height: 100%;
+  }
+
+  body.program-launcher-page {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(13,110,253,.10), transparent 30%),
+      radial-gradient(circle at 85% 80%, rgba(25,135,84,.08), transparent 30%),
+      #f5f8fc !important;
+    font-family: Arial, sans-serif;
+    color: #183153;
+    text-transform: uppercase;
+    overflow-x: hidden;
+  }
+
+  .program-launcher-shell {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .program-launcher-header {
+    background: #0d6efd;
+    color: #fff;
+    padding: 18px 28px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  }
+
+  .program-launcher-header-inner {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .program-launcher-title {
+    margin: 0;
+    font-size: clamp(1.1rem, 2vw, 1.55rem);
+    font-weight: 800;
+    letter-spacing: .4px;
+  }
+
+  .program-launcher-subtitle {
+    margin: 4px 0 0;
+    font-size: .78rem;
+    opacity: .82;
+    text-transform: none;
+  }
+
+  .program-launcher-main {
+    flex: 1;
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 44px 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .program-launcher-panel {
+    width: 100%;
+    background: rgba(255,255,255,.88);
+    border: 1px solid rgba(13,110,253,.10);
+    border-radius: 24px;
+    box-shadow: 0 18px 45px rgba(31, 62, 99, .12);
+    padding: clamp(22px, 4vw, 42px);
+    backdrop-filter: blur(14px);
+  }
+
+  .program-launcher-heading {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .program-launcher-heading h2 {
+    margin: 0 0 8px;
+    font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+    font-weight: 800;
+    color: #183153;
+  }
+
+  .program-launcher-heading p {
+    margin: 0;
+    color: #6c757d;
+    font-size: .82rem;
+    text-transform: none;
+  }
+
+  .program-button-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .program-dashboard-btn {
+    min-height: 145px;
+    border: 0;
+    border-radius: 20px;
+    padding: 22px 14px;
+    background: linear-gradient(145deg, #ffffff, #edf5ff);
+    box-shadow: 0 8px 22px rgba(13,110,253,.10);
+    color: #183153;
+    font-weight: 800;
+    font-size: .88rem;
+    line-height: 1.25;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+  }
+
+  .program-dashboard-btn i {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    background: #0d6efd;
+    color: #fff;
+    font-size: 1.45rem;
+    box-shadow: 0 7px 16px rgba(13,110,253,.22);
+  }
+
+  .program-dashboard-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 28px rgba(13,110,253,.17);
+    background: #fff;
+  }
+
+  .program-dashboard-btn.reserved {
+    color: #6c757d;
+    background: #f8f9fa;
+  }
+
+  .program-dashboard-btn.reserved i {
+    background: #adb5bd;
+    box-shadow: none;
+  }
+
+  .program-dashboard-btn.home-btn i {
+    background: #198754;
+    box-shadow: 0 7px 16px rgba(25,135,84,.20);
+  }
+
+  @media (max-width: 1050px) {
+    .program-button-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 700px) {
+    .program-button-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .program-launcher-main { padding: 26px 0; }
+  }
+
+  @media (max-width: 440px) {
+    .program-button-grid { grid-template-columns: 1fr; }
+    .program-launcher-header { padding: 15px 18px; }
+  }
+</style>
+
+
+<style>
+  .referral-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #cfd8e3;
+    background: #fff;
+    margin-top: 24px;
+  }
+
+  .referral-master-table {
+    width: 100%;
+    min-width: 2300px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+  }
+
+  .referral-master-table th {
+    background: #245984;
+    color: #fff;
+    border: 3px solid #d9e0e6;
+    padding: 8px 5px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.15;
+  }
+
+  .referral-master-table td {
+    height: 38px;
+    border: 1px solid #cfd8e3;
+    background: #fff;
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .referral-master-table thead tr:first-child th {
+    height: 54px;
+    vertical-align: bottom;
+  }
+
+  .referral-master-table thead tr:nth-child(2) th {
+    height: 54px;
+    vertical-align: bottom;
+  }
+
+  .referral-section-title {
+    margin: 0 0 14px;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #183153;
+  }
+
+  .referral-note {
+    margin: 8px 0 0;
+    color: #6c757d;
+    font-size: .74rem;
+    text-transform: none;
+  }
+#referralPlacementSection .roster-toolbar-filter select{min-width:125px;height:38px;border:1px solid #b8c7da;border-radius:8px;padding:0 10px;background:white;color:#183153;font-weight:600}
+#referralPlacementSection .roster-year-field select{min-width:105px}
+</style>
+
+
+<style>
+  /* EXPANDED REFERRAL & PLACEMENT TABLE VIEW */
+  #referralPlacementSection.program-launcher-panel {
+    width: calc(100vw - 32px) !important;
+    max-width: none !important;
+    min-height: calc(100vh - 150px) !important;
+    margin: 16px calc(50% - 50vw) 0 !important;
+    padding: 22px 20px 26px !important;
+    border-radius: 18px !important;
+  }
+
+  #referralPlacementSection .referral-table-wrap {
+    width: 100% !important;
+    max-width: none !important;
+    height: calc(100vh - 270px) !important;
+    min-height: 500px !important;
+    overflow: auto !important;
+    margin-top: 16px !important;
+  }
+
+  #referralPlacementSection .referral-master-table {
+    width: max-content !important;
+    min-width: 100% !important;
+    table-layout: fixed !important;
+  }
+
+  #referralPlacementSection .referral-master-table th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  /* Allow the main area itself to expand when this table is displayed */
+  .program-launcher-main {
+    width: min(1180px, calc(100% - 32px));
+    max-width: none;
+    align-items: flex-start !important;
+  }
+
+  body.referral-expanded .program-launcher-main {
+    width: calc(100% - 32px) !important;
+    margin: 0 16px !important;
+    padding-top: 18px !important;
+  }
+
+  @media (max-width: 700px) {
+    #referralPlacementSection.program-launcher-panel {
+      width: calc(100vw - 16px) !important;
+      margin-left: calc(50% - 50vw + 8px) !important;
+      margin-right: calc(50% - 50vw + 8px) !important;
+      padding: 14px 10px 18px !important;
+    }
+
+    body.referral-expanded .program-launcher-main {
+      width: calc(100% - 16px) !important;
+      margin: 0 8px !important;
+    }
+
+    #referralPlacementSection .referral-table-wrap {
+      height: calc(100vh - 235px) !important;
+      min-height: 430px !important;
+    }
+  }
+</style>
+
+
+<style>
+/* =========================================================
+   FINAL OVERRIDE: REFERRAL & PLACEMENT TRUE FULL SCREEN WIDTH
+   ========================================================= */
+body.referral-expanded {
+  overflow-x: hidden !important;
+}
+
+body.referral-expanded .program-launcher-main {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 12px !important;
+  box-sizing: border-box !important;
+}
+
+body.referral-expanded #referralPlacementSection.program-launcher-panel {
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  min-height: calc(100vh - 115px) !important;
+  margin: 0 !important;
+  padding: 18px !important;
+  border-radius: 12px !important;
+  box-sizing: border-box !important;
+}
+
+body.referral-expanded #referralPlacementSection .referral-table-wrap {
+  width: 100% !important;
+  max-width: none !important;
+  height: calc(100vh - 225px) !important;
+  min-height: 520px !important;
+  margin: 12px 0 0 0 !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+}
+
+body.referral-expanded #referralPlacementSection .referral-master-table {
+  width: max-content !important;
+  min-width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+/* Header also stretches fully across screen */
+body.referral-expanded .program-launcher-header-inner {
+  width: 100% !important;
+  max-width: none !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 700px) {
+  body.referral-expanded .program-launcher-main {
+    padding: 6px !important;
+  }
+
+  body.referral-expanded #referralPlacementSection.program-launcher-panel {
+    padding: 10px !important;
+    border-radius: 8px !important;
+  }
+}
+</style>
+
+
+<style>
+  .referral-filter-bar {
+    display: grid;
+    grid-template-columns: minmax(220px, 320px) minmax(260px, 420px) auto;
+    gap: 12px;
+    align-items: end;
+    margin: 14px 0 10px;
+    padding: 14px;
+    background: #f5f9ff;
+    border: 1px solid #d7e5f5;
+    border-radius: 12px;
+  }
+  .referral-filter-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: .75rem;
+    font-weight: 800;
+    color: #183153;
+  }
+  .referral-filter-field select {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #b9c9dc;
+    border-radius: 9px;
+    padding: 0 10px;
+    background: #fff;
+    font-size: .82rem;
+    font-weight: 700;
+    color: #183153;
+  }
+  .referral-source-status {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    font-size: .76rem;
+    font-weight: 700;
+    color: #6c757d;
+  }
+  @media (max-width: 800px) {
+    .referral-filter-bar { grid-template-columns: 1fr; }
+  }
+</style>
+
+
+<style>
+  /* STANDALONE REFERRAL & PLACEMENT PAGE — NO SECOND DASHBOARD */
+  body.program-launcher-page.referral-expanded {
+    min-height: 100vh !important;
+    padding: 0 !important;
+  }
+
+  body.referral-expanded .program-launcher-shell {
+    min-height: 100vh !important;
+  }
+
+  body.referral-expanded .program-launcher-main {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 100vh !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    display: block !important;
+    box-sizing: border-box !important;
+  }
+
+  body.referral-expanded #referralPlacementSection.program-launcher-panel {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: calc(100vh - 20px) !important;
+    margin: 0 !important;
+    padding: 18px !important;
+    box-sizing: border-box !important;
+  }
+</style>
+
+
+<style>
+  .summary-report-section { margin-top: 28px; }
+  .summary-report-title { text-align:center; font-weight:800; margin:0 0 12px; color:#000; }
+  .summary-table-wrap { width:100%; overflow-x:auto; margin-bottom:28px; }
+  .summary-table { width:100%; min-width:1180px; border-collapse:collapse; table-layout:fixed; font-size:11px !important; }
+  .summary-table th { background:#245984; color:#fff; border:1px solid #e5e5e5; text-align:center; vertical-align:middle; font-weight:800; padding:5px 3px !important; }
+  .summary-table td { border:1px solid #2c69a2; text-align:center; padding:3px !important; height:21px; background:#f8f8f8; color:#000; font-weight:600; }
+  .summary-table tbody tr:nth-child(odd) td { background:#dceaf6; }
+  .summary-table td:first-child { text-align:left; font-weight:500; }
+  .summary-table tbody tr:last-child td { font-weight:800; }
+  .summary-table.compact { min-width:680px; max-width:900px; }
+</style>
+
+
+<style>
+/* =========================================================
+   WHITE + BLUE LIQUID GLASS SIDEBAR / HEADER
+   ========================================================= */
+:root{
+  --sidebar-w: 270px;
+  --blue: #0d6efd;
+  --blue-dark: #0756c9;
+  --blue-soft: #eaf3ff;
+  --line: rgba(13,110,253,.16);
+  --glass: rgba(255,255,255,.82);
+}
+
+body.program-launcher-page{
+  background: #f4f8ff !important;
+}
+
+#programSidebar{
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--sidebar-w);
+  z-index: 1060;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255,255,255,.88);
+  border-right: 1px solid var(--line);
+  box-shadow: 10px 0 35px rgba(13,110,253,.09);
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  transition: transform .25s ease;
+}
+
+#programSidebar.collapsed{
+  transform: translateX(-100%);
+}
+
+.program-sidebar-header{
+  min-height: 72px;
+  padding: 15px 14px 15px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--blue);
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.program-sidebar-brand{
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 800;
+  letter-spacing: .25px;
+}
+
+.program-sidebar-brand i{
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.25);
+  font-size: 1.1rem;
+}
+
+.program-sidebar-brand span{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.program-sidebar-close{
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 10px;
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.program-sidebar-close:hover{ background: rgba(255,255,255,.22); }
+
+.program-sidebar-menu{
+  list-style: none;
+  margin: 0;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  overflow-y: auto;
+}
+
+.program-sidebar-btn{
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid transparent;
+  border-radius: 13px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  background: transparent;
+  color: #24415f;
+  font-size: .82rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+.program-sidebar-btn i{
+  width: 31px;
+  height: 31px;
+  flex: 0 0 31px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 1rem;
+}
+
+.program-sidebar-btn:hover{
+  background: rgba(234,243,255,.82);
+  border-color: var(--line);
+  color: var(--blue-dark);
+  transform: translateX(2px);
+}
+
+/* REFERRAL IS THE ACTIVE BUTTON */
+.program-sidebar-btn.active{
+  background: var(--blue);
+  border-color: var(--blue);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(13,110,253,.22);
+}
+
+.program-sidebar-btn.active i{
+  background: rgba(255,255,255,.20);
+  color: #fff;
+}
+
+.program-sidebar-btn.reserved{
+  opacity: .48;
+  cursor: not-allowed;
+}
+
+.program-sidebar-btn.dashboard{
+  margin-top: 8px;
+  border-color: var(--line);
+  background: #fff;
+}
+
+#programPage{
+  min-height: 100vh;
+  margin-left: var(--sidebar-w);
+  transition: margin-left .25s ease;
+}
+
+body.program-sidebar-collapsed #programPage{
+  margin-left: 0;
+}
+
+.program-top-header{
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+  height: 72px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--blue);
+  color: #fff;
+  box-shadow: 0 5px 18px rgba(13,110,253,.16);
+}
+
+.program-sidebar-open{
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,.30);
+  border-radius: 12px;
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+.program-sidebar-open:hover{ background: rgba(255,255,255,.24); }
+
+.program-top-title{
+  min-width: 0;
+}
+
+.program-top-title h1{
+  margin: 0;
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 800;
+  letter-spacing: .35px;
+}
+
+.program-top-title p{
+  margin: 2px 0 0;
+  color: rgba(255,255,255,.78);
+  font-size: .72rem;
+  text-transform: none;
+}
+
+#programPage .program-launcher-main{
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 14px !important;
+}
+
+body.referral-expanded #programPage #referralPlacementSection.program-launcher-panel{
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border: 1px solid rgba(13,110,253,.12) !important;
+  background: rgba(255,255,255,.88) !important;
+  box-shadow: 0 12px 35px rgba(25,68,125,.09) !important;
+  backdrop-filter: blur(15px) saturate(135%);
+  -webkit-backdrop-filter: blur(15px) saturate(135%);
+}
+
+.program-sidebar-backdrop{
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1055;
+  background: rgba(16,37,66,.30);
+  backdrop-filter: blur(2px);
+}
+
+@media (max-width: 900px){
+  #programSidebar{ transform: translateX(-100%); }
+  #programSidebar.mobile-show{ transform: translateX(0); }
+  #programPage{ margin-left: 0; }
+  .program-sidebar-backdrop.show{ display: block; }
+  .program-top-header{ padding: 0 12px; }
+}
+
+@media print{
+  #programSidebar,
+  .program-top-header,
+  .program-sidebar-backdrop{
+    display: none !important;
+  }
+  #programPage{ margin-left: 0 !important; }
+}
+</style>
+
+
+<style>
+/* ===== HEADER MATCHING PROVIDED REFERENCE ===== */
+.program-top-header{
+  position: relative !important;
+  top: auto !important;
+  height: auto !important;
+  min-height: 148px !important;
+  margin: 16px 14px 0 !important;
+  padding: 26px 28px !important;
+  border-radius: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 24px !important;
+  overflow: hidden;
+  background:
+    linear-gradient(125deg, rgba(30,112,222,.98), rgba(91,168,255,.95)) !important;
+  border: 1px solid rgba(255,255,255,.42) !important;
+  box-shadow:
+    0 14px 34px rgba(29,100,190,.17),
+    inset 0 1px 0 rgba(255,255,255,.28) !important;
+  backdrop-filter: blur(18px) saturate(145%);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+}
+
+.program-top-header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background: linear-gradient(110deg, rgba(255,255,255,.08), transparent 42%, rgba(255,255,255,.08));
+}
+
+.program-top-left{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  min-width:0;
+}
+
+.program-sidebar-open{
+  width: 22px !important;
+  height: 14px !important;
+  min-height: 14px !important;
+  padding: 0 !important;
+  margin: 0 0 14px 0 !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,.92) !important;
+  color: transparent !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08) !important;
+}
+
+.program-sidebar-open i{ display:none !important; }
+
+.program-top-title h1{
+  margin:0 !important;
+  font-size: clamp(1.65rem, 2.4vw, 2.25rem) !important;
+  line-height:1.05 !important;
+  font-weight:800 !important;
+  letter-spacing:-.5px !important;
+  text-transform:none !important;
+  color:#fff !important;
+}
+
+.program-top-title p{
+  margin:12px 0 0 !important;
+  font-size:.95rem !important;
+  color:rgba(255,255,255,.94) !important;
+  text-transform:none !important;
+}
+
+.program-header-actions{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.program-header-action{
+  min-height:44px !important;
+  height:44px !important;
+  padding:0 18px !important;
+  border-radius:14px !important;
+  border:1px solid rgba(255,255,255,.46) !important;
+  background:rgba(255,255,255,.82) !important;
+  color:#0960ca !important;
+  font-weight:800 !important;
+  font-size:.80rem !important;
+  box-shadow:0 7px 18px rgba(20,87,170,.10) !important;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px;
+  white-space:nowrap;
+}
+
+.program-header-action:hover{
+  background:#fff !important;
+  transform:translateY(-1px);
+}
+
+.program-header-action.download{
+  background:#1478ed !important;
+  border-color:rgba(255,255,255,.14) !important;
+  color:#fff !important;
+  box-shadow:0 8px 18px rgba(4,79,176,.22) !important;
+}
+
+/* ===== WHITE + BLUE LIQUID GLASS CONTENT ===== */
+body.program-launcher-page{
+  background:
+    radial-gradient(circle at 12% 8%, rgba(65,148,255,.10), transparent 27%),
+    linear-gradient(180deg,#f7fbff 0%,#edf5ff 100%) !important;
+}
+
+body.referral-expanded #programPage #referralPlacementSection.program-launcher-panel,
+#programPage .program-launcher-panel,
+.content-card,
+.encoding-section-partition,
+.referral-filter-bar{
+  background:rgba(255,255,255,.78) !important;
+  border:1px solid rgba(82,145,220,.18) !important;
+  box-shadow:
+    0 12px 32px rgba(40,95,160,.08),
+    inset 0 1px 0 rgba(255,255,255,.82) !important;
+  backdrop-filter:blur(18px) saturate(135%);
+  -webkit-backdrop-filter:blur(18px) saturate(135%);
+}
+
+#programSidebar{
+  background:rgba(248,252,255,.88) !important;
+  border-right:1px solid rgba(65,133,214,.15) !important;
+  box-shadow:10px 0 30px rgba(44,105,176,.08) !important;
+}
+
+.program-sidebar-btn:not(.active){
+  background:rgba(255,255,255,.58);
+  border-color:rgba(77,139,211,.10);
+}
+
+.form-control,.form-select{
+  background:rgba(255,255,255,.78) !important;
+  border-color:rgba(73,133,204,.22) !important;
+  border-radius:12px !important;
+}
+
+.referral-table-wrap{
+  border-radius:16px !important;
+  overflow:auto !important;
+  border:1px solid rgba(62,126,202,.16) !important;
+  box-shadow:0 8px 24px rgba(35,90,155,.06);
+}
+
+@media(max-width:900px){
+  .program-top-header{
+    min-height:unset !important;
+    margin:10px !important;
+    padding:20px !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+  }
+  .program-header-actions{ justify-content:flex-start; }
+}
+
+@media(max-width:560px){
+  .program-header-actions{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .program-header-action{ width:100%; }
+}
+</style>
+
+
+<style>
+/* =========================================================
+   FINAL THEME FIX: HEADER BUTTONS + ALWAYS-VISIBLE MENU TOGGLE
+   ========================================================= */
+
+/* Keep ALL main action buttons in the same blue/white theme */
+.program-header-action,
+.referral-filter-bar .btn,
+#referralPlacementSection .btn-success,
+#referralPlacementSection .btn-info,
+#referralPlacementSection .btn-primary,
+#referralPlacementSection .btn-secondary {
+  background: rgba(255,255,255,.90) !important;
+  color: #0d6efd !important;
+  border: 1px solid rgba(255,255,255,.55) !important;
+  box-shadow:
+    0 7px 18px rgba(13,110,253,.13),
+    inset 0 1px 0 rgba(255,255,255,.85) !important;
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.program-header-action:hover,
+.referral-filter-bar .btn:hover,
+#referralPlacementSection .btn-success:hover,
+#referralPlacementSection .btn-info:hover,
+#referralPlacementSection .btn-primary:hover,
+#referralPlacementSection .btn-secondary:hover {
+  background: #eaf3ff !important;
+  color: #0756c9 !important;
+  border-color: rgba(255,255,255,.75) !important;
+}
+
+/* Download gets the stronger blue accent instead of green */
+.program-header-action.download,
+#referralPlacementSection .btn-success {
+  background: #0d6efd !important;
+  color: #fff !important;
+  border-color: #0d6efd !important;
+  box-shadow: 0 8px 20px rgba(13,110,253,.24) !important;
+}
+
+.program-header-action.download:hover,
+#referralPlacementSection .btn-success:hover {
+  background: #0b5ed7 !important;
+  color: #fff !important;
+}
+
+/* Remove remaining green/cyan action-button styling in the old toolbar */
+.btn-success,
+.btn-info {
+  --bs-btn-bg: #0d6efd;
+  --bs-btn-border-color: #0d6efd;
+  --bs-btn-hover-bg: #0b5ed7;
+  --bs-btn-hover-border-color: #0a58ca;
+}
+
+/* Floating menu button: appears automatically after desktop sidebar is hidden */
+#floatingSidebarToggle {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 1090;
+  width: 48px;
+  height: 48px;
+  padding: 0 !important;
+  border: 1px solid rgba(255,255,255,.72) !important;
+  border-radius: 14px !important;
+  background: rgba(13,110,253,.94) !important;
+  color: #fff !important;
+  box-shadow: 0 9px 25px rgba(13,110,253,.25) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.35rem;
+  cursor: pointer;
+}
+
+#floatingSidebarToggle:hover {
+  background: #0b5ed7 !important;
+  transform: translateY(-1px);
+}
+
+/* Desktop: only show floating hamburger when sidebar is collapsed */
+body.program-sidebar-collapsed #floatingSidebarToggle {
+  display: inline-flex !important;
+}
+
+/* Mobile: sidebar starts hidden, so hamburger must always remain available */
+@media (max-width: 900px) {
+  #floatingSidebarToggle {
+    display: inline-flex !important;
+  }
+
+  #programSidebar.mobile-show ~ #programSidebarBackdrop + #programPage + #floatingSidebarToggle {
+    display: none !important;
+  }
+}
+
+/* Keep header spacing clean when sidebar is hidden */
+body.program-sidebar-collapsed .program-top-header {
+  padding-left: 88px !important;
+}
+
+@media (max-width: 900px) {
+  .program-top-header {
+    padding-left: 76px !important;
+  }
+}
+
+@media print {
+  #floatingSidebarToggle {
+    display: none !important;
+  }
+}
+</style>
+
+
+<style>
+/* Hide the legacy duplicate action row below the new header.
+   The working buttons inside .program-header-actions remain visible. */
+#referralPlacementSection > .d-flex.justify-content-end:first-of-type,
+#referralPlacementSection .referral-action-buttons,
+#referralPlacementSection .top-action-buttons,
+.program-launcher-main > .d-flex:has(.btn-success):has(.btn-info):has(.btn-primary) {
+  display: none !important;
+}
+</style>
+
+
+<style>
+/* FINAL: four working buttons live only in the blue header */
+.program-header-actions{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:flex-end !important;
+  gap:10px !important;
+  flex-wrap:wrap !important;
+}
+
+.program-header-action{
+  min-height:44px !important;
+  height:44px !important;
+  padding:0 18px !important;
+  border-radius:14px !important;
+  background:rgba(255,255,255,.90) !important;
+  color:#0d6efd !important;
+  border:1px solid rgba(255,255,255,.60) !important;
+  box-shadow:0 7px 18px rgba(16,85,170,.12) !important;
+  font-weight:800 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  white-space:nowrap !important;
+}
+
+.program-header-action:hover{
+  background:#fff !important;
+  color:#0756c9 !important;
+  transform:translateY(-1px);
+}
+
+.program-header-action.download{
+  background:#0d6efd !important;
+  color:#fff !important;
+  border-color:#0d6efd !important;
+}
+
+/* The content begins directly with the filters now. */
+#referralPlacementSection.program-launcher-panel{
+  padding-top:18px !important;
+}
+
+/* TABULATED REPORT: large enough for tables, but NOT full screen */
+#tabulatedReportsModal .tabulated-dialog{
+  width:min(94vw, 1400px) !important;
+  max-width:1400px !important;
+  height:auto !important;
+  margin:1.75rem auto !important;
+}
+
+#tabulatedReportsModal .modal-content{
+  max-height:88vh !important;
+  border-radius:18px !important;
+  overflow:hidden !important;
+  border:1px solid rgba(13,110,253,.18) !important;
+  box-shadow:0 22px 55px rgba(25,70,130,.18) !important;
+}
+
+#tabulatedReportsModal .modal-body{
+  overflow:auto !important;
+  padding:18px !important;
+}
+
+#tabulatedReportsModal .summary-table-wrap{
+  overflow:auto !important;
+}
+
+/* Keep header controls usable on narrower screens */
+@media(max-width:1050px){
+  .program-top-header{
+    align-items:flex-start !important;
+  }
+  .program-header-actions{
+    justify-content:flex-start !important;
+  }
+}
+
+@media(max-width:700px){
+  #tabulatedReportsModal .tabulated-dialog{
+    width:calc(100vw - 20px) !important;
+    margin:10px auto !important;
+  }
+  #tabulatedReportsModal .modal-content{
+    max-height:94vh !important;
+  }
+}
+</style>
+
+
+<style id="kasambahay-reference-header-sidebar">
+/* ===== EXACTER HEADER/SIDEBAR MATCH TO PROVIDED KASAMBAHAY REFERENCE ===== */
+:root{ --sidebar-w:260px !important; }
+
+#programSidebar{
+  width:260px !important;
+  background:linear-gradient(180deg,#2865ae 0%,#1f5ba4 100%) !important;
+  border-right:0 !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+.program-sidebar-header{
+  height:64px !important; min-height:64px !important;
+  padding:0 20px 0 10px !important;
+  background:transparent !important;
+  border:0 !important;
+}
+.program-sidebar-brand{gap:9px !important;font-size:16px !important;color:#fff !important;}
+.program-sidebar-brand i{
+  width:auto !important;height:auto !important;flex:0 0 auto !important;
+  background:transparent !important;border:0 !important;border-radius:0 !important;
+  font-size:15px !important;
+}
+.program-sidebar-close{
+  width:38px !important;height:38px !important;border:0 !important;border-radius:13px !important;
+  background:rgba(255,255,255,.12) !important;color:#dceaff !important;font-size:18px !important;
+}
+.program-sidebar-menu{padding:8px 14px !important;gap:7px !important;}
+.program-sidebar-btn{
+  min-height:48px !important;height:48px !important;padding:8px 2px !important;
+  border:0 !important;border-radius:10px !important;background:transparent !important;
+  color:#e8f2ff !important;font-size:13px !important;font-weight:700 !important;
+  transform:none !important;
+}
+.program-sidebar-btn i{
+  width:31px !important;height:31px !important;flex:0 0 31px !important;border-radius:9px !important;
+  background:rgba(255,255,255,.10) !important;color:#dcecff !important;font-size:14px !important;
+}
+.program-sidebar-btn:hover{background:rgba(255,255,255,.08) !important;color:#fff !important;}
+.program-sidebar-btn.active{
+  background:rgba(255,255,255,.13) !important;color:#fff !important;
+  box-shadow:none !important;border:0 !important;
+}
+.program-sidebar-btn.active i{background:rgba(255,255,255,.13) !important;color:#fff !important;}
+.program-sidebar-btn.dashboard{margin-top:0 !important;border:0 !important;background:transparent !important;}
+
+#programPage{margin-left:260px !important;background:#eef6ff !important;}
+body.program-sidebar-collapsed #programPage{margin-left:0 !important;}
+
+.program-top-header{
+  position:relative !important;top:auto !important;
+  min-height:152px !important;height:152px !important;
+  margin:5px 6px 0 8px !important;padding:0 28px !important;
+  border-radius:24px !important;
+  background:linear-gradient(115deg,#3d92e9 0%,#4b9cec 55%,#70b2ef 100%) !important;
+  border:1px solid rgba(255,255,255,.48) !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.32),0 7px 18px rgba(38,111,187,.10) !important;
+  display:flex !important;align-items:center !important;justify-content:space-between !important;
+  overflow:hidden !important;
+}
+.program-top-header::after{background:linear-gradient(120deg,rgba(255,255,255,.06),transparent 55%,rgba(255,255,255,.08)) !important;}
+.program-top-left{
+  display:grid !important;grid-template-columns:52px auto !important;grid-template-rows:auto auto !important;
+  column-gap:20px !important;align-items:center !important;
+}
+.program-sidebar-open{
+  grid-row:1 / span 2 !important;grid-column:1 !important;
+  width:50px !important;height:50px !important;min-height:50px !important;margin:0 !important;padding:0 !important;
+  border:1px solid rgba(255,255,255,.78) !important;border-radius:15px !important;
+  background:rgba(20,119,232,.48) !important;color:#fff !important;box-shadow:none !important;
+}
+.program-sidebar-open i{display:block !important;font-size:22px !important;color:#fff !important;}
+.program-top-title{grid-column:2 !important;}
+.program-top-title h1{
+  font-size:36px !important;line-height:1 !important;font-weight:900 !important;letter-spacing:.1px !important;
+  text-transform:uppercase !important;color:#fff !important;
+}
+.program-top-title p{margin:13px 0 0 !important;font-size:14px !important;color:#fff !important;opacity:.96 !important;}
+
+.program-header-actions{gap:10px !important;flex-wrap:nowrap !important;}
+.program-header-action{
+  height:46px !important;min-height:46px !important;padding:0 18px !important;border-radius:15px !important;
+  background:rgba(255,255,255,.90) !important;color:#0864d4 !important;
+  border:1px solid rgba(255,255,255,.78) !important;box-shadow:none !important;
+  font-size:14px !important;font-weight:800 !important;gap:4px !important;
+}
+.program-header-action.download{
+  background:#0879ef !important;color:#fff !important;border-color:#0879ef !important;
+}
+#programPage .program-launcher-main{padding:12px 8px !important;}
+
+@media(max-width:1100px){
+  .program-header-actions{flex-wrap:wrap !important;}
+  .program-top-title h1{font-size:30px !important;}
+}
+@media(max-width:900px){
+  #programPage{margin-left:0 !important;}
+  .program-top-header{height:auto !important;min-height:150px !important;margin:6px !important;padding:20px !important;}
+  .program-header-actions{flex-wrap:wrap !important;}
+}
+</style>
+
+
+<style id="remove-floating-hamburger">
+/* REMOVE FLOATING HAMBURGER / EXTRA SIDEBAR OPENER */
+#programSidebarFloatingOpen,
+.program-sidebar-floating-open,
+.floating-sidebar-toggle,
+.floating-hamburger,
+.sidebar-floating-toggle {
+  display: none !important;
+}
+
+/* Keep the hamburger inside the blue page header only */
+.program-top-header .program-sidebar-open {
+  display: inline-flex !important;
+}
+</style>
+
+
+<style id="final-single-hamburger-fix">
+#floatingSidebarToggle { display:none !important; visibility:hidden !important; pointer-events:none !important; }
+</style>
+
+
+<style id="header-top-spacing-fix">
+/* Add space above the page header instead of pinning it to the top edge */
+.program-top-header {
+  margin-top: 22px !important;
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
+
+/* Keep the spacing balanced on smaller screens */
+@media (max-width: 900px) {
+  .program-top-header {
+    margin-top: 14px !important;
+  }
+}
+</style>
+
+
+<style id="hamburger-perfect-centering-fix">
+/* PERFECTLY CENTER THE THREE HAMBURGER LINES */
+.program-sidebar-open {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+.program-sidebar-open i {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 22px !important;
+  height: 22px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 22px !important;
+  font-size: 22px !important;
+}
+
+.program-sidebar-open i::before {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+</style>
+
+
+<style id="sidebar-reference-match-final">
+/* ===== SIDEBAR MATCH TO PROVIDED REFERENCE ===== */
+:root { --sidebar-w: 260px !important; }
+
+#programSidebar {
+  width: 260px !important;
+  background: linear-gradient(180deg, #2862aa 0%, #1d4f91 100%) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* PROGRAMS HEADER */
+.program-sidebar-header {
+  height: 70px !important;
+  min-height: 70px !important;
+  padding: 0 14px 0 17px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.program-sidebar-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  color: #fff !important;
+  font-size: 17px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0 !important;
+}
+
+.program-sidebar-brand i {
+  width: auto !important;
+  height: auto !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  font-size: 15px !important;
+}
+
+/* TOP COLLAPSE BUTTON */
+.program-sidebar-close {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,.12) !important;
+  color: #dbeaff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: none !important;
+}
+.program-sidebar-close i {
+  margin: 0 !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+}
+
+/* MENU */
+.program-sidebar-menu {
+  padding: 7px 9px 16px !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px !important;
+}
+
+.program-sidebar-btn {
+  width: 100% !important;
+  height: 54px !important;
+  min-height: 54px !important;
+  margin: 0 !important;
+  padding: 0 13px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  border: 0 !important;
+  border-radius: 13px !important;
+  background: transparent !important;
+  color: #e9f2ff !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  text-align: left !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* ICON BOXES */
+.program-sidebar-btn i {
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  flex: 0 0 30px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 9px !important;
+  background: rgba(103,169,240,.22) !important;
+  color: #e2efff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 13px !important;
+}
+
+/* Highlight only the sidebar item matching the current page. */
+.program-sidebar-btn.active {
+  background: #f5f7fb !important;
+  color: #0875ef !important;
+  font-weight: 900 !important;
+}
+.program-sidebar-btn.active i {
+  background: #167cf1 !important;
+  color: #fff !important;
+}
+
+/* RESERVED ITEMS */
+.program-sidebar-btn.reserved,
+.program-sidebar-btn:disabled {
+  opacity: .43 !important;
+  color: #d2e0f2 !important;
+}
+
+/* DASHBOARD AT BOTTOM OF MENU GROUP, SAME STYLE AS REFERENCE */
+.program-sidebar-btn.dashboard {
+  margin-top: 5px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #e9f2ff !important;
+}
+.program-sidebar-btn.dashboard i {
+  background: rgba(103,169,240,.22) !important;
+}
+
+/* PAGE POSITION */
+#programPage {
+  margin-left: 260px !important;
+}
+body.program-sidebar-collapsed #programPage {
+  margin-left: 0 !important;
+}
+
+@media (max-width: 900px) {
+  #programSidebar {
+    transform: translateX(-100%);
+  }
+  body:not(.program-sidebar-collapsed) #programSidebar.mobile-show {
+    transform: translateX(0);
+  }
+  #programPage {
+    margin-left: 0 !important;
+  }
+}
+</style>
+
+
+<style id="floating-report-buttons-final">
+/* =========================================================
+   FINAL LAYOUT: FLOATING REPORT BUTTONS + DOWNLOAD AT FAR RIGHT
+   ========================================================= */
+.referral-floating-actions{
+  position:fixed !important;
+  right:22px !important;
+  bottom:22px !important;
+  z-index:1080 !important;
+  display:flex !important;
+  justify-content:flex-end !important;
+  align-items:center !important;
+  gap:10px !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+.referral-floating-btn{
+  height:48px !important;
+  min-height:48px !important;
+  padding:0 26px !important;
+  border:0 !important;
+  border-radius:26px !important;
+  background:#0d6efd !important;
+  color:#fff !important;
+  font-size:.82rem !important;
+  font-weight:800 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  white-space:nowrap !important;
+  box-shadow:0 7px 18px rgba(13,110,253,.28) !important;
+  cursor:pointer !important;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease !important;
+}
+.referral-floating-btn:hover{
+  background:#0b5ed7 !important;
+  transform:translateY(-2px) !important;
+  box-shadow:0 10px 22px rgba(13,110,253,.34) !important;
+}
+
+/* Four columns: Province | Municipality | Status | Download */
+.referral-filter-bar{
+  grid-template-columns:minmax(220px,320px) minmax(260px,420px) minmax(240px,1fr) auto !important;
+  align-items:end !important;
+}
+.referral-download-wrap{
+  display:flex !important;
+  align-items:flex-end !important;
+  justify-content:flex-end !important;
+  margin-left:auto !important;
+}
+.referral-download-btn{
+  height:40px !important;
+  min-height:40px !important;
+  padding:0 22px !important;
+  border:0 !important;
+  border-radius:20px !important;
+  background:#0d6efd !important;
+  color:#fff !important;
+  font-size:.80rem !important;
+  font-weight:800 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:7px !important;
+  white-space:nowrap !important;
+  box-shadow:0 5px 14px rgba(13,110,253,.24) !important;
+}
+.referral-download-btn:hover{background:#0b5ed7 !important;}
+.referral-download-btn:disabled{opacity:.72 !important;cursor:wait !important;}
+
+@media(max-width:1100px){
+  .referral-filter-bar{grid-template-columns:1fr 1fr !important;}
+  .referral-source-status{grid-column:1 / 2 !important;}
+  .referral-download-wrap{grid-column:2 / 3 !important;width:100% !important;}
+}
+@media(max-width:800px){
+  .referral-floating-actions{right:12px !important;bottom:12px !important;justify-content:flex-end !important;flex-wrap:wrap !important;margin:0 !important;max-width:calc(100vw - 24px) !important;}
+  .referral-floating-btn{flex:0 1 auto !important;}
+  .referral-filter-bar{grid-template-columns:1fr !important;}
+  .referral-source-status,.referral-download-wrap{grid-column:auto !important;}
+  .referral-download-wrap{justify-content:flex-end !important;}
+}
+@media print{.referral-floating-actions,.referral-download-wrap{display:none !important;}}
+</style>
+
+<style>
+/* FINAL HEADER POSITION + LOGO OVERRIDE */
+.program-top-header{
+  position:relative !important;
+  min-height:150px !important;
+  padding:22px 24px 22px 10px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  box-sizing:border-box !important;
+}
+.program-top-left{
+  margin-left:0 !important;
+  padding-left:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:20px !important;
+}
+.program-sidebar-open{
+  margin-left:0 !important;
+  flex:0 0 auto !important;
+}
+.program-header-favicon{
+  display:block !important;
+  height:110px !important;
+  width:auto !important;
+  max-width:190px !important;
+  object-fit:contain !important;
+  margin-left:auto !important;
+  margin-right:4px !important;
+  flex:0 0 auto !important;
+}
+body.program-sidebar-collapsed .program-top-header{
+  padding-left:10px !important;
+}
+@media (max-width:900px){
+  .program-top-header{padding-left:8px !important;padding-right:10px !important;min-height:120px !important;}
+  .program-header-favicon{height:82px !important;max-width:125px !important;}
+  .program-top-left{gap:12px !important;}
+}
+@media (max-width:600px){
+  .program-header-favicon{height:62px !important;max-width:90px !important;}
+}
+</style>
+
+<style>
+/* FINAL HEADER FIX: hamburger + title side-by-side; smaller favicon */
+.program-top-header{
+  padding-left: 10px !important;
+  padding-right: 18px !important;
+}
+.program-top-left{
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  justify-content:flex-start !important;
+  gap:18px !important;
+  min-width:0 !important;
+}
+.program-sidebar-open{
+  flex:0 0 50px !important;
+  width:50px !important;
+  height:50px !important;
+  min-height:50px !important;
+  padding:0 !important;
+  margin:0 !important;
+  border:1px solid rgba(255,255,255,.70) !important;
+  border-radius:14px !important;
+  background:rgba(13,110,253,.22) !important;
+  color:#fff !important;
+  box-shadow:none !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+.program-sidebar-open i{
+  display:inline-block !important;
+  color:#fff !important;
+  font-size:1.35rem !important;
+  line-height:1 !important;
+}
+.program-top-title{
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  min-width:0 !important;
+}
+.program-top-title h1{ margin:0 !important; }
+.program-top-title p{ margin:10px 0 0 !important; }
+.program-header-favicon{
+  width:auto !important;
+  height:82px !important;
+  max-height:82px !important;
+  object-fit:contain !important;
+  flex:0 0 auto !important;
+  position:relative !important;
+  z-index:2 !important;
+}
+@media(max-width:700px){
+  .program-top-header{padding-left:8px !important;padding-right:10px !important;}
+  .program-top-left{gap:10px !important;}
+  .program-sidebar-open{flex-basis:44px !important;width:44px !important;height:44px !important;min-height:44px !important;}
+  .program-header-favicon{height:62px !important;max-height:62px !important;}
+}
+</style>
+<style>
+/* RA 11261 Roster: scoped overrides, preserving other page styles */
+#referralPlacementSection .roster-heading{position:relative;text-align:center;color:#111;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:14px;padding:12px 0 5px}
+#referralPlacementSection .roster-form-label{align-self:flex-end;border:1px solid #222;padding:8px 22px;font-weight:700;margin-bottom:8px}
+#referralPlacementSection .roster-heading select,#referralPlacementSection .roster-heading input{background:#f1f3f6;border:1px solid #b7c1cd;padding:4px 8px;color:#111;max-width:165px}
+#referralPlacementSection .roster-heading input{width:85px}
+#referralPlacementSection .roster-table{min-width:2155px!important;width:100%!important;table-layout:fixed!important}
+#referralPlacementSection .roster-table th{background:#dce6f1!important;color:#000!important;border:1px solid #222!important;padding:6px 4px!important;vertical-align:middle!important;font-size:12px!important;line-height:1.2!important;height:auto!important}
+#referralPlacementSection .roster-table thead tr:nth-child(2) th{background:#f1dddd!important}
+#referralPlacementSection .roster-table th small{font-size:10px;font-weight:400}
+#referralPlacementSection .roster-table td{border:1px solid #333!important;color:#111!important;background:white!important;text-align:center;font-size:12px!important;padding:3px 5px!important;height:26px!important}
+#referralPlacementSection .roster-table thead th{position:static!important}
+</style>
+
+<style>
+/* ROSTER TOOLBAR: ALL CONTROLS ON FIRST ROW, STATUS BELOW */
+#referralPlacementSection .referral-filter-bar {
+ display:grid !important;
+ grid-template-columns:minmax(160px,1fr) minmax(210px,1.3fr) minmax(180px,1fr) minmax(105px,.55fr) auto !important;
+ align-items:end !important; gap:12px !important;
+}
+#referralPlacementSection .referral-filter-field {min-width:0 !important;}
+#referralPlacementSection .referral-filter-field select {width:100% !important;min-width:0 !important;}
+#referralPlacementSection .referral-download-wrap {grid-column:5 !important;grid-row:1 !important;align-self:end !important;margin-left:0 !important;}
+#referralPlacementSection .referral-source-status {grid-column:1 / -1 !important;grid-row:2 !important;margin:0 !important;justify-self:start !important;}
+@media(max-width:950px){
+ #referralPlacementSection .referral-filter-bar{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+ #referralPlacementSection .referral-download-wrap{grid-column:2 !important;grid-row:3 !important;justify-self:end !important;}
+ #referralPlacementSection .referral-source-status{grid-column:1 !important;grid-row:3 !important;}
+}
+@media(max-width:540px){
+ #referralPlacementSection .referral-filter-bar{grid-template-columns:1fr !important;}
+ #referralPlacementSection .referral-download-wrap,#referralPlacementSection .referral-source-status{grid-column:1 !important;grid-row:auto !important;}
+}
+</style>
+
+<style>
+/* RA 11261 barangay summary: match the supplied spreadsheet template. */
+#tabulatedReportsModal .ra11261-month-tabs {display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+#tabulatedReportsModal .ra11261-month-tabs button {flex:1 0 65px;border:1px solid #b7c9e0;border-radius:6px;background:#fff;color:#17365d;font-weight:700;padding:9px 8px;cursor:pointer;}
+#tabulatedReportsModal .ra11261-month-tabs button.active {background:#0d6efd;color:white;border-color:#0d6efd;}
+#tabulatedReportsModal .ra11261-month-caption {font-weight:800;text-align:center;color:#183153;margin:10px 0;}
+#tabulatedReportsModal .ra11261-summary-wrap {overflow-x:auto;}
+#tabulatedReportsModal .ra11261-summary-table {width:100%;min-width:1040px;border-collapse:collapse;table-layout:fixed;background:#fff;color:#000;text-transform:none;font-family:Arial,sans-serif;font-size:12px!important;}
+#tabulatedReportsModal .ra11261-summary-table th,#tabulatedReportsModal .ra11261-summary-table td {border:1px solid #222!important;padding:6px 5px!important;text-align:center;vertical-align:middle;}
+#tabulatedReportsModal .ra11261-summary-table thead tr:first-child th {background:#dce6f1!important;color:#000!important;font-weight:700;}
+#tabulatedReportsModal .ra11261-summary-table thead tr:nth-child(2) th {background:#f2dede!important;color:#000!important;font-weight:700;}
+#tabulatedReportsModal .ra11261-summary-table thead th:first-child {width:175px;}
+#tabulatedReportsModal .ra11261-summary-table .ra11261-barangay-name {text-align:left;}
+#tabulatedReportsModal .ra11261-summary-table .ra11261-summary-total td {font-weight:700;background:#e8eff8;}
+</style>
+
+<style id="ra11261-tabulated-modal-responsive-size">
+/* Fit the tabulated report to the viewport without changing other modals. */
+#tabulatedReportsModal .tabulated-dialog {
+  width: 96vw !important;
+  max-width: 1650px !important;
+  height: min(92dvh, 1050px) !important;
+  max-height: 92dvh !important;
+  margin: auto !important;
+}
+#tabulatedReportsModal .modal-content {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  max-height: 92dvh !important;
+  min-height: 0 !important;
+}
+#tabulatedReportsModal .modal-header,
+#tabulatedReportsModal .modal-footer { flex: 0 0 auto !important; }
+#tabulatedReportsModal .modal-body {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 14px !important;
+}
+#tabulatedReportsModal .ra11261-summary-wrap { max-width: 100%; overflow-x: auto !important; }
+#tabulatedReportsModal .ra11261-summary-table { width: 100% !important; }
+@media (max-width: 700px) {
+  #tabulatedReportsModal .tabulated-dialog {
+    width: calc(100vw - 16px) !important;
+    height: 94dvh !important;
+    max-height: 94dvh !important;
+    margin: auto !important;
+  }
+  #tabulatedReportsModal .modal-content { max-height: 94dvh !important; }
+  #tabulatedReportsModal .modal-body { padding: 10px !important; }
+}
+</style>
+
+<style id="ra11261-tabulated-viewport-centering-fix">
+/* Center in the browser viewport, independently of the application sidebar. */
+#tabulatedReportsModal {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+#tabulatedReportsModal .tabulated-dialog {
+  position: relative !important;
+  width: min(96vw, 1650px) !important;
+  max-width: min(96vw, 1650px) !important;
+  margin: 0 auto !important;
+  height: min(92dvh, 1050px) !important;
+  max-height: 92dvh !important;
+  transform: none !important;
+}
+#tabulatedReportsModal .modal-content { width: 100% !important; }
+#tabulatedReportsModal .ra11261-summary-wrap { overflow-x: auto !important; }
+@media (max-width: 700px) {
+  #tabulatedReportsModal .tabulated-dialog {
+    width: calc(100vw - 16px) !important;
+    max-width: calc(100vw - 16px) !important;
+  }
+}
+</style>
+<script>
+/* Bootstrap modal must be a direct child of body: the sidebar/layout can
+   otherwise create a containing block and clip its left edge. */
+document.addEventListener('DOMContentLoaded', function () {
+  var modal = document.getElementById('tabulatedReportsModal');
+  if (modal && modal.parentElement !== document.body) document.body.appendChild(modal);
+});
+</script>
+
+<style id="ra11261-tabulated-sidebar-safe-final">
+/* Keep the entire report inside the area to the right of the program sidebar. */
+#tabulatedReportsModal {
+  position: fixed !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 260px !important;
+  right: 0 !important;
+  width: calc(100vw - 260px) !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  padding: 12px !important;
+  box-sizing: border-box !important;
+  transform: none !important;
+}
+body.program-sidebar-collapsed #tabulatedReportsModal {
+  left: 0 !important;
+  width: 100vw !important;
+}
+#tabulatedReportsModal .tabulated-dialog {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: min(92dvh, 1050px) !important;
+  max-height: calc(100dvh - 24px) !important;
+  margin: auto !important;
+  transform: none !important;
+  box-sizing: border-box !important;
+}
+#tabulatedReportsModal .modal-content {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+#tabulatedReportsModal .ra11261-summary-wrap {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+}
+@media (max-width: 700px) {
+  #tabulatedReportsModal {
+    left: 0 !important;
+    width: 100vw !important;
+    padding: 8px !important;
+  }
+  #tabulatedReportsModal .tabulated-dialog {
+    height: calc(100dvh - 16px) !important;
+    max-height: calc(100dvh - 16px) !important;
+  }
+}
+</style>
+<style id="ra11261-tabulated-slightly-narrower">
+/* Reduce report width while keeping it clear of the sidebar. */
+#tabulatedReportsModal .tabulated-dialog {
+  width: 94% !important;
+  max-width: 94% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+@media (max-width: 700px) {
+  #tabulatedReportsModal .tabulated-dialog {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+</style>
+<style>
+/* Compact signed-in user panel */
+#programSidebar .program-user-panel {
+  display:flex;align-items:center;gap:10px;margin:0 11px 9px;
+  padding:9px 12px;min-height:60px;border-radius:15px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.10);color:#fff;
+  box-sizing:border-box;flex-shrink:0;
+}
+#programSidebar .program-user-avatar {
+  display:grid;place-items:center;flex:0 0 34px;width:34px;height:34px;
+  border-radius:50%;background:#1677ff;border:1px solid rgba(255,255,255,.35);
+  color:white;font-size:19px;
+}
+#programSidebar .program-user-details {min-width:0;display:flex;flex-direction:column;line-height:1.25;}
+#programSidebar .program-user-caption {font-size:10px;color:#bcd7fb;font-weight:400;}
+#programSidebar #programSidebarUsername {font-size:13px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:white;}
+</style>
+<style id="organized-program-sidebar-2026">
+/* Sidebar-only refinements; navigation and authentication logic unchanged. */
+#programSidebar {display:flex!important;flex-direction:column!important;}
+#programSidebar .program-sidebar-header {height:62px!important;min-height:62px!important;padding:0 13px 0 16px!important;border-bottom:1px solid rgba(255,255,255,.13)!important;}
+#programSidebar .program-sidebar-brand {font-size:16px!important;gap:9px!important;}
+#programSidebar .program-sidebar-close {width:35px!important;height:35px!important;min-width:35px!important;min-height:35px!important;}
+#programSidebar .program-user-panel {margin:12px 10px 12px!important;min-height:58px!important;padding:9px 11px!important;border-radius:13px!important;background:rgba(255,255,255,.11)!important;}
+#programSidebar .program-sidebar-menu {display:flex!important;flex-direction:column!important;gap:4px!important;padding:4px 9px 18px!important;overflow-y:auto!important;flex:1 1 auto!important;min-height:0!important;}
+#programSidebar .program-sidebar-menu li {margin:0!important;padding:0!important;list-style:none!important;}
+#programSidebar .program-sidebar-btn {height:46px!important;min-height:46px!important;padding:0 11px!important;gap:11px!important;border-radius:11px!important;font-size:12px!important;line-height:1.25!important;letter-spacing:.05px!important;}
+#programSidebar .program-sidebar-btn i {width:29px!important;min-width:29px!important;height:29px!important;flex:0 0 29px!important;border-radius:9px!important;}
+#programSidebar .program-sidebar-btn span {min-width:0!important;overflow-wrap:break-word!important;}
+#programSidebar .program-sidebar-btn:not(.active):not(:disabled):hover {background:rgba(255,255,255,.12)!important;color:#fff!important;}
+#programSidebar .program-sidebar-btn.active {background:#f5f8ff!important;color:#0869d7!important;box-shadow:0 2px 8px rgba(0,0,0,.08)!important;}
+#programSidebar .program-sidebar-btn:focus-visible {outline:2px solid #fff!important;outline-offset:2px!important;}
+#programSidebar .program-sidebar-btn.reserved {opacity:.46!important;}
+@media(max-height:650px){#programSidebar .program-sidebar-menu {gap:2px!important;}#programSidebar .program-sidebar-btn {height:41px!important;min-height:41px!important;}}
+</style>
+
+<style id="sidebar-refined-larger-color-icons">
+/* Visual-only sidebar refresh: existing navigation and JS remain untouched. */
+#programSidebar .program-sidebar-header{height:68px!important;min-height:68px!important;padding:0 16px!important}
+#programSidebar .program-sidebar-brand{font-size:17px!important;letter-spacing:.2px!important}
+#programSidebar .program-sidebar-brand i{font-size:17px!important}
+#programSidebar .program-sidebar-close{width:38px!important;height:38px!important;border-radius:12px!important}
+#programSidebar .program-user-panel{margin:12px 11px 17px!important;min-height:69px!important;padding:12px!important;border-radius:15px!important;background:rgba(255,255,255,.13)!important;border-color:rgba(255,255,255,.27)!important}
+#programSidebar .program-user-avatar{width:40px!important;height:40px!important;flex-basis:40px!important;font-size:21px!important}
+#programSidebar .program-user-caption{font-size:11px!important}
+#programSidebar #programSidebarUsername{font-size:14px!important}
+#programSidebar .program-sidebar-menu{gap:7px!important;padding:3px 10px 20px!important}
+#programSidebar .program-sidebar-btn{height:53px!important;min-height:53px!important;padding:0 12px!important;gap:12px!important;border-radius:13px!important;font-size:13px!important;font-weight:750!important;line-height:1.3!important}
+#programSidebar .program-sidebar-btn i{width:35px!important;min-width:35px!important;height:35px!important;flex:0 0 35px!important;border-radius:11px!important;font-size:17px!important;background:rgba(255,255,255,.15)!important;color:#fff!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.13)!important}
+/* Bright, legible icon accents against the blue sidebar. */
+#programSidebar .program-sidebar-menu li:nth-child(1) .program-sidebar-btn i{background:#dceeff!important;color:#0968d7!important}
+#programSidebar .program-sidebar-menu li:nth-child(2) .program-sidebar-btn i{background:#d5f4ff!important;color:#0879a6!important}
+#programSidebar .program-sidebar-menu li:nth-child(3) .program-sidebar-btn i{background:#d9f7e9!important;color:#087e54!important}
+#programSidebar .program-sidebar-menu li:nth-child(4) .program-sidebar-btn i{background:#eee3ff!important;color:#7040c5!important}
+#programSidebar .program-sidebar-menu li:nth-child(5) .program-sidebar-btn i{background:#fff0d6!important;color:#ae6500!important}
+#programSidebar .program-sidebar-menu li:nth-child(6) .program-sidebar-btn i{background:#dbe9ff!important;color:#1559b7!important}
+#programSidebar .program-sidebar-menu li:nth-child(7) .program-sidebar-btn i{background:#d6f6f3!important;color:#087f83!important}
+#programSidebar .program-sidebar-menu li:nth-child(9) .program-sidebar-btn i{background:#e6e5ff!important;color:#5148b8!important}
+#programSidebar .program-sidebar-menu li:nth-child(10) .program-sidebar-btn i{background:#ffeadc!important;color:#ae501b!important}
+#programSidebar .program-sidebar-btn.active{background:#f5f9ff!important;color:#0869d7!important;box-shadow:0 3px 12px rgba(5,29,78,.16)!important}
+#programSidebar .program-sidebar-btn.active i{background:#1677ff!important;color:white!important;box-shadow:none!important}
+#programSidebar .program-sidebar-btn:not(.active):not(:disabled):hover{background:rgba(255,255,255,.15)!important}
+#programSidebar .program-sidebar-btn.reserved{opacity:.52!important}
+#programSidebar .program-sidebar-btn.reserved i{background:rgba(255,255,255,.12)!important;color:#d2e3ff!important}
+@media(max-height:650px){#programSidebar .program-sidebar-btn{height:48px!important;min-height:48px!important}#programSidebar .program-sidebar-menu{gap:4px!important}}
+</style>
+</head>
+
+<body class="program-launcher-page referral-expanded">
+
+  <!-- PROGRAM SIDEBAR -->
+  <aside id="programSidebar" aria-label="Programs navigation">
+    <div class="program-sidebar-header">
+      <div class="program-sidebar-brand">
+        <i class="bi bi-grid-fill"></i>
+        <span>PROGRAMS</span>
+      </div>
+      <button type="button" class="program-sidebar-close" onclick="toggleProgramSidebar()" title="Hide sidebar">
+        <i class="bi bi-chevron-bar-left"></i>
+      </button>
+    </div>
+
+    <!-- Signed-in user panel above navigation -->
+    <div class="program-user-panel" aria-label="Signed-in user">
+      <div class="program-user-avatar"><i class="bi bi-person-fill" aria-hidden="true"></i></div>
+      <div class="program-user-details">
+        <span class="program-user-caption">USER</span>
+        <strong id="programSidebarUsername">USER</strong>
+      </div>
+    </div>
+
+    <ul class="program-sidebar-menu">
+      <li>
+        <button type="button" class="program-sidebar-btn"
+                onclick="window.location.assign('referral.html')">
+          <i class="bi bi-people-fill"></i><span>REFERRAL &amp; PLACEMENT</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('job-vacancies.html')">
+          <i class="bi bi-briefcase-fill"></i><span>JOB VACANCIES</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('kasambahay.html')">
+          <i class="bi bi-house-heart-fill"></i><span>KASAMBAHAY</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('cgec.html')">
+          <i class="bi bi-mortarboard-fill"></i><span>CGEC</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('lra.html')">
+          <i class="bi bi-file-earmark-text-fill"></i><span>LRA</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('ftja.html')">
+          <i class="bi bi-person-workspace"></i><span>FTJA</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('spesx.html')">
+          <i class="bi bi-person-workspace"></i><span>SPES</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn reserved" disabled>
+          <i class="bi bi-lock-fill"></i><span>RESERVED 2</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('allsprs.html')">
+          <i class="bi bi-clipboard-data-fill"></i><span>SPRS (All Programs)</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn dashboard" onclick="openProgram('/dashboard')">
+          <i class="bi bi-speedometer2"></i><span>DASHBOARD</span>
+        </button>
+      </li>
+    </ul>
+  </aside>
+
+  <div id="programSidebarBackdrop" class="program-sidebar-backdrop" onclick="closeProgramSidebarMobile()"></div>
+
+  <div id="programPage">
+    <header class="program-top-header">
+      <div class="program-top-left">
+        <button type="button" class="program-sidebar-open" onclick="toggleProgramSidebar()" title="Show / hide sidebar">
+          <i class="bi bi-list"></i>
+        </button>
+        <div class="program-top-title">
+          <h1>RA 11261 - FIRST TIME JOBSEEKERS ACT</h1>
+          <p>Regional Office No. 4A</p>
+        </div>
+      </div>
+
+      <img src="/favicon.png" class="program-header-favicon" alt="DOLE / PESO Logo">
+
+      <!-- Header action buttons moved below the header. Dashboard button removed. -->
+    </header>
+
+  <!-- FLOATING REPORT BUTTONS -->
+  <div class="referral-floating-actions no-print">
+    <button type="button" class="referral-floating-btn" onclick="openMunicipalReportsModal()">
+      <i class="bi bi-building-fill"></i><span>MUNICIPAL REPORTS</span>
+    </button>
+    <button type="button" class="referral-floating-btn" data-bs-toggle="modal" data-bs-target="#tabulatedReportsModal">
+      <i class="bi bi-table"></i><span>TABULATED</span>
+    </button>
+  </div>
+
+  <div class="program-launcher-shell">
+<main class="program-launcher-main">
+      <section id="referralPlacementSection" class="program-launcher-panel" style="display:block; margin-top:0;">
+        <div class="referral-filter-bar">
+          <div class="referral-filter-field">
+            <label for="referralProvinceFilter">PROVINCE</label>
+            <select id="referralProvinceFilter" onchange="updateReferralMunicipalities()">
+              <option value="">-- SELECT PROVINCE --</option>
+              <option value="BATANGAS">BATANGAS</option>
+              <option value="CAVITE">CAVITE</option>
+              <option value="LAGUNA">LAGUNA</option>
+              <option value="QUEZON">QUEZON</option>
+              <option value="RIZAL">RIZAL</option>
+            </select>
+          </div>
+
+          <div class="referral-filter-field">
+            <label for="referralMunicipalityFilter">MUNICIPALITY / OFFICE</label>
+            <select id="referralMunicipalityFilter" onchange="loadReferralSource()" disabled>
+              <option value="">-- SELECT PROVINCE FIRST --</option>
+            </select>
+          </div>
+
+          <div class="referral-filter-field roster-toolbar-filter"><label for="rosterMonthFilter">REPORTING MONTH</label><select id="rosterMonthFilter" onchange="filterRosterDisplay()"><option value="">ALL MONTHS</option><option>JANUARY</option><option>FEBRUARY</option><option>MARCH</option><option>APRIL</option><option>MAY</option><option>JUNE</option><option>JULY</option><option>AUGUST</option><option>SEPTEMBER</option><option>OCTOBER</option><option>NOVEMBER</option><option>DECEMBER</option></select></div>
+          <div class="referral-filter-field roster-toolbar-filter roster-year-field"><label for="rosterYearFilter">YEAR</label><select id="rosterYearFilter" onchange="filterRosterDisplay()"><option value="">ALL YEARS</option></select></div>
+          <div id="referralSourceStatus" class="referral-source-status">
+            SELECT A PROVINCE AND MUNICIPALITY / OFFICE.
+          </div>
+
+          <div class="referral-download-wrap no-print">
+            <button type="button" class="referral-download-btn" id="downloadExcelBtn" onclick="downloadReferralExcel()">
+              <i class="bi bi-file-earmark-excel-fill"></i><span>DOWNLOAD</span>
+            </button>
+          </div>
+        </div>
+
+
+        <div class="referral-table-wrap">
+          <table class="referral-master-table roster-table">
+            <colgroup><col style="width:125px"><col style="width:140px"><col style="width:205px"><col style="width:135px"><col style="width:145px"><col style="width:135px"><col style="width:60px"><col style="width:55px"><col style="width:65px"><col style="width:55px"><col style="width:65px"><col style="width:60px"><col style="width:60px"><col style="width:155px"><col style="width:180px"><col style="width:85px"><col style="width:230px"></colgroup>
+            <thead><tr><th rowspan="2">REPORTING<br>MONTH</th><th rowspan="2">BARANGAY</th><th colspan="5">NAME OF BENEFICIARY/AVAILEE</th><th rowspan="2">AGE</th><th colspan="3">DATE OF BIRTH</th><th colspan="2">SEX<br><small>(Indicate “X” under the appropriate Sex)</small></th><th rowspan="2">MARITAL STATUS</th><th rowspan="2">HIGHEST EDUCATIONAL ATTAINMENT</th><th rowspan="2">PWD<br><small>(place “X” if yes)</small></th><th rowspan="2">FULL NAME</th></tr><tr><th>Barangay Certificate Number<br><small>(Ex: 11261-763-83-001)</small></th><th>Last Name</th><th>First Name</th><th>Middle Name</th><th>Suffix</th><th>Month</th><th>Day</th><th>Year</th><th>Male</th><th>Female</th></tr></thead>
+            <tbody id="referralPlacementTableBody"><tr><td colspan="17" class="text-center py-4">SELECT A PROVINCE AND MUNICIPALITY / OFFICE.</td></tr></tbody>
+          </table>
+        </div>
+
+        <!-- TABULATED REPORTS ARE SHOWN IN THE MODAL BELOW -->
+      </section>
+
+      <div class="modal fade" id="tabulatedReportsModal" tabindex="-1" aria-labelledby="tabulatedReportsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable tabulated-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <h5 class="modal-title fw-bold" id="tabulatedReportsModalLabel">TABULATED REPORTS - JANUARY</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-light">
+              <div class="summary-report-section mt-0">
+                <div class="ra11261-month-tabs" id="ra11261MonthTabs" role="tablist" aria-label="Tabulated report month">
+                  <button type="button" class="active" data-month="JANUARY" aria-selected="true">JAN</button>
+                  <button type="button" data-month="FEBRUARY">FEB</button>
+                  <button type="button" data-month="MARCH">MAR</button>
+                  <button type="button" data-month="APRIL">APR</button>
+                  <button type="button" data-month="MAY">MAY</button>
+                  <button type="button" data-month="JUNE">JUN</button>
+                  <button type="button" data-month="JULY">JUL</button>
+                  <button type="button" data-month="AUGUST">AUG</button>
+                  <button type="button" data-month="SEPTEMBER">SEPT</button>
+                  <button type="button" data-month="OCTOBER">OCT</button>
+                  <button type="button" data-month="NOVEMBER">NOV</button>
+                  <button type="button" data-month="DECEMBER">DEC</button>
+                </div>
+                <div class="summary-table-wrap ra11261-summary-wrap">
+                  <table class="ra11261-summary-table" aria-label="RA 11261 Barangay Tabulated Report">
+                    <thead>
+                      <tr><th rowspan="2">BARANGAY</th><th rowspan="2">NO. OF<br>BENEFICIARIES/<br>AVAILEES</th><th colspan="2">SEX/GENDER</th><th colspan="7">EDUCATIONAL LEVEL</th></tr>
+                      <tr><th>M</th><th>F</th><th>Elementary</th><th>High School</th><th>Senior High<br>School</th><th>College</th><th>Graduate<br>School</th><th>Technical-Vocational<br>Course</th><th>Out of School<br>Youth</th></tr>
+                    </thead>
+                    <tbody id="ra11261BarangaySummaryBody"><tr><td colspan="11" class="text-center">SELECT A MUNICIPALITY TO LOAD THE REPORT.</td></tr></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- MUNICIPAL REPORTS MODAL: scans every configured province source -->
+      <div class="modal fade" id="municipalReportsModal" tabindex="-1" aria-labelledby="municipalReportsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+              <div>
+                <h5 class="modal-title fw-bold" id="municipalReportsModalLabel">MUNICIPALITIES WITH REPORTS BY MONTH</h5>
+                <div class="small opacity-75">BATANGAS • CAVITE • LAGUNA • QUEZON • RIZAL</div>
+              </div>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body bg-light">
+              <div class="row g-2 align-items-end mb-3">
+                <div class="col-md-4">
+                  <label class="form-label fw-bold" for="municipalReportMonth">MONTH</label>
+                  <select id="municipalReportMonth" class="form-select" onchange="renderMunicipalReports()">
+                    <option value="ALL">ALL MONTHS</option>
+                    <option value="JANUARY">JANUARY</option>
+                    <option value="FEBRUARY">FEBRUARY</option>
+                    <option value="MARCH">MARCH</option>
+                    <option value="APRIL">APRIL</option>
+                    <option value="MAY">MAY</option>
+                    <option value="JUNE">JUNE</option>
+                    <option value="JULY">JULY</option>
+                    <option value="AUGUST">AUGUST</option>
+                    <option value="SEPTEMBER">SEPTEMBER</option>
+                    <option value="OCTOBER">OCTOBER</option>
+                    <option value="NOVEMBER">NOVEMBER</option>
+                    <option value="DECEMBER">DECEMBER</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label fw-bold" for="municipalReportProvince">PROVINCE</label>
+                  <select id="municipalReportProvince" class="form-select" onchange="renderMunicipalReports()">
+                    <option value="ALL">ALL PROVINCES</option>
+                    <option value="BATANGAS">BATANGAS</option>
+                    <option value="CAVITE">CAVITE</option>
+                    <option value="LAGUNA">LAGUNA</option>
+                    <option value="QUEZON">QUEZON</option>
+                    <option value="RIZAL">RIZAL</option>
+                  </select>
+                </div>
+                <div class="col-md-4 d-flex gap-2">
+                  <button type="button" class="btn btn-primary flex-fill" id="scanMunicipalReportsBtn" onclick="scanAllMunicipalReports(true)">
+                    <i class="bi bi-arrow-clockwise me-2"></i>SCAN / REFRESH
+                  </button>
+                </div>
+              </div>
+
+              <div id="municipalReportsStatus" class="alert alert-info py-2 mb-3">
+                CLICK SCAN / REFRESH TO CHECK ALL MUNICIPALITY LINKS.
+              </div>
+              <div id="municipalReportsSourceDetails" class="border rounded bg-white p-3 mb-3" style="display:none">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <strong>GOOGLE SHEETS SOURCE DETAILS</strong>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="toggleMunicipalReportSourceDetails(false)" aria-label="Close source details">CLOSE</button>
+                </div>
+                <div id="municipalReportsSourceDetailsBody" class="table-responsive"></div>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover align-middle mb-0">
+                  <thead class="table-primary">
+                    <tr>
+                      <th style="width:60px">NO.</th>
+                      <th>PROVINCE</th>
+                      <th>MUNICIPALITY / CITY</th>
+                      <th style="width:150px">MONTH</th>
+                      <th style="width:140px">RECORDS</th>
+                    </tr>
+                  </thead>
+                  <tbody id="municipalReportsBody">
+                    <tr><td colspan="5" class="text-center py-4">NO SCAN YET.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <span id="municipalReportsFooter" class="me-auto fw-bold text-primary"></span>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div><!-- /#programPage -->
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const REPORT_MONTHS = ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+    let currentReferralRows = [];
+
+    // =========================================================
+    // MUNICIPAL REPORTS — CHECK ALL CONFIGURED GOOGLE SHEETS
+    // Uses REPORTING MONTH in column A (index 0), starting at A11:P.
+    // Includes all configured province, municipality and institution sources.
+    // =========================================================
+    let municipalReportsCache = [];
+    let municipalReportsScanned = false;
+    let municipalReportsScanning = false;
+
+    function isMunicipalityReferralSource(name) {
+      const n = normalizeReportText(name);
+      const excludedWords = [
+        'PROVINCE', 'UNIVERSITY', 'COLLEGE', 'INSTITUTE',
+        'SCHOOL', 'ACADEMY', 'FOUNDATION', 'POLYTECHNIC'
+      ];
+      return !excludedWords.some(word => n.includes(word));
+    }
+
+    function normalizeMunicipalReportMonth(value) {
+      const raw = normalizeReportText(value);
+      if (!raw) return '';
+      const exact = REPORT_MONTHS.find(m => raw === m);
+      if (exact) return exact;
+      return REPORT_MONTHS.find(m =>
+        raw.includes(m) || raw.startsWith(m.slice(0, 3))
+      ) || '';
+    }
+
+    function getMunicipalReportSources() {
+      // Scan every configured source, including provincial offices and institutions.
+      const list = [];
+      Object.entries(REFERRAL_SOURCES).forEach(([province, offices]) => {
+        Object.entries(offices || {}).forEach(([municipality, spreadsheetId]) => {
+          if (!spreadsheetId) return;
+          list.push({ province, municipality, spreadsheetId });
+        });
+      });
+      return list.sort((a, b) =>
+        a.province.localeCompare(b.province) ||
+        a.municipality.localeCompare(b.municipality)
+      );
+    }
+
+    async function fetchMunicipalReportSource(source) {
+      // Use the same working backend endpoint as the RA 11261 roster.
+      // The server reads Encoding Form, A11:P, and returns source records.
+      const monthCounts = Object.fromEntries(REPORT_MONTHS.map(m => [m, 0]));
+      try {
+        const params = new URLSearchParams({
+          spreadsheetId: source.spreadsheetId,
+          sheet: 'Encoding Form'
+        });
+        const response = await fetch('/api/ra11261/roster?' + params.toString(), {
+          cache: 'no-store'
+        });
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const payload = await response.json();
+        if (!payload || payload.success === false) {
+          throw new Error(payload?.error || payload?.message || 'Invalid API response');
+        }
+        const records = Array.isArray(payload.records) && payload.records.length
+          ? payload.records
+          : (Array.isArray(payload.data) ? payload.data : []);
+        records.forEach(record => {
+          // Column A = reporting month. Support both object and A:P array payloads.
+          const rawMonth = Array.isArray(record) ? record[0]
+            : (record.reportingMonth ?? record.values?.[0] ?? '');
+          const month = normalizeMunicipalReportMonth(rawMonth);
+          if (month) monthCounts[month]++;
+        });
+        return {
+          ...source,
+          monthCounts,
+          totalRecords: Object.values(monthCounts).reduce((a, b) => a + b, 0),
+          ok: true
+        };
+      } catch (error) {
+        console.warn('Municipal report source failed:', source.province, source.municipality, error);
+        return {
+          ...source, monthCounts, totalRecords: 0, ok: false,
+          error: String(error && error.message ? error.message : error)
+        };
+      }
+    }
+
+    async function openMunicipalReportsModal() {
+      const modalEl = document.getElementById('municipalReportsModal');
+      if (!modalEl) return;
+
+      bootstrap.Modal.getOrCreateInstance(modalEl).show();
+
+      // First opening automatically scans all links.
+      if (!municipalReportsScanned && !municipalReportsScanning) {
+        await scanAllMunicipalReports(false);
+      } else {
+        renderMunicipalReports();
+      }
+    }
+
+    async function scanAllMunicipalReports(forceRefresh) {
+      if (municipalReportsScanning) return;
+      if (municipalReportsScanned && !forceRefresh) {
+        renderMunicipalReports();
+        return;
+      }
+
+      municipalReportsScanning = true;
+      toggleMunicipalReportSourceDetails(false);
+      const button = document.getElementById('scanMunicipalReportsBtn');
+      const status = document.getElementById('municipalReportsStatus');
+      const body = document.getElementById('municipalReportsBody');
+
+      if (button) {
+        button.disabled = true;
+        button.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>SCANNING...';
+      }
+      if (body) {
+        body.innerHTML = '<tr><td colspan="5" class="text-center py-4">' +
+          '<span class="spinner-border spinner-border-sm me-2"></span>CHECKING MUNICIPALITY LINKS...</td></tr>';
+      }
+
+      const sources = getMunicipalReportSources();
+      const results = [];
+      const BATCH_SIZE = 6;
+
+      for (let start = 0; start < sources.length; start += BATCH_SIZE) {
+        const batch = sources.slice(start, start + BATCH_SIZE);
+        const batchResults = await Promise.all(batch.map(fetchMunicipalReportSource));
+        results.push(...batchResults);
+
+        if (status) {
+          const checked = Math.min(start + batch.length, sources.length);
+          status.className = 'alert alert-info py-2 mb-3';
+          status.textContent =
+            'CHECKING ALL MUNICIPALITIES: ' + checked + ' OF ' + sources.length + ' CHECKED...';
+        }
+      }
+
+      municipalReportsCache = results;
+      municipalReportsScanned = true;
+      municipalReportsScanning = false;
+
+      if (button) {
+        button.disabled = false;
+        button.innerHTML = '<i class="bi bi-arrow-clockwise me-2"></i>SCAN / REFRESH';
+      }
+
+      renderMunicipalReports();
+    }
+
+    // Details are derived from the actual scan results, not a separate link list.
+    function toggleMunicipalReportSourceDetails(show) {
+      const panel = document.getElementById('municipalReportsSourceDetails');
+      if (!panel) return;
+      const opening = typeof show === 'boolean' ? show : panel.style.display === 'none';
+      panel.style.display = opening ? 'block' : 'none';
+      if (!opening) return;
+      const target = document.getElementById('municipalReportsSourceDetailsBody');
+      if (!target) return;
+      target.replaceChildren();
+      const failed = municipalReportsCache.filter(item => !item.ok);
+      const summary = document.createElement('p');
+      summary.className = 'small mb-2';
+      summary.textContent = failed.length
+        ? failed.length + ' SOURCE(S) COULD NOT BE READ. THE LINKS BELOW OPEN THEIR ORIGINAL GOOGLE SHEETS.'
+        : 'ALL SOURCES WERE READ SUCCESSFULLY.';
+      target.appendChild(summary);
+      if (!failed.length) return;
+      const table = document.createElement('table');
+      table.className = 'table table-sm table-bordered align-middle';
+      const thead = document.createElement('thead');
+      const headRow = document.createElement('tr');
+      ['PROVINCE', 'MUNICIPALITY / OFFICE', 'GOOGLE SHEETS LINK', 'ERROR'].forEach(label => {
+        const th = document.createElement('th'); th.textContent = label; headRow.appendChild(th);
+      });
+      thead.appendChild(headRow); table.appendChild(thead);
+      const tbody = document.createElement('tbody');
+      failed.forEach(item => {
+        const tr = document.createElement('tr');
+        [item.province, item.municipality].forEach(value => {
+          const td = document.createElement('td'); td.textContent = value; tr.appendChild(td);
+        });
+        const linkCell = document.createElement('td');
+        const a = document.createElement('a');
+        a.href = 'https://docs.google.com/spreadsheets/d/' + encodeURIComponent(item.spreadsheetId) + '/edit';
+        a.target = '_blank'; a.rel = 'noopener noreferrer';
+        a.textContent = 'OPEN GOOGLE SHEET';
+        linkCell.appendChild(a); tr.appendChild(linkCell);
+        const errorCell = document.createElement('td');
+        errorCell.textContent = item.error || 'UNKNOWN ERROR'; tr.appendChild(errorCell);
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody); target.appendChild(table);
+    }
+
+    function renderMunicipalReports() {
+      const body = document.getElementById('municipalReportsBody');
+      const status = document.getElementById('municipalReportsStatus');
+      const footer = document.getElementById('municipalReportsFooter');
+      if (!body) return;
+
+      const selectedMonth = document.getElementById('municipalReportMonth')?.value || 'ALL';
+      const selectedProvince = document.getElementById('municipalReportProvince')?.value || 'ALL';
+
+      if (!municipalReportsScanned) {
+        body.innerHTML = '<tr><td colspan="5" class="text-center py-4">NO SCAN YET.</td></tr>';
+        return;
+      }
+
+      const output = [];
+
+      municipalReportsCache.forEach(source => {
+        if (!source.ok) return;
+        if (selectedProvince !== 'ALL' && source.province !== selectedProvince) return;
+
+        if (selectedMonth === 'ALL') {
+          REPORT_MONTHS.forEach(month => {
+            const records = Number(source.monthCounts[month] || 0);
+            if (records > 0) {
+              output.push({
+                province: source.province,
+                municipality: source.municipality,
+                month,
+                records
+              });
+            }
+          });
+        } else {
+          const records = Number(source.monthCounts[selectedMonth] || 0);
+          if (records > 0) {
+            output.push({
+              province: source.province,
+              municipality: source.municipality,
+              month: selectedMonth,
+              records
+            });
+          }
+        }
+      });
+
+      output.sort((a, b) =>
+        a.province.localeCompare(b.province) ||
+        a.municipality.localeCompare(b.municipality) ||
+        REPORT_MONTHS.indexOf(a.month) - REPORT_MONTHS.indexOf(b.month)
+      );
+
+      if (!output.length) {
+        body.innerHTML =
+          '<tr><td colspan="5" class="text-center py-4">NO MUNICIPALITY WITH A REPORT FOUND FOR THE SELECTED FILTER.</td></tr>';
+      } else {
+        body.innerHTML = output.map((item, index) => `
+          <tr>
+            <td class="text-center">${index + 1}</td>
+            <td>${item.province}</td>
+            <td class="fw-bold">${item.municipality}</td>
+            <td>${item.month}</td>
+            <td class="text-center fw-bold">${item.records}</td>
+          </tr>
+        `).join('');
+      }
+
+      const failed = municipalReportsCache.filter(x => !x.ok).length;
+      const uniqueMunicipalities = new Set(
+        output.map(x => x.province + '|' + x.municipality)
+      ).size;
+      const totalRecords = output.reduce((sum, x) => sum + x.records, 0);
+
+      if (status) {
+        status.className = failed ? 'alert alert-warning py-2 mb-3' : 'alert alert-success py-2 mb-3';
+        status.textContent =
+          'SCAN COMPLETE. ' +
+          uniqueMunicipalities + ' MUNICIPALITY/CITY SOURCE(S) HAVE REPORTS' +
+          (selectedMonth === 'ALL' ? '' : ' FOR ' + selectedMonth) +
+          '. ' + totalRecords + ' RECORD(S) FOUND.' +
+          (failed ? ' ' + failed + ' SOURCE(S) COULD NOT BE READ; CHECK THEIR SHEET ACCESS/TAB NAME. ' : '');
+        if (failed) {
+          const detailsButton = document.createElement('button');
+          detailsButton.type = 'button';
+          detailsButton.className = 'btn btn-sm btn-outline-dark ms-2';
+          detailsButton.textContent = '?';
+          detailsButton.title = 'Show failed municipalities and their Google Sheets links';
+          detailsButton.setAttribute('aria-label', 'Show failed sources and Google Sheets links');
+          detailsButton.onclick = () => toggleMunicipalReportSourceDetails();
+          status.appendChild(detailsButton);
+        }
+      }
+
+      if (footer) {
+        footer.textContent =
+          uniqueMunicipalities + ' MUNICIPALITY/CITY SOURCE(S) • ' +
+          totalRecords + ' RECORD(S)';
+      }
+    }
+
+
+    function normalizeReportText(v) {
+      return String(v == null ? '' : v).trim().toUpperCase().replace(/\s+/g, ' ');
+    }
+
+    function normalizedFullName(row) {
+      // Column 27 (index 26) is COMBINED NAME. This is the primary deduplication key.
+      const combined = normalizeReportText(row[26]);
+      if (combined) return combined.replace(/[^A-Z0-9Ñ ]/g, '').replace(/\s+/g, ' ').trim();
+      // Fallback only when the formula/combined-name cell is blank.
+      return [row[4], row[5], row[6]].map(normalizeReportText).filter(Boolean).join(' ')
+        .replace(/[^A-Z0-9Ñ ]/g, '').replace(/\s+/g, ' ').trim();
+    }
+
+    function monthIndexFromRow(row) {
+      const raw = normalizeReportText(row[2]); // REPORTING MONTH
+      let i = REPORT_MONTHS.indexOf(raw);
+      if (i >= 0) return i;
+      i = REPORT_MONTHS.findIndex(m => raw.includes(m) || raw.startsWith(m.slice(0,3)));
+      return i;
+    }
+
+    function sexOf(row) {
+      const s = normalizeReportText(row[8]);
+      if (s === 'F' || s.includes('FEMALE')) return 'F';
+      if (s === 'M' || s.includes('MALE')) return 'M';
+      return '';
+    }
+
+    function referralCategory(row) {
+      const referred = normalizeReportText(row[18]);
+      const employer = normalizeReportText(row[22]);
+      if (referred.includes('SELF')) return 'SELF';
+      if (referred.includes('TRAIN') || referred.includes('EMPLOYABILITY')) return 'TRAINING';
+      if (referred.includes('OVERSEAS') || employer.includes('OVERSEAS')) return 'OVERSEAS';
+      if (employer.includes('GOVERNMENT') || employer.includes('GOVT') || employer.includes('PUBLIC')) return 'GOVERNMENT';
+      if (employer.includes('PRIVATE') || referred.includes('WAGE') || referred.includes('EMPLOY')) return 'PRIVATE';
+      return '';
+    }
+
+    function isPlaced(row) {
+      const p = normalizeReportText(row[23]);
+      const hired = normalizeReportText(row[24]);
+      return !!hired || ['YES','Y','PLACED','HIRED','EMPLOYED'].some(x => p === x || p.includes(x));
+    }
+
+    function makeSets(monthCount, keys) {
+      return Array.from({length: monthCount}, () => Object.fromEntries(keys.map(k => [k, {F:new Set(), M:new Set()}])));
+    }
+    function addUnique(bucket, key, sex, name) {
+      if (!name || !sex || !bucket[key]) return;
+      bucket[key][sex].add(name);
+    }
+    function counts(obj) {
+      const f=obj.F.size, m=obj.M.size; return [f,m,f+m];
+    }
+
+    window.ra11261TabulatedMonth = 'JANUARY';
+    document.addEventListener('click', function(event) {
+      const button = event.target.closest('#ra11261MonthTabs button[data-month]');
+      if (!button) return;
+      window.ra11261TabulatedMonth = button.dataset.month;
+      document.querySelectorAll('#ra11261MonthTabs button').forEach(tab => {
+        const selected = tab === button;
+        tab.classList.toggle('active', selected);
+        tab.setAttribute('aria-selected', String(selected));
+      });
+      const heading = document.getElementById('tabulatedReportsModalLabel');
+      if (heading) heading.textContent = 'TABULATED REPORTS - ' + window.ra11261TabulatedMonth;
+      buildTabulatedReports(currentReferralRows);
+    });
+
+    function buildTabulatedReports(rows) {
+      // RA 11261 Encoding Form: A month, B barangay, D/E names,
+      // L male, M female, O educational attainment. Count each valid source row.
+      currentReferralRows = Array.isArray(rows) ? rows : [];
+      const body = document.getElementById('ra11261BarangaySummaryBody');
+      if (!body) return;
+      const monthFilter = window.ra11261TabulatedMonth || 'JANUARY';
+      const groups = new Map();
+      const educationIndex = value => {
+        const x = String(value || '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').trim();
+        if (!x) return -1;
+        if (/OUT OF SCHOOL|OSY/.test(x)) return 6;
+        if (/TECH|VOCATIONAL|TVET|TESDA/.test(x)) return 5;
+        if (/GRADUATE|MASTER|DOCTOR|POST GRAD/.test(x)) return 4;
+        if (/SENIOR HIGH|SHS|GRADE 11|GRADE 12/.test(x)) return 2;
+        if (/COLLEGE|TERTIARY|UNIVERSITY|BACHELOR/.test(x)) return 3;
+        if (/HIGH SCHOOL|SECONDARY|JUNIOR HIGH|JHS/.test(x)) return 1;
+        if (/ELEMENTARY|PRIMARY/.test(x)) return 0;
+        return -1;
+      };
+      const isMarked = value => /^(X|YES|Y|TRUE|1|MALE|FEMALE)$/i.test(String(value || '').trim());
+      currentReferralRows.forEach(row => {
+        const r = Array.isArray(row) ? row : (Array.isArray(row?.values) ? row.values : null);
+        if (!r) return;
+        const month = String(r[0] || '').trim().toUpperCase();
+        if (monthFilter && month !== monthFilter) return;
+        const barangay = String(r[1] || '').trim();
+        if (!barangay || !(String(r[3] || '').trim() || String(r[4] || '').trim())) return;
+        const key = barangay.toUpperCase().replace(/\s+/g, ' ');
+        if (!groups.has(key)) groups.set(key, {name:barangay, counts:Array(10).fill(0)});
+        const c = groups.get(key).counts;
+        c[0]++;
+        if (isMarked(r[11])) c[1]++;
+        if (isMarked(r[12])) c[2]++;
+        const edu = educationIndex(r[14]);
+        if (edu >= 0) c[3 + edu]++;
+      });
+      body.replaceChildren();
+      if (!groups.size) {
+        const tr = document.createElement('tr');
+        const td = document.createElement('td');
+        td.colSpan = 11;
+        td.textContent = 'NO BENEFICIARY DATA AVAILABLE FOR THE SELECTED FILTERS.';
+        td.className = 'text-center'; tr.appendChild(td); body.appendChild(tr);
+        return;
+      }
+      const totals = Array(10).fill(0);
+      const fragment = document.createDocumentFragment();
+      [...groups.values()].sort((a,b) => a.name.localeCompare(b.name)).forEach(item => {
+        const tr = document.createElement('tr');
+        [item.name, ...item.counts].forEach((value,i) => {
+          const td = document.createElement('td');
+          td.textContent = value;
+          if (i === 0) td.className = 'ra11261-barangay-name';
+          tr.appendChild(td);
+        });
+        item.counts.forEach((n,i) => totals[i] += n);
+        fragment.appendChild(tr);
+      });
+      const totalRow = document.createElement('tr'); totalRow.className = 'ra11261-summary-total';
+      ['TOTAL', ...totals].forEach(value => {const td = document.createElement('td'); td.textContent = value; totalRow.appendChild(td);});
+      fragment.appendChild(totalRow);
+      body.appendChild(fragment);
+    }
+
+    function renderReportBody(id, data, keys) {
+      const body=document.getElementById(id); if(!body) return;
+      const totals=Object.fromEntries(keys.map(k=>[k,{F:new Set(),M:new Set()}]));
+      let html='';
+      REPORT_MONTHS.forEach((month,i)=>{
+        let cells='';
+        keys.forEach(k=>{
+          data[i][k].F.forEach(n=>totals[k].F.add(n)); data[i][k].M.forEach(n=>totals[k].M.add(n));
+          cells += counts(data[i][k]).map(v=>`<td>${v}</td>`).join('');
+        });
+        html += `<tr><td>${month}</td>${cells}</tr>`;
+      });
+      html += '<tr><td>TOTAL</td>' + keys.map(k=>counts(totals[k]).map(v=>`<td>${v}</td>`).join('')).join('') + '</tr>';
+      body.innerHTML=html;
+    }
+
+    function renderReachedBody(data) {
+      const body=document.getElementById('individualsReachedBody'); if(!body) return;
+      const total={YOUTH:{F:new Set(),M:new Set()},NONYOUTH:{F:new Set(),M:new Set()}};
+      let html='';
+      REPORT_MONTHS.forEach((month,i)=>{
+        ['YOUTH','NONYOUTH'].forEach(k=>{ data[i][k].F.forEach(n=>total[k].F.add(n)); data[i][k].M.forEach(n=>total[k].M.add(n)); });
+        const y=counts(data[i].YOUTH), n=counts(data[i].NONYOUTH);
+        html += `<tr><td>${month}</td>${[...y,...n,y[0]+n[0],y[1]+n[1],y[2]+n[2]].map(v=>`<td>${v}</td>`).join('')}</tr>`;
+      });
+      const y=counts(total.YOUTH), n=counts(total.NONYOUTH);
+      html += `<tr><td>TOTAL</td>${[...y,...n,y[0]+n[0],y[1]+n[1],y[2]+n[2]].map(v=>`<td>${v}</td>`).join('')}</tr>`;
+      body.innerHTML=html;
+    }
+
+
+    // =========================================================
+    // EXCEL TEMPLATE EXPORT — NON-BLOCKING VERSION
+    // Heavy XLSX/ZIP work runs in a Web Worker so the page remains
+    // responsive while preserving the uploaded Excel template.
+    // =========================================================
+    const REFERRAL_EXCEL_TEMPLATE_URL = '/api/referral-placement-template';
+
+    function sourceRowsForExcel() {
+      return currentReferralRows.map((row, index) => {
+        const values = row.slice(0, 27);
+        while (values.length < 27) values.push('');
+        if (!String(values[0] || '').trim()) values[0] = index + 1;
+        return values.map(v => v == null ? '' : String(v));
+      });
+    }
+
+    function reportTableRows(bodyId) {
+      const body = document.getElementById(bodyId);
+      if (!body) return [];
+      return Array.from(body.querySelectorAll('tr')).map(tr =>
+        Array.from(tr.querySelectorAll('td')).map(td => {
+          const text = String(td.textContent || '').trim();
+          const numberValue = Number(text);
+          return text !== '' && Number.isFinite(numberValue) ? numberValue : text;
+        })
+      );
+    }
+
+    function setDownloadButtonBusy(isBusy, label) {
+      const btn = document.getElementById('downloadExcelBtn');
+      if (!btn) return;
+
+      btn.dataset.busy = isBusy ? '1' : '0';
+      btn.disabled = !!isBusy;
+
+      if (isBusy) {
+        btn.innerHTML =
+          '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>' +
+          (label || 'PREPARING EXCEL...');
+      } else {
+        btn.innerHTML = '<i class="bi bi-file-earmark-excel-fill me-2"></i>DOWNLOAD';
+      }
+    }
+
+    function createReferralExcelWorker() {
+      const workerCode = `
+        importScripts('https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js');
+
+        function xmlEscape(value) {
+          return String(value == null ? '' : value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&apos;');
+        }
+
+        function decodeXmlText(value) {
+          return String(value || '')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"')
+            .replace(/&apos;/g, "'")
+            .replace(/&amp;/g, '&');
+        }
+
+        function normalizeText(value) {
+          return String(value == null ? '' : value)
+            .replace(/\\s+/g, ' ')
+            .trim()
+            .toUpperCase();
+        }
+
+        function excelColName(n) {
+          let out = '';
+          while (n > 0) {
+            n--;
+            out = String.fromCharCode(65 + (n % 26)) + out;
+            n = Math.floor(n / 26);
+          }
+          return out;
+        }
+
+        function excelColNumber(name) {
+          return String(name || '').split('').reduce(
+            (n, ch) => n * 26 + (ch.charCodeAt(0) - 64), 0
+          );
+        }
+
+        async function readSharedStrings(zip) {
+          const file = zip.file('xl/sharedStrings.xml');
+          if (!file) return [];
+
+          const xml = await file.async('string');
+          const result = [];
+          const siRe = /<si\\b[^>]*>([\\s\\S]*?)<\\/si>/g;
+          let match;
+
+          while ((match = siRe.exec(xml))) {
+            const pieces = [];
+            const tRe = /<t\\b[^>]*>([\\s\\S]*?)<\\/t>/g;
+            let t;
+            while ((t = tRe.exec(match[1]))) {
+              pieces.push(decodeXmlText(t[1]));
+            }
+            result.push(pieces.join(''));
+          }
+          return result;
+        }
+
+        function cellDisplayedText(cellXml, sharedStrings) {
+          const typeMatch = cellXml.match(/\\bt="([^"]+)"/);
+          const type = typeMatch ? typeMatch[1] : '';
+
+          if (type === 'inlineStr') {
+            const texts = [];
+            const tRe = /<t\\b[^>]*>([\\s\\S]*?)<\\/t>/g;
+            let t;
+            while ((t = tRe.exec(cellXml))) texts.push(decodeXmlText(t[1]));
+            return texts.join('');
+          }
+
+          const vMatch = cellXml.match(/<v>([\\s\\S]*?)<\\/v>/);
+          const value = vMatch ? vMatch[1] : '';
+          if (type === 's') return sharedStrings[Number(value)] || '';
+          return decodeXmlText(value);
+        }
+
+        function findCellByText(sheetXml, sharedStrings, wantedText) {
+          const wanted = normalizeText(wantedText);
+          const cellRe = /<c\\b[^>]*\\br="([A-Z]+)(\\d+)"[^>]*>[\\s\\S]*?<\\/c>/g;
+          let match;
+
+          while ((match = cellRe.exec(sheetXml))) {
+            if (normalizeText(cellDisplayedText(match[0], sharedStrings)) === wanted) {
+              return { col: match[1], row: Number(match[2]) };
+            }
+          }
+          return null;
+        }
+
+        function makeInlineCell(address, value, styleAttr) {
+          const style = styleAttr ? (' s="' + styleAttr + '"') : '';
+          return '<c r="' + address + '"' + style +
+            ' t="inlineStr"><is><t xml:space="preserve">' +
+            xmlEscape(value) +
+            '</t></is></c>';
+        }
+
+        function getCellStyle(cellXml) {
+          const m = String(cellXml || '').match(/\\bs="([^"]+)"/);
+          return m ? m[1] : '';
+        }
+
+        function batchSetExcelValues(sheetXml, cellValues) {
+          const values = Object.assign({}, cellValues || {});
+          const sheetDataMatch =
+            sheetXml.match(/<sheetData\\b[^>]*>([\\s\\S]*?)<\\/sheetData>/);
+
+          if (!sheetDataMatch) {
+            throw new Error('EXCEL TEMPLATE HAS NO SHEETDATA SECTION.');
+          }
+
+          const sheetDataOpenMatch = sheetXml.match(/<sheetData\\b[^>]*>/);
+          const sheetDataOpen =
+            sheetDataOpenMatch ? sheetDataOpenMatch[0] : '<sheetData>';
+          const sheetDataInner = sheetDataMatch[1];
+
+          const rows = new Map();
+          const rowTokenRe = /<row\\b[^>]*(?:\\/>|>[\\s\\S]*?<\\/row>)/g;
+          let rowMatch;
+
+          while ((rowMatch = rowTokenRe.exec(sheetDataInner))) {
+            const rowXml = rowMatch[0];
+            const rowNoMatch = rowXml.match(/\\br="(\\d+)"/);
+            if (!rowNoMatch) continue;
+
+            const rowNo = Number(rowNoMatch[1]);
+            const openMatch = rowXml.match(/^<row\\b([^>]*)/);
+            let attrs = openMatch ? openMatch[1] : (' r="' + rowNo + '"');
+            attrs = attrs.replace(/\\s*\\/$/, '');
+
+            const cells = new Map();
+            const cellTokenRe = /<c\\b[^>]*(?:\\/>|>[\\s\\S]*?<\\/c>)/g;
+            let cellMatch;
+
+            while ((cellMatch = cellTokenRe.exec(rowXml))) {
+              const cellXml = cellMatch[0];
+              const ref = cellXml.match(/\\br="([A-Z]+)(\\d+)"/i);
+              if (!ref) continue;
+              cells.set(String(ref[1]).toUpperCase(), cellXml);
+            }
+
+            rows.set(rowNo, { attrs, cells });
+          }
+
+          Object.keys(values).forEach(address => {
+            const m =
+              String(address).toUpperCase().match(/^([A-Z]+)(\\d+)$/);
+            if (!m) return;
+
+            const col = m[1];
+            const rowNo = Number(m[2]);
+            const normalizedAddress = col + rowNo;
+
+            if (!rows.has(rowNo)) {
+              rows.set(rowNo, {
+                attrs: ' r="' + rowNo + '"',
+                cells: new Map()
+              });
+            }
+
+            const row = rows.get(rowNo);
+            const oldCell = row.cells.get(col);
+            const style = getCellStyle(oldCell);
+
+            row.cells.set(
+              col,
+              makeInlineCell(
+                normalizedAddress,
+                values[address],
+                style
+              )
+            );
+          });
+
+          const rebuiltRows = Array.from(rows.entries())
+            .sort((a, b) => a[0] - b[0])
+            .map(([rowNo, row]) => {
+              const orderedCells = Array.from(row.cells.entries())
+                .sort(
+                  (a, b) =>
+                    excelColNumber(a[0]) -
+                    excelColNumber(b[0])
+                )
+                .map(entry => entry[1])
+                .join('');
+
+              return '<row' + row.attrs + '>' +
+                orderedCells +
+                '</row>';
+            })
+            .join('');
+
+          const rebuiltSheetData =
+            sheetDataOpen +
+            rebuiltRows +
+            '</sheetData>';
+
+          return sheetXml.replace(
+            /<sheetData\\b[^>]*>[\\s\\S]*?<\\/sheetData>/,
+            rebuiltSheetData
+          );
+        }
+
+        // Return the top-left cell of a merged range containing an address.
+        // Excel only displays/stores a merged-cell value from that top-left cell.
+        function mergedAnchorForCell(sheetXml, address) {
+          const m = /^([A-Z]+)(\\d+)$/.exec(address);
+          if (!m) return address;
+          const colNo = excelColNumber(m[1]);
+          const rowNo = Number(m[2]);
+          const mergeRe = /<mergeCell\\b[^>]*\\bref="([A-Z]+)(\\d+):([A-Z]+)(\\d+)"[^>]*\\/?\\s*>/g;
+          let mm;
+          while ((mm = mergeRe.exec(sheetXml))) {
+            const c1 = excelColNumber(mm[1]), r1 = Number(mm[2]);
+            const c2 = excelColNumber(mm[3]), r2 = Number(mm[4]);
+            if (colNo >= c1 && colNo <= c2 && rowNo >= r1 && rowNo <= r2) {
+              return mm[1] + mm[2];
+            }
+          }
+          return address;
+        }
+
+        function findCellContainingText(sheetXml, sharedStrings, phrases) {
+          const wanted = (phrases || []).map(normalizeText).filter(Boolean);
+          const cellRe = /<c\\b[^>]*\\br="([A-Z]+)(\\d+)"[^>]*>[\\s\\S]*?<\\/c>/g;
+          let match;
+          while ((match = cellRe.exec(sheetXml))) {
+            const shown = normalizeText(cellDisplayedText(match[0], sharedStrings));
+            if (wanted.some(p => shown.includes(p))) {
+              return { col: match[1], row: Number(match[2]) };
+            }
+          }
+          return null;
+        }
+
+        function findJanuaryNear(sheetXml, sharedStrings, anchor) {
+          if (!anchor) return null;
+          const cellRe = /<c\\b[^>]*\\br="([A-Z]+)(\\d+)"[^>]*>[\\s\\S]*?<\\/c>/g;
+          let match;
+          const anchorCol = excelColNumber(anchor.col);
+          let best = null;
+          while ((match = cellRe.exec(sheetXml))) {
+            const col = excelColNumber(match[1]);
+            const row = Number(match[2]);
+            if (row < anchor.row || row > anchor.row + 30) continue;
+            if (col < Math.max(1, anchorCol - 6) || col > anchorCol + 12) continue;
+            if (normalizeText(cellDisplayedText(match[0], sharedStrings)) !== 'JANUARY') continue;
+            const score = (row - anchor.row) * 100 + Math.abs(col - anchorCol);
+            if (!best || score < best.score) best = { col: match[1], row, score };
+          }
+          return best;
+        }
+
+        function findMonthTableStarts(sheetXml, sharedStrings) {
+          const cells = [];
+          const cellRe = /<c\\b[^>]*\\br="([A-Z]+)(\\d+)"[^>]*>[\\s\\S]*?<\\/c>/g;
+          let match;
+          while ((match = cellRe.exec(sheetXml))) {
+            const text = normalizeText(cellDisplayedText(match[0], sharedStrings));
+            if (text === 'JANUARY' || text === 'FEBRUARY' || text === 'MARCH') {
+              cells.push({ col: match[1], row: Number(match[2]), text });
+            }
+          }
+
+          const starts = [];
+          cells.filter(c => c.text === 'JANUARY').forEach(jan => {
+            const feb = cells.some(c => c.col === jan.col && c.row === jan.row + 1 && c.text === 'FEBRUARY');
+            const mar = cells.some(c => c.col === jan.col && c.row === jan.row + 2 && c.text === 'MARCH');
+            if (feb && mar) starts.push({ col: jan.col, row: jan.row });
+          });
+          return starts;
+        }
+
+        async function writeTabulatedReport(zip, sharedStrings, phrases, reportRows, tableOrdinal) {
+          if (!Array.isArray(reportRows) || !reportRows.length) return false;
+
+          // IMPORTANT: Do not auto-detect the first numeric column from JANUARY.
+          // In this template the requested coordinates are the FIRST VALUE cells,
+          // not the MONTH cells. Auto-detection + 1 shifted every value one column
+          // to the right, leaving FEMALE at 0.
+          //
+          // TABLE 1: first value = AD12
+          // TABLE 2: first value = AG29
+          // TABLE 3: first value = AG48
+          const exactStarts = [
+            { col: 'AD', row: 12 },
+            { col: 'AG', row: 29 },
+            { col: 'AG', row: 48 }
+          ];
+          const start = exactStarts[Number(tableOrdinal) || 0];
+          if (!start) return false;
+
+          // All three tabulated tables are on the same Referral & Placement
+          // worksheet selected by the distinctive template cells.
+          const target = await findReferralWorksheet(zip, sharedStrings);
+          if (!target) return false;
+
+          let xml = await zip.file(target.path).async('string');
+          const values = {};
+          const startColNo = excelColNumber(start.col);
+
+          reportRows.forEach((row, rowOffset) => {
+            // Skip the MONTH/TOTAL label from the modal. Write ONLY the numeric
+            // values beginning at the exact first-value cell above.
+            row.slice(1).forEach((value, valueOffset) => {
+              const address = excelColName(startColNo + valueOffset) + (start.row + rowOffset);
+              values[address] = value == null ? '' : String(value);
+            });
+          });
+
+          xml = batchSetExcelValues(xml, values);
+          zip.file(target.path, xml);
+          return true;
+        }
+
+        async function findReferralWorksheet(zip, sharedStrings) {
+          const paths = Object.keys(zip.files)
+            .filter(path => /^xl\\/worksheets\\/sheet\\d+\\.xml$/i.test(path));
+
+          let best = null;
+
+          for (const path of paths) {
+            const file = zip.file(path);
+            if (!file) continue;
+
+            const xml = await file.async('string');
+
+            // Find the actual REFERRAL table by its physical header row.
+            // The required layout is:
+            // A10 = NO.
+            // B10 = REPORTING YEAR
+            // C10 = REPORTING MONTH
+            // D10 = DATE OF VISIT/REGISTRATION
+            // ...
+            // AA10 = COMBINED NAME
+            //
+            // We intentionally identify the worksheet by the NUMBER OF CELLS
+            // physically present across A10:AA10, not by the first worksheet
+            // that merely happens to contain a row 10.
+            const row10Match = xml.match(
+              /<row\\b[^>]*\\br="10"[^>]*>([\\s\\S]*?)<\\/row>/
+            );
+
+            if (!row10Match) continue;
+
+            const inside = row10Match[1];
+            const refs = [];
+            const cellRefRe = /\\br="([A-Z]+)10"/g;
+            let m;
+
+            while ((m = cellRefRe.exec(inside))) {
+              const colNo = excelColNumber(m[1]);
+              if (colNo >= 1 && colNo <= 27) refs.push(colNo);
+            }
+
+            const uniqueCount = new Set(refs).size;
+
+            // Bonus checks for the expected first header cells.
+            let score = uniqueCount;
+            if (/\\br="A10"/.test(inside)) score += 20;
+            if (/\\br="B10"/.test(inside)) score += 20;
+            if (/\\br="C10"/.test(inside)) score += 20;
+            if (/\\br="D10"/.test(inside)) score += 20;
+
+            // Text check is only a bonus, not a requirement.
+            const reportingYearCell =
+              findCellByText(xml, sharedStrings, 'REPORTING YEAR');
+            if (reportingYearCell && reportingYearCell.row === 10) {
+              score += 50;
+            }
+
+            if (!best || score > best.score) {
+              best = { path, xml, score, headerCells: uniqueCount };
+            }
+          }
+
+          // Require a convincing A10:AA10-style header row.
+          if (best && best.score >= 25) {
+            return best;
+          }
+
+          return null;
+        }
+
+        self.onmessage = async function(event) {
+          try {
+            const {
+              templateBytes,
+              rows,
+              province,
+              office,
+              referralSummaryRows,
+              placementSummaryRows,
+              individualsReachedRows
+            } = event.data;
+
+            self.postMessage({ type: 'status', text: 'OPENING TEMPLATE...' });
+            const zip = await JSZip.loadAsync(templateBytes);
+
+            self.postMessage({ type: 'status', text: 'LOCATING REPORT SHEET...' });
+            const sharedStrings = await readSharedStrings(zip);
+            const target = await findReferralWorksheet(zip, sharedStrings);
+
+            if (!target) {
+              throw new Error('REFERRAL WORKSHEET/HEADERS NOT FOUND IN TEMPLATE.');
+            }
+
+            let sheetXml = target.xml;
+
+            self.postMessage({
+              type: 'status',
+              text: 'FOUND REPORT SHEET (' + target.path + ')...'
+            });
+
+            // The uploaded template's first referral record row is ROW 11.
+            const firstDataRow = 11;
+            const excelValues = {};
+
+            self.postMessage({ type: 'status', text: 'DOWNLOADING...' });
+
+            // FIXED REFERRAL COLUMN MAPPING.
+            // ROW 10 = HEADERS. ROW 11 = FIRST RECORD.
+            // A  NUMBER
+            // B  YEAR
+            // C  MONTH
+            // D  DATE OF VISIT / REGISTRATION
+            // E  LAST NAME
+            // F  FIRST NAME
+            // G  MIDDLE NAME
+            // H  AGE
+            // I  SEX
+            // J  EDUCATION
+            // K  PROVINCE
+            // L  HOUSE NO.
+            // M  BARANGAY
+            // N  CITY / MUNICIPALITY
+            // O  MOBILE NO.
+            // P  SEEKING EMPLOYMENT
+            // Q  COACHING / COUNSELING
+            // R  OTHERS
+            // S  REFERRED TO
+            // T  REFERRED AS
+            // U  DATE REFERRED
+            // V  COMPANY / AGENCY / TRAINING INSTITUTION
+            // W  TYPE OF EMPLOYER
+            // X  PLACEMENT
+            // Y  DATE HIRED
+            // Z  REPORTING PERIOD PLACEMENT REPORT WAS RETRIEVED
+            // AA COMBINED NAME
+            const referralColumns = [
+              'A','B','C','D','E','F','G','H','I','J','K','L','M','N',
+              'O','P','Q','R','S','T','U','V','W','X','Y','Z','AA'
+            ];
+
+            rows.forEach((row, rowIndex) => {
+              const excelRow = firstDataRow + rowIndex;
+
+              referralColumns.forEach((column, sourceIndex) => {
+                const value = row[sourceIndex];
+                excelValues[column + excelRow] =
+                  value == null ? '' : String(value);
+              });
+            });
+
+            const year =
+              rows.map(r => String(r[1] || '').trim()).find(Boolean) || '';
+
+            // EXACT HEADER CELLS REQUIRED BY THE REPORT TEMPLATE.
+            // D6 = PROVINCE
+            // D7 = MUNICIPALITY / OFFICE
+            // F6 = REPORTING YEAR
+            excelValues['D6'] = province;
+            // D7 may be part of a merged template range. Write to the merge's
+            // top-left cell so the municipality is actually visible in Excel,
+            // without changing the merge or any formatting.
+            excelValues[mergedAnchorForCell(sheetXml, 'D7')] = office;
+            excelValues['F6'] = year;
+
+            // IMPORTANT: These three values are written ONLY to the exact
+            // cells requested. Do not use label-based fallback because it can
+            // overwrite a different cell in templates that contain merged labels.
+
+            sheetXml = batchSetExcelValues(sheetXml, excelValues);
+
+            // Do not reject the workbook just because a template cell such as
+            // C11 is omitted from the worksheet XML. Excel is allowed to omit
+            // individual blank/formatted cells, and batchSetExcelValues() already
+            // creates missing cells when possible.
+            //
+            // The actual source-to-template mapping remains fixed:
+            // A:AA -> A:AA, starting at row 11.
+            zip.file(target.path, sheetXml);
+
+            self.postMessage({ type: 'status', text: 'PLOTTING TABULATED REPORTS...' });
+
+            // ==============================================================
+            // FIXED TABULATED REPORT LOCATIONS IN THE EXISTING TEMPLATE
+            // ==============================================================
+            // IMPORTANT:
+            // 1) Write VALUES ONLY. Do not rebuild tables, rows, columns,
+            //    merges, widths, heights, borders, fills, fonts or alignment.
+            // 2) batchSetExcelValues() keeps the original <c ...> attributes,
+            //    especially the template style number s="...".
+            // 3) The month labels already exist in the template, so only the
+            //    numeric cells from the modal are written (row.slice(1)).
+            //
+            // EXACT TEMPLATE LOCATIONS — DO NOT MOVE/REFORMAT:
+            // TABLE 1 month labels: AC12:AC24
+            // TABLE 1 numeric values: AD12:AU24
+            // TABLE 2 month labels: AF29:AF41
+            // TABLE 2 numeric values: AG29:AU41
+            // TABLE 3 month labels: AF48:AF60
+            // TABLE 3 numeric values: AG48:AL60
+
+            function plotReportAt(sheetXml, reportRows, startColumn, startRow, repairFemaleTriplets) {
+              if (!Array.isArray(reportRows) || !reportRows.length) return sheetXml;
+
+              const values = {};
+              const startColNo = excelColNumber(startColumn);
+
+              // Preserve/write the MONTH/TOTAL label column immediately
+              // to the LEFT of the numeric table:
+              // TABLE 1: AC12:AC24
+              // TABLE 2: AF29:AF41
+              // TABLE 3: AF48:AF60
+              const labelColNo = startColNo - 1;
+              const labelColumn = excelColName(labelColNo);
+
+              // Use the template's exact month sequence. This prevents a bad
+              // DOM/table label from changing a month (for example SEPTEMBER).
+              // Only cell VALUES are replaced; existing template style IDs,
+              // borders, fills, fonts, alignment, widths and heights are kept.
+              const fixedMonthLabels = [
+                'JANUARY',
+                'FEBRUARY',
+                'MARCH',
+                'APRIL',
+                'MAY',
+                'JUNE',
+                'JULY',
+                'AUGUST',
+                'SEPTEMBER',
+                'OCTOBER',
+                'NOVEMBER',
+                'DECEMBER',
+                'TOTAL'
+              ];
+
+              reportRows.forEach((reportRow, rowOffset) => {
+                const labelAddress =
+                  labelColumn + (startRow + rowOffset);
+
+                values[labelAddress] =
+                  fixedMonthLabels[rowOffset] != null
+                    ? fixedMonthLabels[rowOffset]
+                    : (reportRow[0] == null ? '' : String(reportRow[0]));
+                // Skip MONTH/TOTAL label. Work on a copy of the numeric values.
+                const nums = reportRow.slice(1).map(v => {
+                  const n = Number(v);
+                  return Number.isFinite(n) ? n : 0;
+                });
+
+                // TABLES 2 AND 3 are made of FEMALE / MALE / TOTAL triplets.
+                // The downloaded workbook showed FEMALE as 0 while MALE and TOTAL
+                // were present (example 0,4,9). Since TOTAL = FEMALE + MALE,
+                // restore FEMALE from TOTAL - MALE whenever the exported female
+                // value is missing/zero but TOTAL proves that female records exist.
+                if (repairFemaleTriplets) {
+                  for (let i = 0; i + 2 < nums.length; i += 3) {
+                    const female = nums[i];
+                    const male = nums[i + 1];
+                    const total = nums[i + 2];
+                    if (female === 0 && total > male) {
+                      nums[i] = total - male;
+                    }
+                  }
+                }
+
+                nums.forEach((value, valueOffset) => {
+                  const address =
+                    excelColName(startColNo + valueOffset) +
+                    (startRow + rowOffset);
+                  values[address] = String(value);
+                });
+              });
+
+              return batchSetExcelValues(sheetXml, values);
+            }
+
+            // Re-open the SAME referral worksheet after the main-table values
+            // were saved above, then plot all three modal tables directly into
+            // their required cells. This prevents TABLE 1 from being missed by
+            // heading/JANUARY detection.
+            let reportSheetXml = await zip.file(target.path).async('string');
+
+            reportSheetXml = plotReportAt(
+              reportSheetXml,
+              referralSummaryRows,
+              'AD',
+              12,
+              false
+            );
+
+            reportSheetXml = plotReportAt(
+              reportSheetXml,
+              placementSummaryRows,
+              'AG',
+              29,
+              true
+            );
+
+            reportSheetXml = plotReportAt(
+              reportSheetXml,
+              individualsReachedRows,
+              'AG',
+              48,
+              true
+            );
+
+            // FINAL FORCE PASS FOR COLUMN AG (FEMALE).
+            // Do this AFTER every table write so nothing can overwrite AG again.
+            // Table 2: AG29:AG41 = TOTAL(AI) - MALE(AH)
+            // Table 3: AG48:AG60 = TOTAL(AI) - MALE(AH)
+            // This is based on each FEMALE/MALE/TOTAL triplet in the report.
+            function forceFemaleAG(sheetXml, reportRows, startRow) {
+              const force = {};
+              (reportRows || []).forEach((r, i) => {
+                const male = Number(r && r[2]);   // row[0]=MONTH, row[1]=F, row[2]=M
+                const total = Number(r && r[3]); // first triplet TOTAL
+                const female = (Number.isFinite(total) && Number.isFinite(male))
+                  ? Math.max(0, total - male)
+                  : Number(r && r[1]) || 0;
+                force['AG' + (startRow + i)] = String(female);
+              });
+              return batchSetExcelValues(sheetXml, force);
+            }
+
+            reportSheetXml = forceFemaleAG(reportSheetXml, placementSummaryRows, 29);
+            reportSheetXml = forceFemaleAG(reportSheetXml, individualsReachedRows, 48);
+
+            // ABSOLUTE FINAL AG WRITE — ignore month-column detection/merges.
+            // Build AG directly from the raw source rows, not from the modal/table XML.
+            // TABLE 2 AG29:AG40 = LOCAL-PRIVATE FEMALE by month; AG41 = deduplicated total.
+            // TABLE 3 AG48:AG59 = YOUTH FEMALE (15-24) by month; AG60 = deduplicated total.
+            function rawName(row) {
+              const combined = String((row && row[26]) || '').trim().toUpperCase();
+              if (combined) return combined.replace(/[^A-Z0-9Ñ ]/g, '').replace(/\s+/g, ' ').trim();
+              return [row && row[4], row && row[5], row && row[6]]
+                .map(v => String(v || '').trim().toUpperCase()).filter(Boolean).join(' ')
+                .replace(/[^A-Z0-9Ñ ]/g, '').replace(/\s+/g, ' ').trim();
+            }
+            function rawMonth(row) {
+              const x = String((row && row[2]) || '').trim().toUpperCase();
+              return ['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER']
+                .findIndex(m => x === m || x.indexOf(m) >= 0 || x.indexOf(m.slice(0,3)) === 0);
+            }
+            function rawFemale(row) {
+              const x = String((row && row[8]) || '').trim().toUpperCase();
+              return x === 'F' || x.indexOf('FEMALE') >= 0;
+            }
+            function rawPrivate(row) {
+              const referred = String((row && row[18]) || '').trim().toUpperCase();
+              const employer = String((row && row[22]) || '').trim().toUpperCase();
+              return employer.indexOf('PRIVATE') >= 0 || referred.indexOf('WAGE') >= 0 || referred.indexOf('EMPLOY') >= 0;
+            }
+            function rawPlaced(row) {
+              const p = String((row && row[23]) || '').trim().toUpperCase();
+              const hired = String((row && row[24]) || '').trim();
+              return !!hired || ['YES','Y','PLACED','HIRED','EMPLOYED'].some(x => p === x || p.indexOf(x) >= 0);
+            }
+
+            const privateFemale = Array.from({length:12}, () => new Set());
+            const youthFemale = Array.from({length:12}, () => new Set());
+            (rows || []).forEach(row => {
+              const mi = rawMonth(row);
+              const name = rawName(row);
+              if (mi < 0 || !name || !rawFemale(row)) return;
+              if (rawPrivate(row) && rawPlaced(row)) privateFemale[mi].add(name);
+              const age = parseInt(String((row && row[7]) || '').replace(/[^0-9]/g,''), 10);
+              if (Number.isFinite(age) && age >= 15 && age <= 24) youthFemale[mi].add(name);
+            });
+
+            const directAG = {};
+            privateFemale.forEach((set, i) => { directAG['AG' + (29 + i)] = String(set.size); });
+            youthFemale.forEach((set, i) => { directAG['AG' + (48 + i)] = String(set.size); });
+            const pfTotal = new Set(); privateFemale.forEach(set => set.forEach(n => pfTotal.add(n)));
+            const yfTotal = new Set(); youthFemale.forEach(set => set.forEach(n => yfTotal.add(n)));
+            directAG['AG41'] = String(pfTotal.size);
+            directAG['AG60'] = String(yfTotal.size);
+
+            // Exact-address write. This does not look at MONTH columns and does not
+            // redirect AG through merged ranges. Existing cell style attributes remain.
+            reportSheetXml = batchSetExcelValues(reportSheetXml, directAG);
+
+            // Save only after this absolute final AG write.
+            zip.file(target.path, reportSheetXml);
+
+            self.postMessage({ type: 'status', text: 'BUILDING EXCEL FILE...' });
+
+            // STORE avoids the very CPU-heavy DEFLATE pass that was freezing
+            // the browser. The XLSX may be a little larger, but download is much faster.
+            const output = await zip.generateAsync(
+              {
+                type: 'arraybuffer',
+                compression: 'STORE',
+                mimeType:
+                  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+              },
+              metadata => {
+                if (metadata && typeof metadata.percent === 'number') {
+                  self.postMessage({
+                    type: 'progress',
+                    percent: Math.round(metadata.percent)
+                  });
+                }
+              }
+            );
+
+            self.postMessage({ type: 'done', buffer: output }, [output]);
+          } catch (error) {
+            self.postMessage({
+              type: 'error',
+              message: error && error.message ? error.message : String(error)
+            });
+          }
+        };
+      `;
+
+      const workerBlob = new Blob([workerCode], { type: 'application/javascript' });
+      const workerUrl = URL.createObjectURL(workerBlob);
+      const worker = new Worker(workerUrl);
+
+      // Keep the URL so it can be revoked after the worker finishes.
+      worker.__workerUrl = workerUrl;
+      return worker;
+    }
+
+    async function downloadReferralExcel() {
+      const province =
+        document.getElementById('referralProvinceFilter')?.value || '';
+      const office =
+        document.getElementById('referralMunicipalityFilter')?.value || '';
+
+      if (!province || !office || !currentReferralRows.length) {
+        alert(
+          'PLEASE SELECT A PROVINCE AND MUNICIPALITY / OFFICE AND WAIT FOR THE DATA TO LOAD BEFORE DOWNLOADING.'
+        );
+        return;
+      }
+
+      const downloadBtn = document.getElementById('downloadExcelBtn');
+      if (downloadBtn?.dataset.busy === '1') return;
+
+      let worker = null;
+
+      try {
+        setDownloadButtonBusy(true, 'DOWNLOADING');
+
+        // Load the template from the SAME folder/base path as this page.
+        // This works on GitHub Pages project sites as well as normal /public hosting.
+        setDownloadButtonBusy(true, 'DOWNLOADING...');
+
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 20000);
+        let response;
+
+        try {
+          const templateUrl = REFERRAL_EXCEL_TEMPLATE_URL + '?v=' + encodeURIComponent(Date.now());
+
+          response = await fetch(templateUrl, {
+            method: 'GET',
+            cache: 'no-store',
+            credentials: 'same-origin',
+            signal: controller.signal
+          });
+        } catch (fetchError) {
+          if (fetchError && fetchError.name === 'AbortError') {
+            throw new Error('TEMPLATE DOWNLOAD TIMED OUT. CHECK THAT Referral-and-Placement-Report-Form.xlsx EXISTS BESIDE THIS PAGE.');
+          }
+          throw new Error('FAILED TO LOAD EXCEL TEMPLATE: ' + (fetchError?.message || fetchError));
+        } finally {
+          clearTimeout(timeoutId);
+        }
+
+        if (!response.ok) {
+          throw new Error(
+            'TEMPLATE HTTP ' + response.status +
+            '. CHECK THAT Referral-and-Placement-Report-Form.xlsx IS IN THE PUBLIC/SAME DEPLOYED FOLDER.'
+          );
+        }
+
+        const templateBytes = await response.arrayBuffer();
+        if (!templateBytes || templateBytes.byteLength < 100) {
+          throw new Error('THE EXCEL TEMPLATE FILE IS EMPTY OR INVALID.');
+        }
+        // Rebuild the tabulated reports from the currently loaded source rows
+        // immediately before export so the Excel values match the modal values.
+        buildTabulatedReports(currentReferralRows);
+
+        const rows = sourceRowsForExcel();
+        const referralSummaryRows = reportTableRows('referralSummaryBody');
+        const placementSummaryRows = reportTableRows('placementSummaryBody');
+        const individualsReachedRows = reportTableRows('individualsReachedBody');
+
+        if (!rows.length) {
+          throw new Error('NO REFERRAL DATA IS AVAILABLE TO EXPORT.');
+        }
+
+        worker = createReferralExcelWorker();
+
+        const resultBuffer = await new Promise((resolve, reject) => {
+          worker.onmessage = event => {
+            const msg = event.data || {};
+
+            if (msg.type === 'status') {
+              setDownloadButtonBusy(true, msg.text || 'DOWNLOADING');
+              return;
+            }
+
+            if (msg.type === 'progress') {
+              setDownloadButtonBusy(
+                true,
+                'DOWNLOADING ' + Math.max(0, Math.min(100, msg.percent || 0)) + '%'
+              );
+              return;
+            }
+
+            if (msg.type === 'done') {
+              resolve(msg.buffer);
+              return;
+            }
+
+            if (msg.type === 'error') {
+              reject(new Error(msg.message || 'UNKNOWN EXCEL WORKER ERROR.'));
+            }
+          };
+
+          worker.onerror = event => {
+            reject(
+              new Error(
+                event.message ||
+                'THE EXCEL WORKER COULD NOT START. CHECK THE BROWSER CONSOLE.'
+              )
+            );
+          };
+
+          // Transfer the ArrayBuffer instead of copying the whole XLSX in memory.
+          worker.postMessage(
+            {
+              templateBytes,
+              rows,
+              province,
+              office,
+              referralSummaryRows,
+              placementSummaryRows,
+              individualsReachedRows
+            },
+            [templateBytes]
+          );
+        });
+
+        setDownloadButtonBusy(true, 'DOWNLOADING');
+
+        const blob = new Blob(
+          [resultBuffer],
+          {
+            type:
+              'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+          }
+        );
+
+        const safeOffice =
+          office.replace(/[^A-Z0-9Ñ_-]+/gi, '_') || 'REPORT';
+
+        const objectUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = objectUrl;
+        a.download = 'Referral and Placement Report Form.xlsx';
+        a.style.display = 'none';
+
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+
+        // Give the browser enough time to begin consuming the object URL.
+        setTimeout(() => URL.revokeObjectURL(objectUrl), 10000);
+
+      } catch (err) {
+        console.error('Excel template download failed:', err);
+        alert(
+          'FAILED TO CREATE THE EXCEL REPORT: ' +
+          (err && err.message ? err.message : err)
+        );
+      } finally {
+        if (worker) {
+          const workerUrl = worker.__workerUrl;
+          worker.terminate();
+          if (workerUrl) URL.revokeObjectURL(workerUrl);
+        }
+
+        setDownloadButtonBusy(false);
+      }
+    }
+
+  </script>
+
+<script>
+  function openProgram(url) {
+    if (url) window.location.assign(url);
+  }
+
+  function toggleProgramSidebar() {
+    const sidebar = document.getElementById('programSidebar');
+    const backdrop = document.getElementById('programSidebarBackdrop');
+    const mobile = window.matchMedia('(max-width: 900px)').matches;
+
+    if (mobile) {
+      const showing = sidebar.classList.toggle('mobile-show');
+      backdrop.classList.toggle('show', showing);
+      return;
+    }
+
+    const collapsed = sidebar.classList.toggle('collapsed');
+    document.body.classList.toggle('program-sidebar-collapsed', collapsed);
+  }
+
+  function closeProgramSidebarMobile() {
+    const sidebar = document.getElementById('programSidebar');
+    const backdrop = document.getElementById('programSidebarBackdrop');
+    sidebar.classList.remove('mobile-show');
+    backdrop.classList.remove('show');
+  }
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 900) {
+      document.getElementById('programSidebar').classList.remove('mobile-show');
+      document.getElementById('programSidebarBackdrop').classList.remove('show');
+    }
+  });
+</script>
+
+
+
+
+<script>
+/* FINAL SIDEBAR TOGGLE FIX */
+function showProgramSidebar() {
+  const sidebar = document.getElementById('programSidebar');
+  const backdrop = document.getElementById('programSidebarBackdrop');
+  const mobile = window.matchMedia('(max-width: 900px)').matches;
+
+  if (mobile) {
+    sidebar.classList.add('mobile-show');
+    backdrop.classList.add('show');
+  } else {
+    sidebar.classList.remove('collapsed');
+    document.body.classList.remove('program-sidebar-collapsed');
+  }
+}
+
+/* Override previous toggle so hiding never leaves the page without a restore button */
+function toggleProgramSidebar() {
+  const sidebar = document.getElementById('programSidebar');
+  const backdrop = document.getElementById('programSidebarBackdrop');
+  const mobile = window.matchMedia('(max-width: 900px)').matches;
+
+  if (mobile) {
+    const showing = sidebar.classList.toggle('mobile-show');
+    backdrop.classList.toggle('show', showing);
+  } else {
+    const collapsed = sidebar.classList.toggle('collapsed');
+    document.body.classList.toggle('program-sidebar-collapsed', collapsed);
+  }
+}
+
+function closeProgramSidebarMobile() {
+  const sidebar = document.getElementById('programSidebar');
+  const backdrop = document.getElementById('programSidebarBackdrop');
+  sidebar.classList.remove('mobile-show');
+  backdrop.classList.remove('show');
+}
+</script>
+
+
+<script>
+/* Set active navigation based on the actual page, not a hardcoded menu item. */
+(function () {
+  function syncProgramSidebarActive() {
+    const page = location.pathname.split('/').pop().toLowerCase();
+    const aliases = {
+      'ra11261.html': 'ftja.html',
+      'spes.html': 'spesx.html'
+    };
+    const target = aliases[page] || page;
+    document.querySelectorAll('#programSidebar .program-sidebar-btn').forEach(button => {
+      const action = button.getAttribute('onclick') || '';
+      const match = action.match(/['"]([^'"]+\.html)['"]/i);
+      const destination = match ? match[1].split('/').pop().toLowerCase() : '';
+      const active = !!destination && destination === target;
+      button.classList.toggle('active', active);
+      if (active) button.setAttribute('aria-current', 'page');
+      else button.removeAttribute('aria-current');
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', syncProgramSidebarActive);
+  } else syncProgramSidebarActive();
+})();
+</script>
+
+<script>
+/* Read the existing authenticated session; never hardcode a person's name. */
+(function () {
+  function updateProgramUserPanel() {
+    var label = document.getElementById('programSidebarUsername');
+    if (!label) return;
+    var keys = ['userContext','currentUser','loggedUser','loggedInUser','user','username'];
+    var name = '';
+    for (var i = 0; i < keys.length && !name; i++) {
+      var raw = sessionStorage.getItem(keys[i]) || localStorage.getItem(keys[i]);
+      if (!raw) continue;
+      try {
+        var obj = JSON.parse(raw);
+        if (typeof obj === 'string') name = obj;
+        else if (obj && typeof obj === 'object') {
+          name = obj.firstName || obj.firstname || obj.first_name || obj.displayName || obj.name || obj.username || obj.userName || '';
+          if (!name && obj.user && typeof obj.user === 'object') name = obj.user.firstName || obj.user.name || obj.user.username || '';
+        }
+      } catch (_) { name = raw; }
+    }
+    label.textContent = String(name || 'USER').trim().split(/\s+/)[0].toUpperCase();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', updateProgramUserPanel);
+  else updateProgramUserPanel();
+})();
+</script>
+<script defer src="/epms-table-pagination.js"></script>
+</body>
+</html>

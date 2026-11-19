@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <link rel="icon" type="image/png" href="/favicon.png">
+    <script src="auth-guard.js"></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Job Vacancies Solicited</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx-populate@1.21.0/browser/xlsx-populate.min.js"></script>
+<style>
+:root{--blue:#1267d6;--blue2:#2b8cff;--ink:#15314f;--muted:#607a98;--line:rgba(30,112,205,.16);--glass:rgba(255,255,255,.72);--shadow:0 18px 50px rgba(27,89,155,.13)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#f4f9ff;min-height:100vh}.wrap{width:min(98%,1800px);margin:0 auto;padding:28px 18px 44px}.glass{background:var(--glass);border:1px solid rgba(255,255,255,.9);box-shadow:var(--shadow);backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%)}.hero{border-radius:26px;padding:24px 26px;margin-bottom:18px;display:flex;gap:20px;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(18,103,214,.88),rgba(43,140,255,.72));border:1px solid rgba(255,255,255,.58);box-shadow:0 18px 48px rgba(18,103,214,.24);backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%)}.hero h1{margin:0;font-size:clamp(24px,3vw,38px);letter-spacing:-.04em;color:#fff;text-shadow:0 1px 2px rgba(0,50,120,.12)}.hero p{margin:7px 0 0;color:rgba(255,255,255,.82)}.badge{display:inline-flex;padding:7px 11px;border-radius:999px;background:#e6f2ff;color:#075bbf;font-weight:800;font-size:12px;letter-spacing:.04em}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:14px;padding:11px 16px;font-weight:800;cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:8px}.btn:hover{transform:translateY(-1px)}.primary{background:linear-gradient(135deg,var(--blue),var(--blue2));color:white;box-shadow:0 9px 22px rgba(18,103,214,.25)}.soft{background:rgba(255,255,255,.78);color:var(--blue);border:1px solid #d6e9ff}.filters{border-radius:22px;padding:16px;margin-bottom:18px;display:grid;grid-template-columns:1fr 1fr minmax(220px,1.4fr) auto;gap:12px;align-items:end}.field label{display:block;font-size:12px;font-weight:800;color:#4d6b8c;margin:0 0 7px 3px;text-transform:uppercase;letter-spacing:.06em}.control{width:100%;border:1px solid #d7e7f8;background:rgba(255,255,255,.84);color:var(--ink);border-radius:13px;padding:11px 12px;outline:none}.control:focus{border-color:#71aff4;box-shadow:0 0 0 4px rgba(43,140,255,.1)}.stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.stat{padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.7);border:1px solid #e1effc}.stat b{color:var(--blue)}.table-card{border-radius:24px;overflow:hidden}.table-scroll{overflow:auto;max-height:70vh}.data-table{width:100%;border-collapse:separate;border-spacing:0;min-width:2200px;font-size:12.5px}.data-table th{position:sticky;top:0;z-index:3;background:rgba(14,99,204,.95);color:white;text-align:left;padding:12px 10px;white-space:nowrap}.data-table td{padding:10px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.56);vertical-align:top}.data-table tbody tr:hover td{background:#edf7ff}.empty{text-align:center;padding:45px!important;color:var(--muted)}.modal{position:fixed;inset:0;background:rgba(12,37,67,.36);display:none;align-items:center;justify-content:center;padding:22px;z-index:50}.modal.show{display:flex}.modal-card{width:min(96vw,1550px);max-height:90vh;border-radius:26px;overflow:hidden}.modal-head{padding:18px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dbeaf8}.modal-body{padding:18px;overflow:auto;max-height:76vh}.summary-table{width:100%;border-collapse:collapse;min-width:1500px;font-size:12px}.summary-table th{background:#0e63cc;color:#fff;padding:10px;border:1px solid rgba(255,255,255,.18)}.summary-table td{padding:9px;border:1px solid #dceafa;text-align:right;background:rgba(255,255,255,.7)}.summary-table td:first-child{text-align:left;font-weight:800}.close{width:38px;height:38px;border-radius:12px;border:0;background:#eaf4ff;color:#0d63c9;font-size:22px;cursor:pointer}.foot{color:#7087a1;text-align:center;font-size:12px;margin-top:15px}@media(max-width:900px){.hero{align-items:flex-start;flex-direction:column}.filters{grid-template-columns:1fr 1fr}.filters .search{grid-column:1/-1}}@media(max-width:560px){.filters{grid-template-columns:1fr}.filters .search{grid-column:auto}.wrap{padding:14px 9px}.hero{padding:18px}}
+
+/* ===== SLIDING PROGRAM SIDEBAR ===== */
+.program-sidebar{
+  position:fixed;top:0;left:0;bottom:0;width:300px;z-index:1000;
+  padding:18px 14px;
+  background:linear-gradient(180deg,rgba(14,99,204,.92),rgba(26,126,235,.82));
+  border-right:1px solid rgba(255,255,255,.42);
+  box-shadow:18px 0 50px rgba(13,80,155,.20);
+  backdrop-filter:blur(24px) saturate(170%);
+  -webkit-backdrop-filter:blur(24px) saturate(170%);
+  transform:translateX(-100%);
+  transition:transform .28s cubic-bezier(.2,.8,.2,1);
+}
+.program-sidebar.show{transform:translateX(0)}
+.sidebar-top{display:flex;align-items:center;justify-content:space-between;padding:5px 5px 17px;color:#fff}
+.sidebar-title{display:flex;align-items:center;gap:10px;font-weight:900;font-size:18px}
+.sidebar-close{width:38px;height:38px;border:1px solid rgba(255,255,255,.32);border-radius:12px;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;font-size:18px}
+.program-button-grid{display:grid;grid-template-columns:1fr;gap:9px}
+.program-dashboard-btn{
+  width:100%;min-height:52px;border:1px solid rgba(255,255,255,.32);border-radius:15px;
+  padding:11px 13px;display:flex;align-items:center;gap:12px;text-align:left;
+  background:rgba(255,255,255,.14);color:#fff;font-weight:800;cursor:pointer;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  transition:.18s ease;
+}
+.program-dashboard-btn i{font-size:19px;width:24px;text-align:center}
+.program-dashboard-btn:hover:not(:disabled){background:rgba(255,255,255,.25);transform:translateX(3px)}
+.program-dashboard-btn.reserved{opacity:.48;cursor:not-allowed}
+.program-dashboard-btn.home-btn{margin-top:7px;background:rgba(255,255,255,.92);color:#0e63cc}
+.sidebar-toggle{
+  position:fixed;left:14px;top:18px;z-index:999;width:46px;height:46px;border:1px solid rgba(255,255,255,.75);
+  border-radius:15px;background:rgba(18,103,214,.88);color:#fff;box-shadow:0 10px 25px rgba(18,103,214,.25);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);cursor:pointer;font-size:21px;
+  transition:.2s ease;
+}
+.sidebar-toggle:hover{transform:scale(1.04)}
+.sidebar-overlay{position:fixed;inset:0;background:rgba(8,38,72,.24);z-index:990;opacity:0;visibility:hidden;transition:.25s}
+.sidebar-overlay.show{opacity:1;visibility:visible}
+@media(max-width:560px){.program-sidebar{width:min(86vw,300px)}}
+
+
+/* ===== DESKTOP SIDEBAR: VISIBLE BY DEFAULT + BODY ADJUSTS ===== */
+:root{--program-sidebar-width:300px}
+
+@media (min-width:901px){
+  .program-sidebar{
+    transform:translateX(0) !important;
+    width:var(--program-sidebar-width);
+  }
+
+  body{
+    padding-left:var(--program-sidebar-width);
+    transition:padding-left .28s cubic-bezier(.2,.8,.2,1);
+  }
+
+  body.sidebar-collapsed{
+    padding-left:0;
+  }
+
+  body.sidebar-collapsed .program-sidebar{
+    transform:translateX(-100%) !important;
+  }
+
+  .sidebar-toggle{
+    left:calc(var(--program-sidebar-width) + 14px);
+    opacity:1 !important;
+    pointer-events:auto !important;
+    transition:left .28s cubic-bezier(.2,.8,.2,1),transform .2s ease;
+  }
+
+  body.sidebar-collapsed .sidebar-toggle{
+    left:14px;
+  }
+
+  .sidebar-overlay{
+    display:none !important;
+  }
+
+  .wrap{
+    width:min(98%,1800px);
+    transition:width .28s ease;
+  }
+}
+
+/* Mobile remains an overlay/sliding sidebar. */
+@media (max-width:900px){
+  body{padding-left:0}
+  .program-sidebar{transform:translateX(-100%)}
+  .program-sidebar.show{transform:translateX(0)}
+}
+
+
+/* ===== ACTIVE SIDEBAR PROGRAM ===== */
+.program-dashboard-btn.active-program{
+  background:rgba(255,255,255,.96) !important;
+  color:#0b5fc5 !important;
+  border-color:rgba(255,255,255,.98) !important;
+  box-shadow:0 10px 28px rgba(0,48,112,.22), inset 4px 0 0 #0b5fc5;
+  transform:translateX(3px);
+}
+.program-dashboard-btn.active-program i{
+  color:#0b5fc5;
+}
+.program-dashboard-btn.active-program:hover{
+  background:#fff !important;
+  transform:translateX(3px);
+}
+
+
+/* ===== FLOATING HAMBURGER / SIDEBAR TOGGLE ===== */
+.sidebar-toggle{
+  position:fixed !important;
+  z-index:1200 !important;
+  top:22px !important;
+  width:52px !important;
+  height:52px !important;
+  border-radius:50% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+  background:rgba(18,103,214,.88) !important;
+  border:1px solid rgba(255,255,255,.72) !important;
+  color:#fff !important;
+  box-shadow:0 12px 32px rgba(8,69,145,.32) !important;
+  backdrop-filter:blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter:blur(20px) saturate(180%) !important;
+}
+.sidebar-toggle i{font-size:23px;line-height:1}
+.sidebar-toggle:hover{
+  transform:translateY(-2px) scale(1.05) !important;
+  box-shadow:0 16px 38px rgba(8,69,145,.38) !important;
+}
+@media(min-width:901px){
+  .sidebar-toggle{left:calc(var(--program-sidebar-width) + 18px) !important}
+  body.sidebar-collapsed .sidebar-toggle{left:18px !important}
+}
+@media(max-width:900px){
+  .sidebar-toggle{left:18px !important}
+}
+
+/* ===== HAMBURGER INSIDE BLUE PAGE HEADER ===== */
+.hero-left{display:flex;align-items:center;gap:14px;min-width:0}
+.hero-copy{min-width:0}
+.hero .sidebar-toggle{position:static !important;left:auto !important;top:auto !important;z-index:auto !important;width:44px !important;height:44px !important;min-width:44px !important;border-radius:13px !important;display:flex !important;align-items:center !important;justify-content:center !important;padding:0 !important;background:rgba(255,255,255,.16) !important;border:1px solid rgba(255,255,255,.32) !important;color:#fff !important;box-shadow:none !important;backdrop-filter:blur(12px) !important;-webkit-backdrop-filter:blur(12px) !important}
+.hero .sidebar-toggle i{font-size:25px;line-height:1}
+.hero .sidebar-toggle:hover{transform:none !important;background:rgba(255,255,255,.25) !important;box-shadow:none !important}
+.program-dashboard-btn.home-btn{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.32);box-shadow:none}
+.program-dashboard-btn.home-btn i{color:inherit}
+
+
+/* ===== UPDATED HEADER / FLOATING REPORT BUTTONS ===== */
+.hero-actions-right{display:flex;align-items:center;gap:12px;margin-left:auto}
+.header-favicon{width:82px;height:82px;object-fit:contain;display:block;flex:0 0 auto;filter:drop-shadow(0 4px 8px rgba(0,45,110,.18))}
+.stats{align-items:center}
+.stats-download{margin-left:auto}
+.floating-report-actions{
+  position:fixed;right:24px;bottom:24px;z-index:1250;
+  display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:wrap;
+  max-width:calc(100vw - 48px);
+}
+.floating-report-actions .btn{
+  min-height:50px;padding:12px 18px;border-radius:999px;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:0 12px 30px rgba(18,103,214,.30);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  white-space:nowrap;
+}
+.floating-report-actions .btn:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(18,103,214,.36)}
+@media(max-width:760px){
+  .header-favicon{width:82px;height:82px}
+  .stats-download{width:100%;margin-left:0;justify-content:center}
+  .floating-report-actions{right:12px;bottom:12px;max-width:calc(100vw - 24px);gap:7px}
+  .floating-report-actions .btn{min-height:44px;padding:10px 13px;font-size:12px}
+}
+
+</style>
+<style id="ftja-matched-sidebar">
+:root{--program-sidebar-width:270px}
+#programSidebar{width:270px!important;padding:0!important;display:flex!important;flex-direction:column!important;background:linear-gradient(180deg,#0755b8 0%,#0d68d3 55%,#117ce6 100%)!important;border-right:1px solid rgba(255,255,255,.24)!important;box-shadow:10px 0 35px rgba(13,80,155,.18)!important;overflow:hidden!important}
+#programSidebar .program-sidebar-header{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;height:68px;min-height:68px;padding:0 16px;color:white;border-bottom:1px solid rgba(255,255,255,.16)}
+#programSidebar .program-sidebar-brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px}
+#programSidebar .program-sidebar-brand i{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.16)}
+#programSidebar .program-sidebar-close{width:38px;height:38px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:white;cursor:pointer}
+#programSidebar .program-user-panel{display:flex;align-items:center;gap:10px;flex-shrink:0;margin:12px 11px 17px;min-height:69px;padding:12px;border-radius:15px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.27);color:white}
+#programSidebar .program-user-avatar{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:#1677ff;border:1px solid rgba(255,255,255,.35);font-size:21px}
+#programSidebar .program-user-details{display:flex;flex-direction:column;min-width:0;line-height:1.3}
+#programSidebar .program-user-caption{font-size:11px;color:#c8dfff}
+#programSidebar #programSidebarUsername{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff}
+#programSidebar .program-sidebar-menu{list-style:none;display:flex;flex-direction:column;flex:1 1 auto;min-height:0;overflow-y:auto;gap:7px;margin:0;padding:3px 10px 20px}
+#programSidebar .program-sidebar-menu li{list-style:none;margin:0;padding:0}
+#programSidebar .program-sidebar-btn{width:100%;height:53px;min-height:53px;display:flex;align-items:center;gap:12px;padding:0 12px;border:1px solid rgba(255,255,255,.22);border-radius:13px;background:rgba(255,255,255,.10);color:white;text-align:left;font-size:13px;font-weight:750;cursor:pointer;transition:background .18s,transform .18s}
+#programSidebar .program-sidebar-btn i{width:35px;height:35px;flex:0 0 35px;display:grid;place-items:center;border-radius:11px;font-size:17px;background:#dceeff;color:#0968d7}
+#programSidebar .program-sidebar-menu li:nth-child(2) i{background:#d5f4ff;color:#0879a6}
+#programSidebar .program-sidebar-menu li:nth-child(3) i{background:#d9f7e9;color:#087e54}
+#programSidebar .program-sidebar-menu li:nth-child(4) i{background:#eee3ff;color:#7040c5}
+#programSidebar .program-sidebar-menu li:nth-child(5) i{background:#fff0d6;color:#ae6500}
+#programSidebar .program-sidebar-menu li:nth-child(6) i{background:#dbe9ff;color:#1559b7}
+#programSidebar .program-sidebar-menu li:nth-child(7) i{background:#d6f6f3;color:#087f83}
+#programSidebar .program-sidebar-menu li:nth-child(9) i{background:#e6e5ff;color:#5148b8}
+#programSidebar .program-sidebar-menu li:nth-child(10) i{background:#ffeadc;color:#ae501b}
+#programSidebar .program-sidebar-btn.active{background:#f5f9ff;color:#0869d7;border-color:white;box-shadow:0 3px 12px rgba(5,29,78,.16)}
+#programSidebar .program-sidebar-btn.active i{background:#1677ff;color:white}
+#programSidebar .program-sidebar-btn:not(.active):not(:disabled):hover{background:rgba(255,255,255,.22);transform:translateX(2px)}
+#programSidebar .program-sidebar-btn.reserved{opacity:.52;cursor:not-allowed}
+#programSidebar .program-sidebar-btn span{min-width:0}
+@media(min-width:901px){body{padding-left:270px}body.sidebar-collapsed{padding-left:0}}
+@media(max-width:900px){#programSidebar{width:min(86vw,270px)!important}}
+@media(max-height:650px){#programSidebar .program-sidebar-menu{gap:4px}#programSidebar .program-sidebar-btn{height:48px;min-height:48px}}
+</style>
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="program-sidebar" id="programSidebar" aria-label="Programs navigation">
+    <div class="program-sidebar-header">
+      <div class="program-sidebar-brand">
+        <i class="bi bi-grid-fill"></i>
+        <span>PROGRAMS</span>
+      </div>
+      <button type="button" class="program-sidebar-close" onclick="hideProgramSidebar()" title="Hide sidebar">
+        <i class="bi bi-chevron-bar-left"></i>
+      </button>
+    </div>
+
+    <!-- Signed-in user panel above navigation -->
+    <div class="program-user-panel" aria-label="Signed-in user">
+      <div class="program-user-avatar"><i class="bi bi-person-fill" aria-hidden="true"></i></div>
+      <div class="program-user-details">
+        <span class="program-user-caption">USER</span>
+        <strong id="programSidebarUsername">USER</strong>
+      </div>
+    </div>
+
+    <ul class="program-sidebar-menu">
+      <li>
+        <button type="button" class="program-sidebar-btn"
+                onclick="window.location.assign('referral.html')">
+          <i class="bi bi-people-fill"></i><span>REFERRAL &amp; PLACEMENT</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn active" aria-current="page" onclick="openProgram('job-vacancies.html')">
+          <i class="bi bi-briefcase-fill"></i><span>JOB VACANCIES</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('kasambahay.html')">
+          <i class="bi bi-house-heart-fill"></i><span>KASAMBAHAY</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('cgec.html')">
+          <i class="bi bi-mortarboard-fill"></i><span>CGEC</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('lra.html')">
+          <i class="bi bi-file-earmark-text-fill"></i><span>LRA</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('ftja.html')">
+          <i class="bi bi-person-workspace"></i><span>FTJA</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('spesx.html')">
+          <i class="bi bi-person-workspace"></i><span>SPES</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn reserved" disabled>
+          <i class="bi bi-lock-fill"></i><span>RESERVED 2</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn" onclick="openProgram('allsprs.html')">
+          <i class="bi bi-clipboard-data-fill"></i><span>SPRS (All Programs)</span>
+        </button>
+      </li>
+      <li>
+        <button type="button" class="program-sidebar-btn dashboard" onclick="openProgram('/dashboard')">
+          <i class="bi bi-speedometer2"></i><span>DASHBOARD</span>
+        </button>
+      </li>
+    </ul>
+</aside>
+
+<main class="wrap">
+<section class="hero glass"><div class="hero-left"><button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle program menu" title="Programs"><i class="bi bi-list"></i></button><div class="hero-copy"><h1>Job Vacancies Solicited</h1><p>Regional Office No. 4A</p></div></div><div class="hero-actions-right"><img class="header-favicon" src="/favicon.png" alt="DOLE / PESO"></div></section>
+<section class="filters glass"><div class="field"><label>Province</label><select id="province" class="control"><option value="">All Provinces</option></select></div><div class="field"><label>Municipality</label><select id="municipality" class="control"><option value="">All Municipalities</option></select></div><div class="field search"><label>Search table</label><input id="search" class="control" placeholder="Establishment, position, industry, etc."></div><button class="btn soft" id="resetBtn">Reset</button></section>
+<div class="stats"><div class="stat">Records: <b id="recordCount">0</b></div><div class="stat">Vacancies: <b id="vacancyCount">0</b></div><div class="stat">Sources: <b id="sourceStatus">Waiting for filters</b></div><button class="btn primary stats-download" id="downloadBtn">⇩ Download</button></div>
+<section class="table-card glass"><div class="table-scroll"><table class="data-table"><thead id="thead"></thead><tbody id="tbody"></tbody></table></div></section><div class="foot">Source: VAC_DB worksheet • Filters affect the visible table and Excel download.</div></main>
+<div class="floating-report-actions" aria-label="Report actions"><button class="btn" id="reportsBtn"><i class="bi bi-building"></i> Municipality Reports</button><button class="btn" id="tabBtn"><i class="bi bi-table"></i> Tabulated Report</button><button class="btn" id="provinceSummaryBtn"><i class="bi bi-bar-chart-fill"></i> Province Summary</button></div>
+<div class="modal" id="modal"><div class="modal-card glass"><div class="modal-head"><div><b style="font-size:20px">Tabulated Data</b><div style="color:#68829f;font-size:12px;margin-top:3px">Monthly summary from VAC_DB columns U–AH</div></div><button class="close" id="closeModal">×</button></div><div class="modal-body"><table class="summary-table"><thead id="sumHead"></thead><tbody id="sumBody"></tbody></table></div></div></div>
+
+<div class="modal" id="reportsModal"><div class="modal-card glass"><div class="modal-head"><div><b style="font-size:20px">Municipalities With Reports</b><div style="color:#68829f;font-size:12px;margin-top:3px">Municipalities/reporting offices with VAC_DB records for the selected month</div></div><button class="close" id="closeReportsModal">×</button></div><div class="modal-body"><div class="field" style="max-width:360px;margin-bottom:16px"><label>Reporting Month</label><select id="reportsMonth" class="control"></select></div><table class="summary-table" style="min-width:760px"><thead><tr><th>PROVINCE</th><th>MUNICIPALITY / REPORTING OFFICE</th><th>RECORDS</th><th>TOTAL VACANCIES</th></tr></thead><tbody id="reportsBody"></tbody><tfoot id="reportsFoot"></tfoot></table></div></div></div>
+
+<div class="modal" id="provinceSummaryModal"><div class="modal-card glass"><div class="modal-head"><div><b style="font-size:20px">Province New Posting Summary</b><div style="color:#68829f;font-size:12px;margin-top:3px">Independent scan of all VAC_DB Google Sheet sources</div></div><button class="close" id="closeProvinceSummaryModal">×</button></div><div class="modal-body">
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px"><div class="field" style="min-width:260px"><label>Province Summary</label><select id="provinceSummaryProvince" class="control"></select></div><div class="field" style="min-width:260px"><label>Employer List Month</label><select id="provinceEmployerMonth" class="control"></select></div><div class="stat" style="align-self:end">Sources scanned: <b id="provinceScanStatus">0/0</b></div><button class="btn primary" id="provinceSummaryDownloadBtn" type="button" style="align-self:end">⇩ Download</button></div>
+<table class="summary-table" style="min-width:780px;margin-bottom:24px"><thead><tr><th rowspan="2">MONTHS</th><th colspan="2">NEW POSTING</th><th rowspan="2">TOTAL</th><th rowspan="2">EMPLOYERS</th></tr><tr><th>WITHIN THE CITY/MUNICIPALITY</th><th>WITHIN THE PROVINCE</th></tr></thead><tbody id="provinceSummaryBody"></tbody><tfoot id="provinceSummaryFoot"></tfoot></table>
+<div id="provinceEmployerTitle" style="font-weight:900;font-size:17px;margin:8px 0 10px">Employers</div><table class="summary-table" style="min-width:900px"><thead><tr><th>PROVINCE</th><th>NAME OF EMPLOYER</th><th>INDUSTRY</th></tr></thead><tbody id="provinceEmployerBody"></tbody></table>
+</div></div></div>
+<script>
+const HEADERS=["REPORTING YEAR", "REPORTING MONTH", "PROVINCE", "CITY/MUNICIPALITY", "NAME OF REPORTING ESTABLISHMENT", "INDUSTRY", "DATE OF POSTING", "VACANCY POSTING", "VACANCY LOCATION", "VACANCY TYPE", "NO. OF VACANCY", "OCCUPATION/POSITION TITLE", "MINOR GROUP", "SEX", "CIVIL STATUS", "EDUCATION", "WORK EXPERIENCE", "MINOR GROUP CODE", "MAJOR GROUP"];
+let DATA=[];
+const SUM_HEADERS=["MONTH", "NO. OF REPORTING ESTAB", "VACANCIES - PRIVATE", "VACANCIES - GOVERNMENT", "VACANCIES - OVERSEAS", "VACANCIES - TOTAL", "ACTUAL WITHIN PESO/LGU - PRIVATE", "ACTUAL WITHIN PESO/LGU - GOVERNMENT", "ACTUAL WITHIN PESO/LGU - OVERSEAS", "ACTUAL WITHIN PESO/LGU - TOTAL", "REPORTING ESTAB - PRIVATE", "REPORTING ESTAB - GOVERNMENT", "REPORTING ESTAB - OVERSEAS", "REPORTING ESTAB - TOTAL"];
+let SUMMARY=[];
+const SHEET_SOURCES=[
+["AGONCILLO","1MiYl8hnqhd7sZnf3JGzvjvHpN9sQzU03Y1ryRq2In30"],["ALITAGTAG","1K7dcwpnkkLgidfDvzam2dD16sFAKMUAYxx6plbidVSE"],["BALAYAN","13jWTwFKddvC7c93x05Zhh3pR967TrG4QRbm1llEljzg"],["BALETE","1EcFgzcOxeba5Z-juWohlFwcnjOH4FKzjHoA3Ksb2deg"],["BATANGAS CITY","1i7BsG8y7jlDajBOZnGEMVLPpTtCgCdzvrwopUvDSxFU"],["BATANGAS PROVINCE","1v2jM6WBlYNsqLS0ypnS91QbWOYdeDfMDgoslLziVS0s"],["BATANGAS STATE UNIVERSITY","1_Zro3htf9fIaBWZhiMBjbRBFF8NGsLil69zLCPS14T4"],["BAUAN","1wqGS2CJk68WlPK8CGVM6yPE4F9vAxCpvxdY_WruzMe8"],["CALACA","1HkLQTosAW2n0m77n-Cos62RUCzbZF3AOy0GCN0sDsog"],["CALATAGAN","1h81YWbvj6jCauS_zHId4qC2wi82IpfQpeuoa3u7CRI4"],["CUENCA","1Kaypc1rrFlyUqhrbXyFt1mLrIfBGhkkiCu4BbeIolfI"],["IBAAN","1y7cisiUOrOfFk0cIllXKfb2-TnXbSSrmjD77SmwkuS4"],["LAUREL","1duEpnaW17yupxuhwiR5H5DYs8kffF-yNL87lqySQBYY"],["LEMERY","14vJbmj4bM9ooWHrzfKIhayCHZHGOOOjjLbTGFVG1EM0"],["LIAN","1B6pecQQXFZkmRUEWI_IWFsUC5I1uYXVrKsLogwuPN38"],["LIPA CITY","1hgz8HwbUdkZTKiZicld9zBloc-wpwDKcO6dX4Lz1-Dk"],["LOBO","14ANcISvncgFcAQ1eJuRI5uGwXMg3AiZfYLSKUqF3xxA"],["LYCEUM OF THE PHILIPPINES UNIVERSITY-BATANGAS","1iliFgowLsLN51dlYL68B4DVY-9yv2RllPJdoi8ijOXo"],["MABINI","1ayPKoFxeQbdQQmj8SZbhejjP6B8OMWh1qCqtuGYx5vQ"],["MALVAR","1ZneGHtAl4XzIpoRMe4gUT1Fn7RKjHmn8a_jH3bit2xU"],["MATAASNAKAHOY","1pvh2YcUWyeRhoXMbNU2V0CnLFag85vk2AC-z78Mhl5I"],["NASUGBU","1djuFpwjz29UuOiRQ_XL8SLiMlLDhTKPoZscze8d1zK8"],["UNIVERSITY OF BATANGAS-LIPA","1R5V7ZDv7SktvVozCt3joWKkRUh9qF8aPKv0YynDPMOM"],["PADRE GARCIA","1pXH7-uSA1rDf9z54a2fvDkQqqVE4t03gmqVgTWsOG3k"],["RIZAL COLLEGE OF TAAL","1eIs4RWCc5T4lQ1rui3_1BzN-VQzaLx2z7SnWQOoIrVY"],["ROSARIO","15ERkLWGUqvEOU6WMSg91tGlmRpXgZW2a1rcjZIuZmN0"],["SAN JOSE","1zhW8Jyc5JnptGu7TEXbmwJu3QilMNeZKkkTxMzs34lk"],["SAN JUAN","18zDCoZfoqfiyEvSJ0W8S1jx00_Q9GVvEJCJM4FlBiDw"],["SAN LUIS","1pXHxaV-rR4jFw_iP_bjkljOpOmUFWMAUh1z-m6qAXXI"],["SAN NICOLAS","1vQ9AozxWh4cdYP1MY_FbBUftfklveI62VvUIJaBiGRA"],["SAN PASCUAL","1h98cGkniNw13Ct_Vuai95p51vTAlyUKZ3u4YXNXEAXQ"],["SANTA TERESITA","1daxGRD8QqFK8sOpbuLi3SVjXYaYQld6qptyJDt6Li5k"],["SANTO TOMAS","107swJHKE8GyxdUDSewtHEpAVYY8OSJhcxaQ0dRBCwiM"],["TAAL","1y6x_R1YsL3IDFwJKxsGAyxBTvUPdjsZZB_BlkPJ6Xg8"],["TALISAY","1oq7aWeakqIitEckwoHSxlLcTAhbcMU0RcV2qcyZ1uP8"],["TANAUAN CITY","15zVm0YyPqQcRoWBcPJXTws_6xFPFnIvDgo6EEkwAr44"],["TAYSAN","1LdRANHrdvuMK38Ohv_55_Rx0UMhyD6XpWbsW5uEa-gE"],["TINGLOY","1gutURF2nMSNkME1oyCwOivKlfte2lKYFR5wOebYWF2Y"],["TUY","1LvPEFwV1aT5J2HvX0ZIvXKzXK5abxzLWhMWKpQAyBYg"],["UNIVERSITY OF BATANGAS-MAIN","1wwBWBLEOSJAloj64D1IHtc99JorGojUWo2SLusKG47E"],["UNIVERSITY OF BATANGAS-LIPA","1yJUO5Xxf7cAqNp4fsGBDFSqT2mgjw0SS2RPubl_JUu0"],["ALFONSO","1hFimE6Rk1TlFd3J5twVg_GkePcPD969vuIORIJvYats","CAVITE"],["AMADEO","1cWCxVX5oMp5HyzlN63UFTsVgv04puZzwCeGt3k1qQeU","CAVITE"],["BACOOR CITY","10AZ8fRBcPLb_9om6zZylu7GIeG2Wp5ZVqEKUDMUoYao","CAVITE"],["CARMONA","130M-YFIrCU3m_5wZcdSX33L2YOe0mcwahPI7-fujDOY","CAVITE"],["CAVITE CITY","1jTalG67XIBH9g6RX_oYzu1k_qHGmAMLYHatn3PH6b3k","CAVITE"],["CAVITE PROVINCE","1uMy4NuoeYSPDWhkOMuoCT7MseAQJ0kaWwYjBhscWBIs","CAVITE"],["CITY OF GENERAL TRIAS","1r7sL1jJ6ZVI12aLEZ8SW6t05QnMWDfRyL2L3iMBdGdE","CAVITE"],["DASMARIÑAS CITY","1D8W4VL6HPQuZR6dtyCtz58ASyt8ZJbX499H8WyQOXfQ","CAVITE"],["GENERAL EMILIO AGUINALDO","186gvYAAqgz4p-Ed7PbT9RPSeo3SBvAWWqNhkt-M77DM","CAVITE"],["GENERAL MARIANO ALVAREZ","1tGWtPcdoB4jp9S76W8aSF07XbBD24S5BL0B4KM4fiUo","CAVITE"],["IMUS CITY","1iuW3s3Rebm1Zu1WC-sx91Zc3yDc1jYr01KEWv0kZlso","CAVITE"],["INDANG","1U8yc1yODCD2Fu7U7Ch4dRe_6e4ZkSYPjc1tT1t3Vr4k","CAVITE"],["KAWIT","19rhaFSFqPxqHOBbJx03Gfyn34qqhXREOJiJs3xaYjt4","CAVITE"],["MAGALLANES","1nWzVUcLo1wO5ltHUcgkb6SByDnATXRsyZw5KQ0XR9RUU","CAVITE"],["MARAGONDON","1XrU8IMi8qv3-GYy8wxDCjLzA86NSIUBJHjCZTlimAV8","CAVITE"],["MENDEZ","1nea6EgfcGUpPX__K2OOX-pKoVidsVXpSl98lpHedk5s","CAVITE"],["NAIC","1UaAVm8YCEkyknZEdvoOy516KDY1rp7Khl0fNOFxyZlY","CAVITE"],["NOVELETA","1Z7SvrKdx-F_4lIsadjlVeZCbeIaD_vSGSj_e41aWO4g","CAVITE"],["ROSARIO","1V81yEd-CvkMIrCG_6QbMQSt-0OZ4ahZglxUdsIDEbac","CAVITE"],["SILANG","1n5RBAif8Xdy-mxhOfESLPodhwDS9brNY_B1r6vIatyE","CAVITE"],["TAGAYTAY CITY","1Uhfxcn4M2oN17Hn0eUe3RA4QLr5VezVDZfWoww15Hrc","CAVITE"],["TANZA","1FGd530D9LS4halN-PI3zSTpDI8uEmf2OG4uloPrxUO4","CAVITE"],["TERNATE","1OrnmUBTaF9fObbv8AvsjmvlIhv5adIaPIJT3mQkr3pw","CAVITE"],["TRECE MARTIRES CITY","1YO9q5kOHwHZvCqwJXewL_Uzb_lbj7ETkIBKt9Opd3Zk","CAVITE"]
+,
+["ALAMINOS","1JNC_221l4FRgJhMgPBYStQEu-77O6k9occdCcsBBz7E","LAGUNA"],
+["BAY","1dFUxgxZZ4Ov5GlC2wTHYG004dxT7W9Sg4H5CjseP8_II","LAGUNA"],
+["CITY OF BIÑAN","1YxaLaa9-Pck9GEEuMLmGVVzgojHqfsk4TL4z1R3b4gc","LAGUNA"],
+["CABUYAO CITY","1t_svzcksuo6ZQlTpcPUjyagkUwGv74yNgNuetBqpuoc","LAGUNA"],
+["CALAUAN","1MBRMlSxA3EqfTUbJjFPv9u48izqDU-gwhpVewIUkNCo","LAGUNA"],
+["CITY OF CALAMBA","1N7Ezvlepwu_BvOvjbn73piKu85DMHUvaKsEjBzNffBE","LAGUNA"],
+["CAVINTI","1p6_COC-FgmzKcMTGhmiBzzOgQ8RL4iy4m5BtmuInrx0","LAGUNA"],
+["FAMY","1XKTOy9tpj1MuvmHeqo8EIGFIxpQ6jv3K7zw7r0RgWQE","LAGUNA"],
+["KALAYAAN","1Sqz3G5aYbKu0bjaBU3fPoQbp3ruwDql0vBorEDsNoj8","LAGUNA"],
+["LAGUNA PROVINCE","1hi0ZCqMGMR0dbAC6f9wBZiamk0nhuhrG00kHG2aKNO0","LAGUNA"],
+["LAGUNA STATE POLYTECHNIC UNIVERSITY-MAIN","1eBKqGwz_HrP8NEgWOTs6XJPTGXY0xvyzvFUqUGb6uh0","LAGUNA"],
+["LAGUNA UNIVERSITY","1_Vpu0UpHADQTJBZixWvYfU_9geIOZLdLbJsgYn7JSxI","LAGUNA"],
+["LILIW","1NN_ZfCq19E4PX7l1N6Fm06YSHxSXjEIYoy9onhdDCDA","LAGUNA"],
+["LOS BAÑOS","1q2EDvZ8VwZogicBPQZvO9vNUBEK8C8dJQTmi_FIx_-0","LAGUNA"],
+["LUISIANA","1G_zgEqlGPvLCYfo5650wxJRak1IlZ09Y8Fxg8AItSeY","LAGUNA"],
+["LUMBAN","1Zo0WaKOI_gnerWWMtM-e-14sVbNW2eJnDijt_jEqAlU","LAGUNA"],
+["MABITAC","1wHNhh4y5G4Pd6vp9KgPyfKw11X45R-BwX5u8iKp4KY0","LAGUNA"],
+["MAGDALENA","1FrFk3jm67B4TqZ4jgC-YEE2bqWRLsf7OAuTaVB0hpRM","LAGUNA"],
+["MAJAYJAY","1Ufd8ls2jUna4dfZlKJBJ9wHvtWbWN_Zxaf7i15VYz1A","LAGUNA"],
+["NAGCARLAN","1dxIvvcLIfRbloMg0bZ_hRAPxFX41Bvu9PQEtoJqBg28","LAGUNA"],
+["PAETE","1z_d-G4aXhk7q8d3ERBFnth36QFEfUFwVjgFjXZRFO_8","LAGUNA"],
+["PAGSANJAN","19sU1DEDklSkyAI9g_5tsITR-3ID7BYtcyFvcfoGhtG4","LAGUNA"],
+["PAKIL","1LRxJbZ6cBhokcsQr05aXlv12QnlsCMjCEsnac9RFNSA","LAGUNA"],
+["PANGIL","18TNKZK_dsPOevgOKiNscSBz5WsQ4oht1xEUzixRX0EU","LAGUNA"],
+["PHINMA RIZAL COLLEGE OF CALAMBA","169kr5fTtefS8YpzHfC-YGawTBEosmFmEyRVqnBCG1xo","LAGUNA"],
+["PHINMA UNION COLLEGE OF CALAMBA","1YNWvpRuw4r8qcdv7SN5Fq_F656kX4tiOl6B7QdIlhpU","LAGUNA"],
+["PILA","143nAKoubQrsNzM2mMNNV--ZmOVh40a_PP6hO4Bc9qE4","LAGUNA"],
+["RIZAL","12_Yq31Mh4zhF3gHk26KQZcwV-KC_XbyNyj9lXDpxdvw","LAGUNA"],
+["SAN PABLO CITY","1uNIA4wEAHJjVuqCsdpb6YiyV--XXVIh-G0F2HT3lTYE","LAGUNA"],
+["SAN PEDRO CITY","1DLf34u5RKeTTrPHaNN5qs_2mF1H_wPfu52y0X-zTvvs","LAGUNA"],
+["SANTA CRUZ","1WYFnuXaTnGADiXYTtQvY2yCXWbHgXqpvzNzzSrY396g","LAGUNA"],
+["SANTA MARIA","1mz4-w734exYyCEBLLwSqUJOQ1OaZdW56cyRdTJmrZ1QQ","LAGUNA"],
+["CITY OF SANTA ROSA","1x54C7e8g-VySjv3zU84c3jhKdKsJo_sQNkS1tHkBPh0","LAGUNA"],
+["SINILOAN","1TNGYlSh2WaPW8t7MDXp96Q7VZM9ocuhhCG9jTO53Nso","LAGUNA"],
+["TRIMEX COLLEGE INC","1sQRvr7PBnxzcZH5vT6JqgfG-K9IlHpP2aYnQRRYSZaI","LAGUNA"],
+["VICTORIA","1LvD1qOpiXG6CDQLUV99O9VOwU4fkR19TPtlmLDpA7uA","LAGUNA"]
+,["AGDANGAN","1JRVn_bTVyKThfLLFdaAeXcns1eXEeLfGVQ4Ozmrp-6Q","QUEZON"],["ALABAT","1kZGWnDzIpva_rPV1ZttZ5E58j9m_jZfBYVWsmF84Qyk","QUEZON"],["ATIMONAN","1nJHwjT1QQmn6mDQze7_UAVfTpxv2ucPETB6z74JigyA","QUEZON"],["BUENAVISTA","1T4EOnc_omkV82a8NreDDnUhLO4mQc5quvS3-1DWmM5A","QUEZON"],["BURDEOS","1YAqGJZ1EFfOjPwMnPW-dKBdZL_UMDp1EGdCcI6M2iJU","QUEZON"],["CALAUAG","198gJyhd4tSnN5jJgBjJoWEY5gLW-HSqbxqrT9Gqcv8U","QUEZON"],["CANDELARIA","19DrigplZS8Z95ebUOn2WKk7yD97BK5xcHAluxv9jGfM","QUEZON"],["CATANAUAN","1VXf4s3VL6xgR3qjB5uub4fpMI-3qAZRsUgplTlUh0L0","QUEZON"],["TAYABAS CITY","1ylyiCGmRAQafPXYid3C9n-ymSgcpYQt69EFJi0vYo2c","QUEZON"],["DOLORES","11bSirONDYZm-uMmPXYuAr8QmfXY_N5CMc6jR95wU990","QUEZON"],["GENERAL LUNA","1-bd010aOrMRql3hkT0MyUuwfkYW7ivKcfJ2MZ9N5YLw","QUEZON"],["GENERAL NAKAR","16i0Oj3V0Nw6MoCv4_IUdgmXmJg7XrR7nxpqYj7ogZV0","QUEZON"],["GUINAYANGAN","1MMpGItglzTXcPKBWuM_L2rtVNm9eCORZK2X8iGlE2zo","QUEZON"],["GUMACA","1lPoMrQya-jRvVWMaBVw20TcQ8NkpBGtWepoFBzIBYcc","QUEZON"],["INFANTA","1n_NdCXki54HLxyFzZGzzW0hiV3HAdokHzcIwiqvMDZs","QUEZON"],["JOMALIG","1zkYooweNk8IBOjFOP7w_VO6UVmmKewrE87tAOa0gyQ8","QUEZON"],["LOPEZ","1oO9RczOLC-RlDTD6CjWpulBsLxa3Q-IXJLmQLhbx_f4","QUEZON"],["LUCBAN","1b6whnfSMI7jtPcSoEafkcRjGIDFafEFDUS9drbhN8qs","QUEZON"],["LUCENA CITY","1br0iTar5GaA9vLmr8FOKUyRzUsRC8H9aFmSF8BxEqew","QUEZON"],["MACALELON","1hrzKf3D_6nzABJKq6YXy_VcQlADIVOS0n5mOIzIorsE","QUEZON"],["MAUBAN","12FVFJgPalFwCXswisv_6sRWHWSdOivQn6VOas4ajXew","QUEZON"],["MULANAY","1YRbRh644x5u8ruMbjaQCVyH4Tz-e24eJzkjx2IBXby4","QUEZON"],["PADRE BURGOS","191wUo-nBCRTn7PArAcshRrikh0M7uqy6dWsUFED5Xv0","QUEZON"],["PAGBILAO","1Gxsp_kSzmGlJ9m0TKtHiBh10Bc3gyLGfomRrVB_xBGE","QUEZON"],["PANUKULAN","1ipp2oYwIabxmL4yeNlS_QhT8oxwYZUbqesvOD0aAzTY","QUEZON"],["PATNANUNGAN","1Z_kTmm4PrFe0xY4pSL_6yInsjkO70ErhzpVtCnxavsM","QUEZON"],["PEREZ","1ceEMDzKWDAdOr0Hte1t1_txRvRT-QoQgn-FrVu4sAyI","QUEZON"],["PITOGO","1Sp-spcZyg1B1kS_XK0b0CanQ1osjUMDCSqGDpA8Nsf0","QUEZON"],["PLARIDEL","1t1m-W7bokUqhmB5e6yDfCxl8W9zRZ42Jdyp03jeBHn4","QUEZON"],["POLILLO","1U_iolEtRWdlf7NK7vRLlkt0C_Hdd4cfx0s2YHdcA8dk","QUEZON"],["QUEZON PROVINCE","1VIxRoilnkm87BPKLeCP96Xs6DkvSamo4UhzVqRk-yEU","QUEZON"],["QUEZON","1LkI1fecflgnJu2X0jo217nZ1Wjn4o-4uy4p-71XDP1k","QUEZON"],["REAL","1CaHTV14xQ-ruYlEkOvWz6GKNejH1Vs5HJvfbVgWuwUw","QUEZON"],["SAMPALOC","1fH5A0vNotIcHNpk5bw7RzGSyb0dmuoMkFOiRWbhebx0","QUEZON"],["SAN ANDRES","1MBi_c3HXSQffzuGpw9sgTssM6nnGQDnR39ZoIcq6UpM","QUEZON"],["SAN ANTONIO","1AwTIYE0wfPptwrNlFnQd1ap1uouIsRkh8SOUig3vH6U","QUEZON"],["SAN FRANCISCO","1Z_pDQGdgfwtwxtU7JOWK91Q7D-lb9Sur9Iy04XTqoYw","QUEZON"],["SAN NARCISO","1G-ytBddjgcoSEbplMS2gza2RFaj8XiadnvJB3GQD7a8","QUEZON"],["SARIAYA","1fknNckh1dCozIzzFlU_u4b0B66Y86yWG0_N0YcxWvo0","QUEZON"],["TAGKAWAYAN","12gILj3mzRUw2JT9zMNh4u9EuezldpRgaCpUV0QOPbqo","QUEZON"],["TAYABAS CITY","1Lotp4TaA8MK_UkNBo22yL3an-vKTccCTUb7f6mW3m5s","QUEZON"],["TIAONG","1xDFBk6DVMfYDrQ-9p78Zn1v0WKhZIV_SyfE6i37OT-I","QUEZON"],["MANUEL S. ENVERGA UNIVERSITY FOUNDATION","1TLIXnmsQFyqoPNCPpGLjt_yUgFEOXctgyL7WxWZ2AJw","QUEZON"],["ACEBA SCIENCE AND TECHNOLOGY INSTITUTE, INC.","1bueumwfB9AwJbDf6Ctl_IT6E1lgahyk3FK73yn487sY","QUEZON"],["SOUTHERN LUZON STATE UNIVERSITY-LUCBAN","14m3Xb_A9zEMBmFhQQ4gnADZ2UkeaDhpkjHPBrB5QmWk","QUEZON"],
+["ANGONO","1saEZbKWisYoutt9n_bypQ3EwfGTD6x1HdhN-zeEQJEQ","RIZAL"],["CITY OF ANTIPOLO","1QxO9i-NByNEy_jeuiPsdxiGgtM-TQ9glGRPPiuTUFVE","RIZAL"],["BARAS","1Q740CTfs7PNFjesLeqXHceETZy1D66aB3pbEehG2kNs","RIZAL"],["BINANGONAN","1dZPjo7BNjAQZLTOnXazBbuSIlwv7Rf_CHWvTRvOTjBw","RIZAL"],["CAINTA","188SMKcr0J7c1J9rMHKfPA3YtjhSbosQla448n0aPhuI","RIZAL"],["CARDONA","1Sm66tb99I1BIpYSiQG4FR9Db2LyA1QLst79_Cy9BzCw","RIZAL"],["JALAJALA","1kaQWE_I-OsQphOXLFNhWjP_L4wCskO3T38VV-zVjrpo","RIZAL"],["MORONG","1_MHzJsQRjUx4uD72MZWINzeRTFFRS6n_SECdAD17sJs","RIZAL"],["PILILLA","14xVPlO5mg94FNjJUeFzeFFQzDZ5uOp3TnUbTZazHUHE","RIZAL"],["RIZAL PROVINCE","1S6QIJ9BmhGPesXQkS4KKOSdCKmWjkYGpG7XGdCzm8Gc","RIZAL"],["RODRIGUEZ","1QAc5fus0khfkxYwn4lmASXwtWh5VVvRQ9-2x_3lUbWo","RIZAL"],["SAN MATEO","1U0HOD5alPN6z0qLqW6j71tDDPJmLjHlavZtTo-U2XjU","RIZAL"],["TANAY","1bX14xo0yllG9SE8w6n2CTfe-0ILpbzckJC0D1w2SbO0","RIZAL"],["TAYTAY","1XnKFpuKXbWeNosZA7LG9PtMULTpJiTbv40DE_aGlxXk","RIZAL"],["TERESA","1W0hrp6KAEvE9-I3kGdOtElmWBX3qdUL5KkMO_LUEM-c","RIZAL"]];
+const $=s=>document.querySelector(s), province=$('#province'), municipality=$('#municipality'), search=$('#search'), tbody=$('#tbody');
+const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+function unique(idx,rows=DATA){return [...new Set(rows.map(r=>String(r[idx]??'').trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b));}
+function sourceProvince(src){return src[2]||'BATANGAS';}
+function sourceProvinces(){return [...new Set(SHEET_SOURCES.map(sourceProvince))].sort((a,b)=>a.localeCompare(b));}
+function sourceMunicipalities(p=''){return [...new Set(SHEET_SOURCES.filter(src=>!p||sourceProvince(src)===p).map(src=>src[0]).filter(Boolean))].sort((a,b)=>a.localeCompare(b));}
+function fillSelect(el,values,label){const old=el.value; el.innerHTML=`<option value="">All ${label}</option>`+values.map(v=>`<option>${esc(v)}</option>`).join(''); if(values.includes(old))el.value=old;}
+function filtered(){const p=province.value,m=municipality.value,q=search.value.trim().toLowerCase();return DATA.filter(r=>(!p||r[2]===p)&&(!m||r[3]===m)&&(!q||r.some(v=>String(v??'').toLowerCase().includes(q))));}
+function render(){const rows=filtered(); $('#recordCount').textContent=rows.length.toLocaleString(); $('#vacancyCount').textContent=rows.reduce((a,r)=>a+(Number(String(r[10]??'').replace(/,/g,''))||0),0).toLocaleString(); tbody.innerHTML=rows.length?rows.map(r=>'<tr>'+r.map(v=>`<td>${esc(v)}</td>`).join('')+'</tr>').join(''):`<tr><td class="empty" colspan="${HEADERS.length}">${DATA.length?'No records match the current filters.':'Select Province and Municipality to load records.'}</td></tr>`;}
+function norm(v){return String(v??'').trim().toUpperCase().replace(/\s+/g,' ');}
+function gvizUrl(id){return `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('VAC_DB')}&range=A10:S`;}
+function parseCSV(text){const out=[];let row=[],field='',q=false;for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(q){if(c==='"'&&n==='"'){field+='"';i++;}else if(c==='"')q=false;else field+=c;}else if(c==='"')q=true;else if(c===','){row.push(field);field='';}else if(c==='\n'){row.push(field.replace(/\r$/,''));out.push(row);row=[];field='';}else field+=c;}if(field.length||row.length){row.push(field.replace(/\r$/,''));out.push(row);}return out;}
+function extractVacDb(rows,sourceName,sourceProvince="BATANGAS"){
+  if(!rows.length)return[];
+
+  // Some VAC_DB files (including CITY OF ANTIPOLO) have a merged
+  // "REPORTING PERIOD" heading above YEAR/MONTH, while the GViz request
+  // starts at A10:S. In that layout the actual data arrives without a
+  // REPORTING YEAR header row. First try header-based mapping; if that header
+  // is not present, fall back to the fixed VAC_DB A:S column order.
+  let hi=rows.findIndex(r=>
+    r.some(v=>norm(v)==='REPORTING YEAR') &&
+    r.some(v=>norm(v).includes('CITY/MUNICIPALITY'))
+  );
+
+  let dataRows, map;
+  if(hi>=0){
+    const hdr=rows[hi].map(norm);
+    map=HEADERS.map(h=>hdr.indexOf(norm(h)));
+    dataRows=rows.slice(hi+1);
+  }else{
+    // A:S already follows HEADERS order:
+    // YEAR, MONTH, PROVINCE, CITY/MUNICIPALITY, ESTABLISHMENT, ... MAJOR GROUP.
+    map=HEADERS.map((_,i)=>i);
+    dataRows=rows;
+  }
+
+  return dataRows
+    .filter(r=>r.some(v=>String(v??'').trim()))
+    .filter(r=>{
+      // Skip any title/header/blank-like rows that may still be returned.
+      const first=norm(r[0]), second=norm(r[1]);
+      if(first==='REPORTING YEAR'||first==='REPORTING PERIOD')return false;
+      if(second==='REPORTING MONTH'||second==='MONTH')return false;
+      return true;
+    })
+    .map(r=>HEADERS.map((h,i)=>{
+      const j=map[i];
+      let v=j>=0?(r[j]??''):'';
+      if(i===2&&!String(v).trim())v=sourceProvince;
+      if(i===3&&!String(v).trim())v=sourceName;
+      return v;
+    }))
+    .filter(r=>r.some(v=>String(v).trim()));
+}
+async function loadSource([name,id,sourceProvince="BATANGAS"]){const res=await fetch(gvizUrl(id),{cache:'no-store'});if(!res.ok)throw new Error(`${res.status} ${res.statusText}`);const text=await res.text();if(/^<!doctype|^<html/i.test(text.trim()))throw new Error('Sheet is not publicly readable');const parsed=parseCSV(text);if(!parsed.length)throw new Error('VAC_DB returned no CSV data');const rows=extractVacDb(parsed,name,sourceProvince);if(!rows.length)throw new Error('No VAC_DB records found in A10:S');return rows;}
+async function loadAll(){DATA=[];render();const failed=[];let done=0,loaded=0;const chunks=[];const status=$('#sourceStatus');if(status)status.textContent='Loading…';const workers=Array.from({length:6},async()=>{while(done<SHEET_SOURCES.length){const idx=done++;const src=SHEET_SOURCES[idx];try{chunks[idx]=await loadSource(src);loaded++;}catch(e){failed.push(`${sourceProvince(src)} / ${src[0]}: ${e.message}`);chunks[idx]=[];}}});await Promise.all(workers);DATA=chunks.flat();fillSelect(province,sourceProvinces(),'Provinces');fillSelect(municipality,sourceMunicipalities(province.value),'Municipalities');render();buildSummary();if(status)status.textContent=`${loaded}/${SHEET_SOURCES.length} loaded`;if(failed.length){console.warn('VAC_DB sources not loaded:',failed);console.table(failed);}}
+function buildSummary(){const months=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];SUMMARY=months.map(month=>{const rows=DATA.filter(r=>norm(r[1])===month);const est=new Set(rows.map(r=>norm(r[4])).filter(Boolean)).size;let priv=0,gov=0,over=0;rows.forEach(r=>{const n=Number(String(r[10]??'').replace(/,/g,''))||0,t=norm(r[9]);if(t.includes('OVERSEAS'))over+=n;else if(t.includes('GOVERNMENT'))gov+=n;else priv+=n;});return [month,est,priv,gov,over,priv+gov+over,0,0,0,0,0,0,0,0];});const totals=SUM_HEADERS.map((_,i)=>i===0?'TOTAL':SUMMARY.reduce((a,r)=>a+(Number(r[i])||0),0));$('#sumBody').innerHTML=SUMMARY.map(r=>'<tr>'+r.map(v=>`<td>${esc(v)}</td>`).join('')+'</tr>').join('')+'<tr style="font-weight:900">'+totals.map(v=>`<td>${esc(v)}</td>`).join('')+'</tr>';buildReports();}
+$('#thead').innerHTML='<tr>'+HEADERS.map(h=>`<th>${esc(h)}</th>`).join('')+'</tr>';fillSelect(province,sourceProvinces(),'Provinces');fillSelect(municipality,sourceMunicipalities(),'Municipalities');render();
+let dataLoading=false;
+let loadedFilterKey='';
+
+async function loadAfterFilters(){
+  const p=province.value.trim();
+  const m=municipality.value.trim();
+  const status=$('#sourceStatus');
+
+  // Do not fetch anything until BOTH dropdowns have a value.
+  if(!p || !m){
+    DATA=[];
+    loadedFilterKey='';
+    if(status)status.textContent='Waiting for filters';
+    render();
+    return;
+  }
+
+  const filterKey=p+'|'+m;
+  if(dataLoading)return;
+  if(loadedFilterKey===filterKey){render();return;}
+
+  // Load ONLY the Google Sheet selected in the filters.
+  const sources=SHEET_SOURCES.filter(src=>sourceProvince(src)===p && src[0]===m);
+  if(!sources.length){
+    DATA=[];
+    loadedFilterKey='';
+    if(status)status.textContent='No source found';
+    render();
+    return;
+  }
+
+  dataLoading=true;
+  DATA=[];
+  if(status)status.textContent='Loading…';
+  tbody.innerHTML=`<tr><td class="empty" colspan="${HEADERS.length}">Loading ${esc(m)} records…</td></tr>`;
+
+  try{
+    const chunks=await Promise.all(sources.map(src=>loadSource(src)));
+    DATA=chunks.flat();
+    loadedFilterKey=filterKey;
+    render();
+    buildSummary();
+    if(status)status.textContent=`${sources.length}/${sources.length} loaded`;
+  }catch(err){
+    console.error('VAC_DB load error:',err);
+    DATA=[];
+    loadedFilterKey='';
+    if(status)status.textContent='Load failed';
+    tbody.innerHTML=`<tr><td class="empty" colspan="${HEADERS.length}">Failed to load ${esc(m)}: ${esc(err.message||err)}</td></tr>`;
+  }finally{
+    dataLoading=false;
+  }
+}
+
+province.addEventListener('change',()=>{
+  DATA=[];
+  loadedFilterKey='';
+  municipality.value='';
+  fillSelect(municipality,sourceMunicipalities(province.value),'Municipalities');
+  const status=$('#sourceStatus');
+  if(status)status.textContent='Select municipality';
+  render();
+});
+
+municipality.addEventListener('change',loadAfterFilters);
+search.addEventListener('input',render);
+
+$('#resetBtn').onclick=()=>{
+  DATA=[];
+  loadedFilterKey='';
+  province.value='';
+  municipality.value='';
+  search.value='';
+  fillSelect(municipality,sourceMunicipalities(),'Municipalities');
+  const status=$('#sourceStatus');
+  if(status)status.textContent='Waiting for filters';
+  render();
+};
+
+const REPORT_MONTHS=['JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE','JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER','DECEMBER'];
+let ALL_SOURCE_DATA=[];
+let allSourceScanPromise=null;
+async function scanAllSourcesForProvinceReports(){
+  if(ALL_SOURCE_DATA.length)return ALL_SOURCE_DATA;
+  if(allSourceScanPromise)return allSourceScanPromise;
+  const status=$('#provinceScanStatus');
+  allSourceScanPromise=(async()=>{
+    const chunks=new Array(SHEET_SOURCES.length);let next=0,done=0;
+    const workers=Array.from({length:6},async()=>{while(next<SHEET_SOURCES.length){const i=next++;try{chunks[i]=await loadSource(SHEET_SOURCES[i]);}catch(e){console.warn('Province report source failed:',SHEET_SOURCES[i][0],e);chunks[i]=[];}finally{done++;if(status)status.textContent=`${done}/${SHEET_SOURCES.length}`;}}});
+    await Promise.all(workers);ALL_SOURCE_DATA=chunks.flat();rebuildEmployerCanonicalMap();return ALL_SOURCE_DATA;
+  })();
+  try{return await allSourceScanPromise;}finally{allSourceScanPromise=null;}
+}
+function isNewPosting(r){return norm(r[7])==='NEW POSTING'||norm(r[7]).includes('NEW POSTING');}
+function locationBucket(v){const x=norm(v);if(x.includes('WITHIN THE CITY')||x.includes('WITHIN CITY')||x.includes('CITY/MUNICIPALITY')||x.includes('CITY / MUNICIPALITY'))return 'CITY';if(x.includes('WITHIN THE PROVINCE')||x.includes('WITHIN PROVINCE'))return 'PROVINCE';return '';}
+function vacancyNumber(r){return Number(String(r[10]??'').replace(/,/g,''))||0;}
+
+/* ===== EMPLOYER DEDUPLICATION ACROSS ALL GOOGLE SHEET LINKS =====
+   1) Normalizes case, punctuation, spacing and common company suffixes.
+   2) Merges obvious abbreviations such as CORPORATION/CORP and INCORPORATED/INC.
+   3) For longer names, also treats a 1-2 character typo as the same employer.
+   The first spelling found is retained for display.
+*/
+let EMPLOYER_CANONICAL_MAP=new Map();
+function employerBaseName(v){
+  let x=norm(v)
+    .replace(/&/g,' AND ')
+    .replace(/[^A-Z0-9 ]+/g,' ')
+    // Normalize Philippine abbreviations before removing the country word.
+    // EPSON PRECISION (PHILIPPINES) INC. == EPSON PRECISION PHILS., INC.
+    .replace(/\bPHILS?\b/g,' PHILIPPINES ')
+    .replace(/\bPHILIPPINE\b/g,' PHILIPPINES ')
+    // LIMA is commonly inserted as the Batangas site/location before PHILIPPINES.
+    // FURUKAWA ... LIMA PHILIPPINES INC. == FURUKAWA ... PHILS. INC.
+    .replace(/\bLIMA\s+PHILIPPINES\b/g,' PHILIPPINES ')
+    .replace(/\bINCORPORATED\b/g,' INC')
+    .replace(/\bCORPORATION\b/g,' CORP')
+    .replace(/\bCOMPANY\b/g,' CO')
+    .replace(/\bLIMITED\b/g,' LTD')
+    .replace(/\bENTERPRISES\b/g,' ENTERPRISE')
+    .replace(/\bSERVICES\b/g,' SERVICE')
+    // Ignore country/legal words that commonly create duplicate employer names.
+    .replace(/\bPHILIPPINES\b/g,' ')
+    .replace(/\s+/g,' ').trim();
+  // Remove trailing legal/company suffixes so punctuation/suffix variations deduplicate.
+  x=x.replace(/(?:\s+(?:INC|CORP|CO|LTD|LLC|PLC))+$/g,'').trim();
+  return x;
+}
+function employerCompact(v){return employerBaseName(v).replace(/\s+/g,'');}
+function editDistanceAtMost2(a,b){
+  if(a===b)return 0;
+  if(Math.abs(a.length-b.length)>2)return 3;
+  const prev=Array.from({length:b.length+1},(_,i)=>i),cur=new Array(b.length+1);
+  for(let i=1;i<=a.length;i++){
+    cur[0]=i;let rowMin=cur[0];
+    for(let j=1;j<=b.length;j++){
+      cur[j]=Math.min(cur[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));
+      if(cur[j]<rowMin)rowMin=cur[j];
+    }
+    if(rowMin>2)return 3;
+    for(let j=0;j<=b.length;j++)prev[j]=cur[j];
+  }
+  return prev[b.length];
+}
+function rebuildEmployerCanonicalMap(){
+  EMPLOYER_CANONICAL_MAP=new Map();
+  const groups=[];
+  const names=[...new Set(ALL_SOURCE_DATA.map(r=>String(r[4]||'').trim()).filter(Boolean))];
+  names.sort((a,b)=>employerBaseName(b).length-employerBaseName(a).length);
+  for(const original of names){
+    const base=employerBaseName(original), compact=employerCompact(original);
+    if(!base)continue;
+    let match=null;
+    for(const g of groups){
+      if(compact===g.compact){match=g;break;}
+      // Fuzzy matching is intentionally limited to longer names to avoid
+      // merging short but genuinely different employers.
+      if(compact.length>=8 && g.compact.length>=8 && editDistanceAtMost2(compact,g.compact)<=2){match=g;break;}
+    }
+    if(!match){match={key:base,compact,display:original};groups.push(match);}
+    EMPLOYER_CANONICAL_MAP.set(norm(original),match.key);
+  }
+}
+function employerDedupKey(v){
+  const raw=String(v||'').trim();
+  if(!raw)return '';
+  return EMPLOYER_CANONICAL_MAP.get(norm(raw))||employerBaseName(raw);
+}
+function renderProvinceSummary(){
+  const p=$('#provinceSummaryProvince').value;
+  const body=$('#provinceSummaryBody'),foot=$('#provinceSummaryFoot');
+  const rows=REPORT_MONTHS.map(month=>{
+    const mr=ALL_SOURCE_DATA.filter(r=>norm(r[2])===norm(p)&&norm(r[1])===month&&isNewPosting(r));
+    let city=0,prov=0;const employers=new Set();
+    mr.forEach(r=>{const b=locationBucket(r[8]),n=vacancyNumber(r);if(b==='CITY')city+=n;else if(b==='PROVINCE')prov+=n;const e=employerDedupKey(r[4]);if(e)employers.add(e);});
+    return {month,city,prov,total:city+prov,employers:employers.size};
+  });
+  body.innerHTML=rows.map(x=>`<tr><td>${x.month}</td><td>${x.city.toLocaleString()}</td><td>${x.prov.toLocaleString()}</td><td>${x.total.toLocaleString()}</td><td>${x.employers.toLocaleString()}</td></tr>`).join('');
+  // Vacancy totals are added across all months, but employer TOTAL must be
+  // deduplicated across the ENTIRE selected province/year. Do not add the
+  // 12 monthly unique-employer counts because the same employer may appear
+  // in several months.
+  const provinceEmployerKeys=new Set(
+    ALL_SOURCE_DATA
+      .filter(r=>norm(r[2])===norm(p) && isNewPosting(r))
+      .map(r=>employerDedupKey(r[4]))
+      .filter(Boolean)
+  );
+  const t=rows.reduce((a,x)=>({city:a.city+x.city,prov:a.prov+x.prov,total:a.total+x.total}),{city:0,prov:0,total:0});
+  t.employers=provinceEmployerKeys.size;
+  foot.innerHTML=`<tr style="font-weight:900"><td>TOTAL</td><td>${t.city.toLocaleString()}</td><td>${t.prov.toLocaleString()}</td><td>${t.total.toLocaleString()}</td><td>${t.employers.toLocaleString()}</td></tr>`;
+}
+function renderProvinceEmployers(){
+  const month=$('#provinceEmployerMonth').value;
+  const selectedProvince=$('#provinceSummaryProvince').value;
+  const map=new Map();
+
+  // Employer list follows the Province Summary dropdown.
+  // Deduplication is still based on the canonical employer map built from
+  // ALL Google Sheet links, but only employers from the selected province
+  // and selected month are displayed here.
+  ALL_SOURCE_DATA
+    .filter(r=>norm(r[2])===norm(selectedProvince) && norm(r[1])===month && isNewPosting(r))
+    .forEach(r=>{
+      const p=String(r[2]||'').trim();
+      const e=String(r[4]||'').trim();
+      const ind=String(r[5]||'').trim();
+      if(!e)return;
+      const key=employerDedupKey(e);
+      if(!key)return;
+      if(!map.has(key))map.set(key,{p,e,ind});
+    });
+
+  const rows=[...map.values()].sort((a,b)=>a.e.localeCompare(b.e));
+  const title=$('#provinceEmployerTitle');
+  if(title)title.textContent=`Employers — ${selectedProvince || 'Select Province'}`;
+
+  $('#provinceEmployerBody').innerHTML=rows.length
+    ? rows.map(x=>`<tr><td style="text-align:left">${esc(x.p)}</td><td style="text-align:left;font-weight:800">${esc(x.e)}</td><td style="text-align:left">${esc(x.ind)}</td></tr>`).join('')
+    : `<tr><td class="empty" colspan="3">No NEW POSTING employers for ${esc(selectedProvince)} in ${esc(month)}.</td></tr>`;
+}
+function downloadProvinceSummary(){
+  if(!ALL_SOURCE_DATA.length){alert('Open Province Summary first and wait for all Google Sheet links to finish scanning.');return;}
+  const p=$('#provinceSummaryProvince').value;
+  const month=$('#provinceEmployerMonth').value;
+  if(!p){alert('Select a province first.');return;}
+
+  const summaryRows=REPORT_MONTHS.map(m=>{
+    const mr=ALL_SOURCE_DATA.filter(r=>norm(r[2])===norm(p)&&norm(r[1])===m&&isNewPosting(r));
+    let city=0,prov=0;const employers=new Set();
+    mr.forEach(r=>{const b=locationBucket(r[8]),n=vacancyNumber(r);if(b==='CITY')city+=n;else if(b==='PROVINCE')prov+=n;const e=employerDedupKey(r[4]);if(e)employers.add(e);});
+    return [m,city,prov,city+prov,employers.size];
+  });
+  // Deduplicate the TOTAL employer count across all months and all Google
+  // Sheet links for this province. Monthly employer counts remain unique per
+  // month, while TOTAL counts each canonical employer only once.
+  const totalEmployerKeys=new Set(
+    ALL_SOURCE_DATA
+      .filter(r=>norm(r[2])===norm(p) && isNewPosting(r))
+      .map(r=>employerDedupKey(r[4]))
+      .filter(Boolean)
+  );
+  summaryRows.push(['TOTAL',
+    summaryRows.reduce((a,r)=>a+r[1],0),
+    summaryRows.reduce((a,r)=>a+r[2],0),
+    summaryRows.reduce((a,r)=>a+r[3],0),
+    totalEmployerKeys.size
+  ]);
+
+  const employerMap=new Map();
+  ALL_SOURCE_DATA.filter(r=>norm(r[2])===norm(p)&&norm(r[1])===month&&isNewPosting(r)).forEach(r=>{
+    const e=String(r[4]||'').trim(); if(!e)return;
+    const key=employerDedupKey(e); if(!key)return;
+    if(!employerMap.has(key))employerMap.set(key,[String(r[2]||'').trim(),e,String(r[5]||'').trim()]);
+  });
+  const employerRows=[...employerMap.values()].sort((a,b)=>a[1].localeCompare(b[1]));
+
+  const wb=XLSX.utils.book_new();
+  const summaryAOA=[
+    [`PROVINCE OF ${p}`],
+    ['MONTHS','NEW POSTING - WITHIN THE CITY/MUNICIPALITY','NEW POSTING - WITHIN THE PROVINCE','TOTAL','EMPLOYERS'],
+    ...summaryRows
+  ];
+  const ws1=XLSX.utils.aoa_to_sheet(summaryAOA);
+  ws1['!cols']=[{wch:15},{wch:34},{wch:30},{wch:14},{wch:14}];
+  XLSX.utils.book_append_sheet(wb,ws1,'PROVINCE SUMMARY');
+
+  const employerAOA=[
+    [`EMPLOYERS - ${p}`],
+    [`MONTH: ${month}`],
+    [],
+    ['PROVINCE','NAME OF EMPLOYER','INDUSTRY'],
+    ...employerRows
+  ];
+  const ws2=XLSX.utils.aoa_to_sheet(employerAOA);
+  ws2['!cols']=[{wch:18},{wch:45},{wch:70}];
+  XLSX.utils.book_append_sheet(wb,ws2,'EMPLOYERS');
+  XLSX.writeFile(wb,`Job Vacancies - ${p} - ${month}.xlsx`);
+}
+
+async function openProvinceSummary(){
+  const pm=$('#provinceSummaryProvince'),mm=$('#provinceEmployerMonth');
+  if(!pm.options.length)pm.innerHTML=sourceProvinces().map(x=>`<option>${esc(x)}</option>`).join('');
+  if(!mm.options.length)mm.innerHTML=REPORT_MONTHS.map(x=>`<option>${x}</option>`).join('');
+  $('#provinceSummaryModal').classList.add('show');
+  $('#provinceSummaryBody').innerHTML='<tr><td class="empty" colspan="5">Scanning all Google Sheet links…</td></tr>';
+  $('#provinceEmployerBody').innerHTML='<tr><td class="empty" colspan="3">Scanning all Google Sheet links…</td></tr>';
+  await scanAllSourcesForProvinceReports();renderProvinceSummary();renderProvinceEmployers();
+}
+
+function buildReports(){const sel=$('#reportsMonth');if(!sel)return;const old=sel.value;sel.innerHTML=REPORT_MONTHS.map(m=>`<option>${m}</option>`).join('');sel.value=REPORT_MONTHS.includes(old)?old:'JANUARY';renderReports();}
+function renderReports(){const month=$('#reportsMonth').value;const rowsSource=ALL_SOURCE_DATA;const map=new Map();rowsSource.filter(r=>norm(r[1])===month).forEach(r=>{const p=String(r[2]||'').trim(),m=String(r[3]||'').trim();if(!m)return;const key=p+'|'+m;if(!map.has(key))map.set(key,{p,m,records:0,vac:0});const x=map.get(key);x.records++;x.vac+=Number(String(r[10]??'').replace(/,/g,''))||0;});const rows=[...map.values()].sort((a,b)=>a.p.localeCompare(b.p)||a.m.localeCompare(b.m));$('#reportsBody').innerHTML=rows.length?rows.map(x=>`<tr><td style="text-align:left">${esc(x.p)}</td><td style="text-align:left;font-weight:800">${esc(x.m)}</td><td>${x.records.toLocaleString()}</td><td>${x.vac.toLocaleString()}</td></tr>`).join(''):`<tr><td class="empty" colspan="4">No municipalities have reports for ${esc(month)}.</td></tr>`;$('#reportsFoot').innerHTML=rows.length?`<tr style="font-weight:900"><td colspan="2" style="text-align:left">TOTAL</td><td>${rows.reduce((a,x)=>a+x.records,0).toLocaleString()}</td><td>${rows.reduce((a,x)=>a+x.vac,0).toLocaleString()}</td></tr>`:'';}
+async function openMunicipalityReports(){reportsModal.classList.add('show');$('#reportsBody').innerHTML=`<tr><td class="empty" colspan="4">Scanning all ${SHEET_SOURCES.length} Google Sheet sources…</td></tr>`;$('#reportsFoot').innerHTML='';await scanAllSourcesForProvinceReports();buildReports();}
+
+$('#sumHead').innerHTML='<tr>'+SUM_HEADERS.map(h=>`<th>${esc(h)}</th>`).join('')+'</tr>';$('#sumBody').innerHTML=`<tr><td class="empty" colspan="${SUM_HEADERS.length}">Loading tabulated data…</td></tr>`;
+const modal=$('#modal'),reportsModal=$('#reportsModal'),provinceSummaryModal=$('#provinceSummaryModal');$('#tabBtn').onclick=()=>modal.classList.add('show');$('#closeModal').onclick=()=>modal.classList.remove('show');modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});$('#reportsBtn').onclick=openMunicipalityReports;$('#closeReportsModal').onclick=()=>reportsModal.classList.remove('show');reportsModal.addEventListener('click',e=>{if(e.target===reportsModal)reportsModal.classList.remove('show')});$('#reportsMonth').addEventListener('change',renderReports);$('#provinceSummaryBtn').onclick=openProvinceSummary;$('#closeProvinceSummaryModal').onclick=()=>provinceSummaryModal.classList.remove('show');provinceSummaryModal.addEventListener('click',e=>{if(e.target===provinceSummaryModal)provinceSummaryModal.classList.remove('show')});$('#provinceSummaryProvince').addEventListener('change',()=>{renderProvinceSummary();renderProvinceEmployers();});$('#provinceEmployerMonth').addEventListener('change',renderProvinceEmployers);$('#provinceSummaryDownloadBtn').addEventListener('click',downloadProvinceSummary);document.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('show');reportsModal.classList.remove('show');provinceSummaryModal.classList.remove('show')}});
+/* ============================================================
+   DOWNLOAD USING THE EXISTING XLSX TEMPLATE — FORMAT PRESERVED
+   - Loads the GitHub XLSX itself.
+   - Writes VAC_DB data beginning on EXCEL ROW 13.
+   - Does not recreate/resize/reformat the template worksheet.
+   - Writes the tabulated report to an existing tabulated/summary
+     sheet when found; otherwise adds a separate TABULATED REPORT.
+   ============================================================ */
+const XLSX_TEMPLATE_URL='./Job Vacancies Solicited Report form.xlsx';
+const DATA_START_ROW=13; // EXACT Excel row
+
+function xpNorm(v){
+  return String(v??'').trim().toUpperCase().replace(/\s+/g,' ');
+}
+
+function xpSheetByNames(wb,names){
+  const wanted=names.map(xpNorm);
+  return wb.sheets().find(s=>wanted.includes(xpNorm(s.name())))||null;
+}
+
+function xpFindDataSheet(wb){
+  let ws=xpSheetByNames(wb,['VAC_DB','VAC DB','DATABASE','DATA','JOB VACANCIES SOLICITED REPORT']);
+  if(ws)return ws;
+
+  // Detect the existing formatted report sheet by its headings.
+  for(const s of wb.sheets()){
+    let hasYear=false,hasMonth=false;
+    for(let r=1;r<=Math.min(40,s.usedRange()?s.usedRange().endCell().rowNumber():40);r++){
+      for(let c=1;c<=Math.min(25,s.usedRange()?s.usedRange().endCell().columnNumber():25);c++){
+        const v=xpNorm(s.cell(r,c).value());
+        if(v==='REPORTING YEAR')hasYear=true;
+        if(v==='REPORTING MONTH')hasMonth=true;
+      }
+    }
+    if(hasYear&&hasMonth)return s;
+  }
+  return wb.sheet(0);
+}
+
+function xpSafeValue(v,i){
+  if(v===null||v===undefined)return '';
+  if(i===10){
+    const n=Number(String(v).replace(/,/g,''));
+    return Number.isFinite(n)?n:v;
+  }
+  return v;
+}
+
+function xpCopyRowStyle(ws,fromRow,toRow,colCount){
+  // Only needed when data extends below the already-formatted template area.
+  for(let c=1;c<=colCount;c++){
+    try{
+      const src=ws.cell(fromRow,c), dst=ws.cell(toRow,c);
+      const style=src.style();
+      if(style)dst.style(style);
+    }catch(e){}
+  }
+  try{
+    const h=ws.row(fromRow).height();
+    if(h!=null)ws.row(toRow).height(h);
+  }catch(e){}
+}
+
+function plotVacDbXlsxPopulate(wb,rows){
+  const ws=xpFindDataSheet(wb);
+  if(!ws)throw new Error('No worksheet found in the Excel template.');
+
+  const used=ws.usedRange();
+  const originalLastRow=used?used.endCell().rowNumber():DATA_START_ROW;
+
+  // IMPORTANT:
+  // Only clear/write VALUES in A:S from row 13.
+  // XlsxPopulate leaves the workbook's existing formatting, widths,
+  // merged cells, fills, borders, fonts and print layout in place.
+  for(let r=DATA_START_ROW;r<=originalLastRow;r++){
+    for(let c=1;c<=HEADERS.length;c++){
+      try{
+        // Skip merged child cells. If the template has a merge here,
+        // XlsxPopulate may throw when assigning to a non-master cell.
+        ws.cell(r,c).value(undefined);
+      }catch(e){}
+    }
+  }
+
+  rows.forEach((record,ri)=>{
+    const r=DATA_START_ROW+ri;
+    if(r>originalLastRow)xpCopyRowStyle(ws,DATA_START_ROW,r,HEADERS.length);
+
+    record.forEach((v,i)=>{
+      try{
+        ws.cell(r,i+1).value(xpSafeValue(v,i));
+      }catch(e){
+        // Do not break the whole download because of a protected/merged
+        // template cell; simply leave that template cell untouched.
+        console.warn(`Skipped template cell ${r},${i+1}`,e);
+      }
+    });
+  });
+}
+
+function currentTabulatedRows(){
+  buildSummary();
+  const total=SUM_HEADERS.map((_,i)=>
+    i===0?'TOTAL':SUMMARY.reduce((a,r)=>a+(Number(r[i])||0),0)
+  );
+  return [...SUMMARY,total];
+}
+
+function xpFindTabulatedHeaderRow(ws){
+  const used=ws.usedRange();
+  const maxR=Math.min(180,used?used.endCell().rowNumber():180);
+  const maxC=Math.min(80,used?used.endCell().columnNumber():80);
+  for(let r=1;r<=maxR;r++){
+    let hasMonth=false,hasEst=false;
+    for(let c=1;c<=maxC;c++){
+      const v=xpNorm(ws.cell(r,c).value());
+      if(v==='MONTH')hasMonth=true;
+      if(v.includes('NO. OF REPORTING ESTAB'))hasEst=true;
+    }
+    if(hasMonth&&hasEst)return r;
+  }
+  return 0;
+}
+
+function plotTabulatedXlsxPopulate(wb){
+  /*
+    IMPORTANT:
+    The TABULATED REPORT is already part of the SAME formatted template sheet.
+    It occupies columns U:AH. Do NOT create/find another report sheet and
+    do NOT write the tabulated values into columns A:N.
+  */
+  const ws=xpFindDataSheet(wb);
+  if(!ws)throw new Error('Main formatted worksheet was not found.');
+
+  const rows=currentTabulatedRows();
+
+  // Exact destination columns from the template:
+  // U  = MONTH
+  // V  = NO. OF REPORTING ESTAB
+  // W  = VACANCIES SOLICITED - PRIVATE
+  // X  = VACANCIES SOLICITED - GOVERNMENT
+  // Y  = VACANCIES SOLICITED - OVERSEAS
+  // Z  = VACANCIES SOLICITED - TOTAL
+  // AA = ACTUAL - PRIVATE
+  // AB = ACTUAL - GOVERNMENT
+  // AC = ACTUAL - OVERSEAS
+  // AD = ACTUAL - TOTAL
+  // AE = REPORTING ESTAB - PRIVATE
+  // AF = REPORTING ESTAB - GOVERNMENT
+  // AG = REPORTING ESTAB - OVERSEAS
+  // AH = REPORTING ESTAB - TOTAL
+  const FIRST_COL=21; // U
+  const LAST_COL=34;  // AH
+
+  // Locate the template's existing JANUARY...TOTAL rows in column U.
+  // This preserves the exact template row positions and formatting.
+  const rowByMonth={};
+  const used=ws.usedRange();
+  const maxRow=Math.max(100,used?used.endCell().rowNumber():100);
+
+  for(let r=1;r<=maxRow;r++){
+    const label=xpNorm(ws.cell(r,FIRST_COL).value());
+    if([
+      'JANUARY','FEBRUARY','MARCH','APRIL','MAY','JUNE',
+      'JULY','AUGUST','SEPTEMBER','OCTOBER','NOVEMBER',
+      'DECEMBER','TOTAL'
+    ].includes(label)){
+      rowByMonth[label]=r;
+    }
+  }
+
+  if(!rowByMonth.JANUARY){
+    throw new Error(
+      'Could not find the existing TABULATED REPORT in columns U:AH of the Excel template.'
+    );
+  }
+
+  rows.forEach(record=>{
+    const label=xpNorm(record[0]);
+    const r=rowByMonth[label];
+    if(!r)return;
+
+    // Keep column U's existing month label and formatting.
+    // Plot numeric values only into V:AH.
+    for(let i=1;i<record.length;i++){
+      const c=FIRST_COL+i;
+      if(c>LAST_COL)break;
+      try{
+        ws.cell(r,c).value(Number(record[i])||0);
+      }catch(e){
+        console.warn(`Skipped tabulated template cell ${r},${c}`,e);
+      }
+    }
+  });
+}
+async function downloadUsingTemplate(){
+  const rows=filtered();
+  if(!rows.length)return alert('No records to download.');
+
+  const btn=$('#downloadBtn');
+  const oldText=btn.innerHTML;
+  btn.disabled=true;
+  btn.innerHTML='⏳ Preparing Excel…';
+
+  try{
+    if(typeof XlsxPopulate==='undefined'){
+      throw new Error('Excel template library did not load. Refresh the page and try again.');
+    }
+
+    const res=await fetch(XLSX_TEMPLATE_URL,{cache:'no-store'});
+    if(!res.ok){
+      throw new Error(
+        `Template not found (${res.status}). Keep "Job Vacancies Solicited Report form.xlsx" beside JFEncoding.html in GitHub.`
+      );
+    }
+
+    const sourceBlob=await res.blob();
+
+    // XlsxPopulate is used instead of ExcelJS because the previous error
+    // occurs while ExcelJS parses/serializes a null property in this template.
+    const wb=await XlsxPopulate.fromDataAsync(sourceBlob);
+
+    plotVacDbXlsxPopulate(wb,rows);
+    plotTabulatedXlsxPopulate(wb);
+
+    const outBlob=await wb.outputAsync({
+      type:'blob',
+      mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    });
+
+    const url=URL.createObjectURL(outBlob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download='Job Vacancies Solicited Report form.xlsx';
+    a.style.display='none';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1500);
+
+  }catch(err){
+    console.error('Excel template download error:',err);
+    console.error(err&&err.stack?err.stack:'');
+    alert('Download failed: '+(err&&err.message?err.message:String(err)));
+  }finally{
+    btn.disabled=false;
+    btn.innerHTML=oldText;
+  }
+}
+
+$('#downloadBtn').onclick=downloadUsingTemplate;
+
+function openProgram(url){ window.location.assign(url); }
+
+const programSidebar=document.getElementById('programSidebar');
+const sidebarOverlay=document.getElementById('sidebarOverlay');
+const sidebarToggle=document.getElementById('sidebarToggle');
+
+function isDesktopSidebar(){return window.matchMedia('(min-width:901px)').matches;}
+
+function showProgramSidebar(){
+  if(isDesktopSidebar()){
+    document.body.classList.remove('sidebar-collapsed');
+    programSidebar.classList.add('show');
+    sidebarToggle.innerHTML='<i class="bi bi-list"></i>';
+    sidebarToggle.title='Hide Programs';
+  }else{
+    programSidebar.classList.add('show');
+    sidebarOverlay.classList.add('show');
+  }
+}
+
+function hideProgramSidebar(){
+  if(isDesktopSidebar()){
+    document.body.classList.add('sidebar-collapsed');
+    programSidebar.classList.remove('show');
+    sidebarToggle.innerHTML='<i class="bi bi-list"></i>';
+    sidebarToggle.title='Show Programs';
+  }else{
+    programSidebar.classList.remove('show');
+    sidebarOverlay.classList.remove('show');
+  }
+}
+
+function toggleProgramSidebar(){
+  if(isDesktopSidebar()){
+    document.body.classList.contains('sidebar-collapsed')
+      ? showProgramSidebar()
+      : hideProgramSidebar();
+  }else{
+    programSidebar.classList.contains('show')
+      ? hideProgramSidebar()
+      : showProgramSidebar();
+  }
+}
+
+sidebarToggle.addEventListener('click',toggleProgramSidebar);
+sidebarOverlay.addEventListener('click',hideProgramSidebar);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')hideProgramSidebar();});
+
+function syncSidebarLayout(){
+  if(isDesktopSidebar()){
+    programSidebar.classList.add('show');
+    sidebarOverlay.classList.remove('show');
+    if(document.body.classList.contains('sidebar-collapsed')){
+      sidebarToggle.innerHTML='<i class="bi bi-list"></i>';
+      sidebarToggle.title='Show Programs';
+    }else{
+      sidebarToggle.innerHTML='<i class="bi bi-list"></i>';
+      sidebarToggle.title='Hide Programs';
+    }
+  }else{
+    document.body.classList.remove('sidebar-collapsed');
+    programSidebar.classList.remove('show');
+    sidebarOverlay.classList.remove('show');
+    sidebarToggle.innerHTML='<i class="bi bi-list"></i>';
+    sidebarToggle.title='Show Programs';
+  }
+}
+window.addEventListener('resize',syncSidebarLayout);
+syncSidebarLayout();
+
+</script><script id="signed-in-sidebar-user">
+(function(){
+ function refreshUser(){
+  const el=document.getElementById('programSidebarUsername');if(!el)return;
+  let name='';
+  for(const key of ['userContext','currentUser','loggedUser','loggedInUser','user','username']){
+   let raw;try{raw=sessionStorage.getItem(key)||localStorage.getItem(key)}catch(e){continue}
+   if(!raw)continue;
+   try{const v=JSON.parse(raw);if(typeof v==='string')name=v;else if(v&&typeof v==='object'){const u=(v.user&&typeof v.user==='object')?v.user:v;name=u.firstName||u.firstname||u.first_name||u.displayName||u.name||u.username||u.userName||''}}catch(e){name=raw}
+   if(name)break;
+  }
+  el.textContent=String(name||'USER').trim().split(/\s+/)[0].toUpperCase();
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refreshUser);else refreshUser();
+})();
+</script><script defer src="/epms-table-pagination.js"></script>
+</body></html>
