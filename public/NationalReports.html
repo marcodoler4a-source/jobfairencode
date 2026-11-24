@@ -20402,8 +20402,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script id="jf-authoritative-prereg-gid0-names">
 (function(){
 'use strict';
-const ID='1mAROAhm6lfuJ-S3EMkcR6H-BmOtodZIOUOJTlciJZcQ';
-const URL='https://docs.google.com/spreadsheets/d/'+ID+'/export?format=csv&gid=0';
+const URL='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec?action=getPreRegistration';
 const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
 const clean=x=>String(x==null?'':x).trim();
 const norm=x=>clean(x).toUpperCase().replace(/\s+/g,' ');
@@ -20445,7 +20444,7 @@ function draw(){
   const match=normalized.match(/(?:^|[^A-Z])(BATANGAS|CAVITE|LAGUNA|QUEZON|RIZAL)(?=$|[^A-Z])/);
   return match?match[1]:'';
  };
- const available=loaded?rows.filter(r=>(!province||venueProvince(r.venue)===province)&&(!query||norm(r.fullName).includes(query))):[];
+ const available=loaded?rows.filter(r=>(!province||(venueProvince(r.venue)||norm(r.province))===province)&&(!query||norm(r.fullName).includes(query))):[];
  const stamp=JSON.stringify([loaded,province,query,available.map(r=>[r.uid,r.fullName]),lastError]);
  // Verify actual options as legacy functions may overwrite them.
  if(stamp===signature&&select.options.length===available.length+1&&
@@ -20465,7 +20464,9 @@ async function reload(){
  try{
   const response=await fetch(URL+'&_='+Date.now(),{cache:'no-store'});
   if(!response.ok)throw Error('HTTP '+response.status);
-  const data=parse(await response.text());
+  const payload=await response.json();
+  if(!payload.ok||!Array.isArray(payload.data))throw Error(payload.error||'Invalid provincial response');
+  const data=payload.data.map((r,i)=>{const o=Object.fromEntries(Object.entries(r).map(([k,v])=>[key(k),v]));const get=(...ks)=>ks.map(k=>clean(o[key(k)])).find(Boolean)||'';const firstName=get('FIRST NAME'),middleName=get('MIDDLE NAME'),lastName=get('LAST NAME');return {...r,uid:get('UID','PRE-REGISTRATION UID','APPLICANT ID')||'PROV_ROW_'+i,firstName,middleName,lastName,fullName:get('FULL NAME')||[firstName,middleName,lastName].filter(Boolean).join(' '),province:get('PROVINCE'),venue:get('VENUE','JF SITE','JF SITE (VENUE)')};}).filter(r=>r.fullName);
   rows=data;loaded=true;
   // Update the existing pre-registration cache ONLY from the specified gid=0 sheet.
   localStorage.setItem(PRE_KEY,JSON.stringify(rows));
