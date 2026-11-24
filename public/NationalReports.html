@@ -2685,16 +2685,18 @@ Registered Applicants Detail Listing <span id="detailCountLabel" style="font-siz
 <table class="data-table" id="kfsDetailTable" style="font-size: 11px;">
 <thead>
 <tr>
+<th>NO.</th>
 <th>KEY INDICATORS</th>
 <th>VENUE</th>
 <th>PROVINCE</th>
 <th>GENDER</th>
 <th>FULL NAME</th>
 <th>POSITION</th>
+<th>APPLICATION STATUS</th>
 </tr>
 </thead>
 <tbody id="kfsDetailTableBody">
-<tr><td colspan="6" style="text-align:center;">Loading detail list...</td></tr>
+<tr><td colspan="8" style="text-align:center;">Loading detail list...</td></tr>
 </tbody>
 </table>
 </div>
@@ -10430,11 +10432,11 @@ function render(){
    const tr=document.createElement('tr');
    const name=text(r.fullName||r.name||[r.firstName,r.middleName,r.lastName].filter(Boolean).join(' '));
    const pos=text(r.position||r.positionApplyingFor||r.positionApplying||r.positionApplied||r.positionAppliedFor||r.jobTitle||r.jobTitleAppliedFor||r.job||r.jobPosition||r.desiredPosition);
-   const vals=[classification(r),r.jfSite||r.venue||r.jfSiteVenue||r.site,r.province||r.provinceOfApplication||r.addressProvince||r.siteProvince,r.sex||r.gender,name,pos];
-   vals.forEach((v,i)=>{const td=document.createElement('td');td.textContent=text(v);if(i===0)td.style.fontWeight='700';if(i===4){td.style.textAlign='left';td.style.fontWeight='600';}tr.appendChild(td);});
+   const vals=[frag.childNodes.length+1,classification(r),r.jfSite||r.venue||r.jfSiteVenue||r.site,r.province||r.provinceOfApplication||r.addressProvince||r.siteProvince,r.sex||r.gender,name,pos,r.applicationStatus||r.status||r.application_status||r.applicantStatus||r.hiringStatus||r['STATUS OF APPLICATION']];
+   vals.forEach((v,i)=>{const td=document.createElement('td');td.textContent=text(v);if(i===1)td.style.fontWeight='700';if(i===5){td.style.textAlign='left';td.style.fontWeight='600';}tr.appendChild(td);});
    frag.appendChild(tr);
   }
-  if(!rows.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=6;td.style.cssText='padding:25px;text-align:center';td.textContent='No matching applicants found.';tr.appendChild(td);frag.appendChild(tr);}
+  if(!rows.length){const tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=8;td.style.cssText='padding:25px;text-align:center';td.textContent='No matching applicants found.';tr.appendChild(td);frag.appendChild(tr);}
   const next=Array.from(frag.childNodes).map(tr=>Array.from(tr.cells).map(c=>c.textContent).join('\u001f')).join('\u001e');
   const current=Array.from(body.rows).map(tr=>Array.from(tr.cells).map(c=>c.textContent).join('\u001f')).join('\u001e');
   if(next!==current)body.replaceChildren(frag);
@@ -10445,7 +10447,7 @@ function schedule(){if(queued)return;queued=true;queueMicrotask(()=>{queued=fals
 function boot(){
  const body=document.getElementById(bodyId);if(!body||body.dataset.jfClassificationFinal)return;
  body.dataset.jfClassificationFinal='1';
- const th=document.querySelector('#kfsDetailTable thead th:last-child');if(th)th.textContent='POSITION';
+ const th=document.querySelector('#kfsDetailTable thead th:nth-child(7)');if(th)th.textContent='POSITION';
  // Old renderers write application status directly into this tbody. Restore classification after those writes.
  new MutationObserver(()=>{if(!busy)schedule();}).observe(body,{childList:true,subtree:true,characterData:true});
  ['renderHotsDetailFinal','renderDetailFromLocal','renderHotsDetail','applyKFSFilters','refreshHOTSSummary'].forEach(name=>{
@@ -11582,8 +11584,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   }
   function renderHotsDetail(records){
     const body=document.getElementById('kfsDetailTableBody');if(!body)return;
-    const rows=records.map((r,i)=>'<tr><td style="font-weight:700;">'+esc(indicatorLabel(statusOf(r)))+'</td><td>'+esc(r.jfSite||r.venue)+'</td><td>'+esc(r.province)+'</td><td>'+esc(r.sex||r.gender)+'</td><td style="text-align:left;font-weight:600;">'+esc(r.fullName||applicantName(r))+'</td><td>'+esc(r.applicationStatus)+'</td></tr>').join('');
-    body.innerHTML=rows||'<tr><td colspan="6" style="text-align:center;padding:25px;">No encoded applicant data found in local storage.</td></tr>';
+    const rows=records.map((r,i)=>'<tr><td>'+(i+1)+'</td><td style="font-weight:700;">'+esc(indicatorLabel(statusOf(r)))+'</td><td>'+esc(r.jfSite||r.venue)+'</td><td>'+esc(r.province)+'</td><td>'+esc(r.sex||r.gender)+'</td><td style="text-align:left;font-weight:600;">'+esc(r.fullName||applicantName(r))+'</td><td>'+esc(r.position||r.jobTitle||r.positionApplyingFor||'')+'</td><td>'+esc(r.applicationStatus||r.status||r.application_status||r.applicantStatus||r.hiringStatus||r['STATUS OF APPLICATION']||'')+'</td></tr>').join('');
+    body.innerHTML=rows||'<tr><td colspan="8" style="text-align:center;padding:25px;">No encoded applicant data found in local storage.</td></tr>';
     const c=document.getElementById('detailCountLabel');if(c)c.textContent='(Total: '+records.length.toLocaleString()+')';
   }
   function renderHotsSummary(){
@@ -11937,7 +11939,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   function renderDetailFromLocal(){
     const body=document.getElementById('kfsDetailTableBody');if(!body)return;
     const rows=filteredHotsRecords();
-    body.innerHTML=rows.length?rows.map((r,i)=>`<tr><td style="font-weight:700;">${esc(statusOf(r))}</td><td>${esc(r.jfSite||r.venue)}</td><td>${esc(r.province)}</td><td>${esc(r.sex||r.gender)}</td><td style="text-align:left;font-weight:600;">${esc(nameOf(r))}</td><td>${esc(r.applicationStatus)}</td></tr>`).join(''):`<tr><td colspan="6" style="padding:25px;text-align:center;">No encoded applicant data found in local storage.</td></tr>`;
+    body.innerHTML=rows.length?rows.map((r,i)=>`<tr><td>${i+1}</td><td style="font-weight:700;">${esc(statusOf(r))}</td><td>${esc(r.jfSite||r.venue)}</td><td>${esc(r.province)}</td><td>${esc(r.sex||r.gender)}</td><td style="text-align:left;font-weight:600;">${esc(nameOf(r))}</td><td>${esc(r.position||r.jobTitle||r.positionApplyingFor||'')}</td><td>${esc(r.applicationStatus||r.status||r.application_status||r.applicantStatus||r.hiringStatus||r['STATUS OF APPLICATION']||'')}</td></tr>`).join(''):`<tr><td colspan="8" style="padding:25px;text-align:center;">No encoded applicant data found in local storage.</td></tr>`;
     const c=document.getElementById('detailCountLabel');if(c)c.textContent='(Total: '+rows.length.toLocaleString()+')';
   }
   function renderKfsCardsLocal(){
@@ -12188,7 +12190,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   function renderHotsDetailFinal(){
     const body=document.getElementById('kfsDetailTableBody');if(!body)return;
     const rows=filteredHots();
-    body.innerHTML=rows.length?rows.map(r=>`<tr><td style="font-weight:700;">${esc(statusOf(r))}</td><td>${esc(r.jfSite||r.venue)}</td><td>${esc(r.province)}</td><td>${esc(r.sex||r.gender)}</td><td style="text-align:left;font-weight:600;">${esc(nameOf(r))}</td><td>${esc(r.applicationStatus||r.status)}</td></tr>`).join(''):'<tr><td colspan="6" style="padding:25px;text-align:center;">No encoded applicant data found in local storage.</td></tr>';
+    body.innerHTML=rows.length?rows.map((r,i)=>`<tr><td>${i+1}</td><td style="font-weight:700;">${esc(statusOf(r))}</td><td>${esc(r.jfSite||r.venue)}</td><td>${esc(r.province)}</td><td>${esc(r.sex||r.gender)}</td><td style="text-align:left;font-weight:600;">${esc(nameOf(r))}</td><td>${esc(r.position||r.jobTitle||r.positionApplyingFor||'')}</td><td>${esc(r.applicationStatus||r.status||r.application_status||r.applicantStatus||r.hiringStatus||r['STATUS OF APPLICATION']||'')}</td></tr>`).join(''):'<tr><td colspan="8" style="padding:25px;text-align:center;">No encoded applicant data found in local storage.</td></tr>';
     const c=document.getElementById('detailCountLabel');if(c)c.textContent='(Total: '+rows.length.toLocaleString()+')';
   }
 
@@ -14093,9 +14095,9 @@ setTimeout(boot,250);setTimeout(boot,800);setTimeout(boot,1600);
   function updateHotsDetail(rows){
     const body=document.getElementById('kfsDetailTableBody');
     if(body){
-      body.innerHTML=rows.length?rows.map(function(r){
-        return '<tr><td style="font-weight:700">'+esc(status(r))+'</td><td>'+esc(r.jfSite||r.venue)+'</td><td>'+esc(r.province)+'</td><td>'+esc(r.sex||r.gender)+'</td><td style="text-align:left;font-weight:600">'+esc(applicantName(r))+'</td><td>'+esc(r.applicationStatus||r.status)+'</td></tr>';
-      }).join(''):'<tr><td colspan="6" style="padding:25px;text-align:center">No encoded applicant data found in local storage.</td></tr>';
+      body.innerHTML=rows.length?rows.map(function(r,i){
+        return '<tr><td>'+(i+1)+'</td><td style="font-weight:700">'+esc(status(r))+'</td><td>'+esc(r.jfSite||r.venue)+'</td><td>'+esc(r.province)+'</td><td>'+esc(r.sex||r.gender)+'</td><td style="text-align:left;font-weight:600">'+esc(applicantName(r))+'</td><td>'+esc(r.position||r.jobTitle||r.positionApplyingFor||'')+'</td><td>'+esc(r.applicationStatus||r.status||r.application_status||r.applicantStatus||r.hiringStatus||r['STATUS OF APPLICATION']||'')+'</td></tr>';
+      }).join(''):'<tr><td colspan="8" style="padding:25px;text-align:center">No encoded applicant data found in local storage.</td></tr>';
     }
     const c=document.getElementById('detailCountLabel');if(c)c.textContent='(Total: '+rows.length.toLocaleString()+')';
   }
@@ -16530,7 +16532,7 @@ document.addEventListener('click',function(e){
 
     const ths=table.querySelectorAll('thead th');
     if(ths.length){
-      ths[ths.length-1].textContent='POSITION';
+      ths[6].textContent='POSITION';
     }
   }
 
@@ -16566,17 +16568,19 @@ document.addEventListener('click',function(e){
     }
 
     body.innerHTML=rows.length
-      ? rows.map(r=>`
+      ? rows.map((r,i)=>`
         <tr>
+          <td>${i+1}</td>
           <td style="font-weight:700">${escFinal(applicantStatusFinal(r))}</td>
           <td>${escFinal(r?.jfSite||r?.venue||'')}</td>
           <td>${escFinal(r?.province||r?.addressProvince||'')}</td>
           <td>${escFinal(r?.sex||r?.gender||'')}</td>
           <td style="text-align:left;font-weight:600">${escFinal(applicantNameFinal(r))}</td>
           <td>${escFinal(positionFinal(r))}</td>
+          <td>${escFinal(applicantStatusFinal(r))}</td>
         </tr>
       `).join('')
-      : '<tr><td colspan="6" style="padding:25px;text-align:center">No encoded applicant data found in local storage.</td></tr>';
+      : '<tr><td colspan="8" style="padding:25px;text-align:center">No encoded applicant data found in local storage.</td></tr>';
 
     const c=document.getElementById('detailCountLabel');
     if(c)c.textContent='(Total: '+rows.length.toLocaleString()+')';
@@ -19709,8 +19713,8 @@ function classificationLabel(r){
 function renderHotsUnified(){
  const body=document.getElementById('kfsDetailTableBody'); if(!body)return;
  const rows=hotsFiltered();
- const ths=document.querySelectorAll('#kfsDetailTable thead th');if(ths.length)ths[ths.length-1].textContent='POSITION';
- body.innerHTML=rows.length?rows.map(r=>`<tr><td style="font-weight:700">${esc(classificationLabel(r))}</td><td>${esc(site(r))}</td><td>${esc(province(r))}</td><td>${esc(r.sex||r.gender||'')}</td><td style="text-align:left;font-weight:600">${esc(name(r))}</td><td>${esc(position(r))}</td></tr>`).join(''):'<tr><td colspan="6" style="padding:25px;text-align:center">No encoded applicant data found in local storage.</td></tr>';
+ const ths=document.querySelectorAll('#kfsDetailTable thead th');if(ths.length)ths[6].textContent='POSITION';
+ body.innerHTML=rows.length?rows.map((r,i)=>`<tr><td>${i+1}</td><td style="font-weight:700">${esc(classificationLabel(r))}</td><td>${esc(site(r))}</td><td>${esc(province(r))}</td><td>${esc(r.sex||r.gender||'')}</td><td style="text-align:left;font-weight:600">${esc(name(r))}</td><td>${esc(position(r))}</td><td>${esc(r.applicationStatus||r.status||r.application_status||r.applicantStatus||r.hiringStatus||r['STATUS OF APPLICATION']||'')}</td></tr>`).join(''):'<tr><td colspan="8" style="padding:25px;text-align:center">No encoded applicant data found in local storage.</td></tr>';
  const c=document.getElementById('detailCountLabel');if(c)c.textContent='(Total: '+rows.length.toLocaleString()+')';
 }
 window.renderHotsDetailFinal=renderHotsUnified;
@@ -20189,14 +20193,14 @@ function renderDetail(){
   const st=norm(r.applicationStatus||r.status||r.application_status||r.applicantStatus||r.hiringStatus);
   return (!venue||site===venue)&&(!period||reporting===period)&&(!status||st===status);
  });
- const html=filtered.length?filtered.map(r=>{
+ const html=filtered.length?filtered.map((r,i)=>{
   const name=clean(r.fullName||r.name||[r.firstName,r.middleName,r.lastName].filter(Boolean).join(' '));
   const pos=clean(r.position||r.positionApplyingFor||r.positionApplying||r.positionApplied||r.positionAppliedFor||r.jobTitle||r.jobTitleAppliedFor||r.job||r.jobPosition||r.desiredPosition);
-  return `<tr><td style="font-weight:700">${esc(classification(r))}</td><td>${esc(r.jfSite||r.venue||r.jfSiteVenue||r.site)}</td><td>${esc(r.province||r.provinceOfApplication||r.addressProvince||r.siteProvince)}</td><td>${esc(r.sex||r.gender)}</td><td style="text-align:left;font-weight:600">${esc(name)}</td><td>${esc(pos)}</td></tr>`;
- }).join(''):'<tr><td colspan="6" style="text-align:center;padding:25px">No matching applicants found.</td></tr>';
+  return `<tr><td>${i+1}</td><td style="font-weight:700">${esc(classification(r))}</td><td>${esc(r.jfSite||r.venue||r.jfSiteVenue||r.site)}</td><td>${esc(r.province||r.provinceOfApplication||r.addressProvince||r.siteProvince)}</td><td>${esc(r.sex||r.gender)}</td><td style="text-align:left;font-weight:600">${esc(name)}</td><td>${esc(pos)}</td><td>${esc(r.applicationStatus||r.status||r.application_status||r.applicantStatus||r.hiringStatus||r['STATUS OF APPLICATION']||'')}</td></tr>`;
+ }).join(''):'<tr><td colspan="8" style="text-align:center;padding:25px">No matching applicants found.</td></tr>';
  if(body.innerHTML!==html)body.innerHTML=html;
  const count=document.getElementById('detailCountLabel');if(count)count.textContent='(Total: '+filtered.length.toLocaleString()+')';
- const th=document.querySelector('#kfsDetailTable thead th:last-child');if(th)th.textContent='POSITION';
+ const th=document.querySelector('#kfsDetailTable thead th:nth-child(7)');if(th)th.textContent='POSITION';
 }
 function wrap(name){const prior=window[name];if(typeof prior!=='function'||prior.__jfDetailSync)return;const wrapped=function(...args){const result=prior.apply(this,args);renderDetail();return result;};wrapped.__jfDetailSync=true;window[name]=wrapped;}
 function boot(){['renderHotsDetailFinal','renderDetailFromLocal','renderHotsDetail','applyKFSFilters','refreshHOTSSummary'].forEach(wrap);renderDetail();}
