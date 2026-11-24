@@ -3414,7 +3414,7 @@ addJobVacancyField();
   // ------------------------------------------------------------------
   // STORAGE KEYS
   // ------------------------------------------------------------------
-  const PRE_REG_LOCAL_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
+  const PRE_REG_LOCAL_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
   const USER_KEYS = [
     'loggedInUser', 'username', 'currentUser', 'user',
     'loggedUser', 'loggedInUsername', 'userName'
@@ -4373,7 +4373,7 @@ addJobVacancyField();
       }
     } catch(e) {}
 
-    const key='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+    const key='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
     let arr=[]; try { arr=JSON.parse(localStorage.getItem(key)||'[]'); } catch(e){}
     arr.push(data); localStorage.setItem(key,JSON.stringify(arr));
     showAlertSafe('Applicant application saved locally.');
@@ -4382,7 +4382,7 @@ addJobVacancyField();
   };
 
   window.refreshEncodedApplicantRecordCount = function () {
-    let arr=[]; try { arr=JSON.parse(localStorage.getItem('DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2')||'[]'); } catch(e){}
+    let arr=[]; try { arr=JSON.parse(localStorage.getItem('DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124')||'[]'); } catch(e){}
     const names = new Set(arr.map(r => normalizeName(r.fullName || [r.firstName,r.middleName,r.lastName].join(' '))).filter(Boolean));
     const el=document.getElementById('encodedUniqueApplicantCount'); if(el) el.textContent=names.size.toLocaleString();
   };
@@ -4809,8 +4809,8 @@ addJobVacancyField();
 (function(){
   'use strict';
 
-  const EMPLOYER_LOCAL_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
-  const PRE_REG_LOCAL_KEY_FINAL = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
+  const EMPLOYER_LOCAL_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
+  const PRE_REG_LOCAL_KEY_FINAL = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
   const OCCUPATIONAL_GROUPS = [
     '1 - MANAGERS',
     '2 - PROFESSIONALS',
@@ -5225,8 +5225,8 @@ addJobVacancyField();
 (function(){
   'use strict';
 
-  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
 
   const clean = v => String(v == null ? '' : v).trim();
   const norm = v => clean(v).toUpperCase().replace(/\s+/g,' ').trim();
@@ -5670,8 +5670,8 @@ addJobVacancyField();
 (function(){
   'use strict';
 
-  const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
   const PROVINCES=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
 
   function s(v){ return v==null?'':String(v).trim(); }
@@ -5972,9 +5972,9 @@ addJobVacancyField();
 <script>
 (function(){
 'use strict';
-const PRE='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-const ENC='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-const EMP='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+const PRE='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+const ENC='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+const EMP='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 const PROV=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
 const readJ=k=>{try{const x=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(x)?x:[]}catch(e){return[]}};
 const writeJ=(k,a)=>{try{localStorage.setItem(k,JSON.stringify(a));window.dispatchEvent(new StorageEvent('storage',{key:k,newValue:JSON.stringify(a)}));return true}catch(e){centerMsg('Unable to save changes: '+e.message);return false}};
@@ -6121,7 +6121,7 @@ function getAllEmpMapped(){
   let raw=[];
   try{
     if(typeof readJ==='function' && typeof EMP!=='undefined') raw=readJ(EMP);
-    else raw=JSON.parse(localStorage.getItem('DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1')||'[]');
+    else raw=JSON.parse(localStorage.getItem('DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124')||'[]');
   }catch(e){ raw=[]; }
   if(!Array.isArray(raw)) raw=[];
   return raw.map((r,i)=>({r:empObjSafe(r),i})).filter(x=>x.r.employerName);
@@ -6244,7 +6244,7 @@ const $=id=>document.getElementById(id);
 const clean=v=>v==null?'':String(v).trim();
 const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ').trim();
 const esc=v=>{const d=document.createElement('div');d.textContent=v==null?'':String(v);return d.innerHTML;};
-const keys={pre:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2',emp:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1',enc:'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2'};
+const keys={pre:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124',emp:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124',enc:'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124'};
 const read=k=>{try{const a=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(a)?a:[]}catch(e){return[]}};
 const write=(k,a)=>{try{localStorage.setItem(k,JSON.stringify(a));window.dispatchEvent(new StorageEvent('storage',{key:k,newValue:JSON.stringify(a)}));return true}catch(e){console.error(e);return false}};
 const nameOf=r=>clean(r?.fullName||[r?.firstName,r?.middleName,r?.lastName].filter(Boolean).join(' '));
@@ -6428,7 +6428,7 @@ const $=id=>document.getElementById(id);
 const clean=v=>v==null?'':String(v).trim();
 const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ').trim();
 const esc=v=>{const d=document.createElement('div');d.textContent=v==null?'':String(v);return d.innerHTML;};
-const readEmp=()=>{try{const a=JSON.parse(localStorage.getItem('DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1')||'[]');return Array.isArray(a)?a:[]}catch(e){return[]}};
+const readEmp=()=>{try{const a=JSON.parse(localStorage.getItem('DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124')||'[]');return Array.isArray(a)?a:[]}catch(e){return[]}};
 const num=v=>Number(String(v==null?'':v).replace(/,/g,''))||0;
 function parseVac(r){if(!r||Array.isArray(r))return[];let v=r.vacancies??r.jobVacancies??r.job_vacancies??r.vacancyList??[];if(typeof v==='string'){try{v=JSON.parse(v)}catch(e){return[]}}return Array.isArray(v)?v:[]}
 function rows(){const out=[];readEmp().forEach(r=>{const a=Array.isArray(r)?r:[],o=!Array.isArray(r)&&r?r:{};const base={site:o.site??o.province??o.siteProvince??a[0]??'',venue:o.venue??o.jfSite??o.jfSiteVenue??a[1]??'',employerName:o.employerName??o.employer??o.name??o.nameOfParticipatingEmployer??a[2]??'',email:o.email??o.emailAddress??a[5]??'',industryType:o.industryType??a[11]??'',jobTitle:o.jobTitle??o.position??a[6]??'',noOfVacancies:o.noOfVacancies??o.vacanciesCount??a[7]??'',occupationalGroup:o.occupationalGroup??o.occupationGroup??a[8]??''};const vs=parseVac(r);if(vs.length)vs.forEach(v=>{const va=Array.isArray(v)?v:[],vo=!Array.isArray(v)&&v?v:{};out.push({...base,jobTitle:vo.jobTitle??vo.title??vo.position??vo.job??va[0]??base.jobTitle,noOfVacancies:vo.noOfVacancies??vo.numberOfVacancies??vo.vacancies??vo.count??va[1]??base.noOfVacancies,occupationalGroup:vo.occupationalGroup??vo.occupationGroup??va[2]??base.occupationalGroup})});else if(clean(base.employerName))out.push(base)});return out.filter(r=>clean(r.employerName))}
@@ -6497,7 +6497,7 @@ window.renderBLEFormsLocalDatabase=renderAll;window.refreshBLEFormsLocalDatabase
 if(typeof window.exportForm3AToExcel==='function'){const old=window.exportForm3AToExcel;window.exportForm3AToExcel=function(){render3A();return old.apply(this,arguments)}}
 const p=$('provinceFilter');if(p&&!p.dataset.bleV13){p.dataset.bleV13='1';p.addEventListener('change',renderAll)}
 renderAll();setTimeout(renderAll,100);setTimeout(renderAll,500);setTimeout(renderAll,1200);
-window.addEventListener('storage',e=>{if(e.key==='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1'||e.key==='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2')setTimeout(renderAll,0)});
+window.addEventListener('storage',e=>{if(e.key==='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124'||e.key==='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124')setTimeout(renderAll,0)});
 })();
 </script>
 <style id="final-save-alert-center-v14">
@@ -6620,7 +6620,7 @@ window.addEventListener('storage',e=>{if(e.key==='DOLE_JF_PARTICIPATING_EMPLOYER
 <script id="definitive-form3a-and-single-vacancy-v16">
 (function(){
 'use strict';
-const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 const clean=v=>String(v==null?'':v).replace(/[\u00A0\u2007\u202F]/g,' ').trim();
 const norm=v=>clean(v).toUpperCase().replace(/[\u2010-\u2015]/g,'-').replace(/[^A-Z0-9]+/g,'');
 const esc=v=>{const d=document.createElement('div');d.textContent=clean(v);return d.innerHTML;};
@@ -6846,8 +6846,8 @@ const p=document.getElementById('provinceFilter');if(p)p.addEventListener('chang
 (function(){
   'use strict';
 
-  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 
   const readKey = key => {
     try {
@@ -7814,10 +7814,10 @@ const p=document.getElementById('provinceFilter');if(p)p.addEventListener('chang
 (function () {
   'use strict';
 
-  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const PRE_TOMBSTONE = 'DOLE_JF_PRE_REGISTRATION_DELETED_UIDS_V1';
-  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
-  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const PRE_TOMBSTONE = 'DOLE_JF_PRE_REGISTRATION_DELETED_UIDS_V1_PROV20261124';
+  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
+  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
   const PROVINCES = ['BATANGAS', 'CAVITE', 'LAGUNA', 'QUEZON', 'RIZAL'];
 
   const clean = v => String(v == null ? '' : v).replace(/[\u00A0\u2007\u202F]/g, ' ').trim();
@@ -8612,8 +8612,8 @@ const p=document.getElementById('provinceFilter');if(p)p.addEventListener('chang
 (function () {
   'use strict';
 
-  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const PRE_TOMBSTONE = 'DOLE_JF_PRE_REGISTRATION_DELETED_UIDS_V1';
+  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const PRE_TOMBSTONE = 'DOLE_JF_PRE_REGISTRATION_DELETED_UIDS_V1_PROV20261124';
   const PROVINCES = ['BATANGAS', 'CAVITE', 'LAGUNA', 'QUEZON', 'RIZAL'];
 
   const clean = v => String(v == null ? '' : v).replace(/[\u00A0\u2007\u202F]/g, ' ').trim();
@@ -8977,7 +8977,7 @@ const p=document.getElementById('provinceFilter');if(p)p.addEventListener('chang
 (function () {
   'use strict';
 
-  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
   const PROVINCES = ['BATANGAS', 'CAVITE', 'LAGUNA', 'QUEZON', 'RIZAL'];
 
   const clean = v => String(v == null ? '' : v).replace(/[\u00A0\u2007\u202F]/g, ' ').trim();
@@ -9638,7 +9638,7 @@ button:focus-visible, input:focus-visible, select:focus-visible {
 (function () {
   'use strict';
 
-  const ENC_KEY_FINAL = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const ENC_KEY_FINAL = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
 
   function clean(v) {
     return v == null ? '' : String(v).trim();
@@ -10061,7 +10061,7 @@ button:focus-visible, input:focus-visible, select:focus-visible {
     }
     function readRows(){
       try{
-        const a=JSON.parse(localStorage.getItem('DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2')||'[]');
+        const a=JSON.parse(localStorage.getItem('DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124')||'[]');
         return Array.isArray(a)?a:[];
       }catch(e){return [];}
     }
@@ -10650,7 +10650,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script id="jf-sheet-counter-consistency-20261026">
 (function(){
  'use strict';
- const keys={pre:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2',enc:'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2',emp:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1'};
+ const keys={pre:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124',enc:'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124',emp:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124'};
  const provinces=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
  const clean=x=>String(x==null?'':x).trim();
  const norm=x=>clean(x).toUpperCase().replace(/\s+/g,' ');
@@ -10709,7 +10709,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
    });
  };
  const API='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec';
- const KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2',QUEUE='JF_LF_Q_PRE_V3';
+ const KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124',QUEUE='JF_LF_Q_PRE_V3_PROV20261124';
  const read=k=>{try{const v=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(v)?v:[]}catch(e){return []}};
  const save=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
  const uid=r=>String(r?.uid||r?.UID||r?.preRegistrationUid||r?.['PRE-REGISTRATION UID']||'').trim();
@@ -10766,7 +10766,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     await request('deletePreRegistration',record,uid(record));
     save(KEY,read(KEY).filter(r=>!same(r,record)));
     save(QUEUE,read(QUEUE).filter(r=>!same(r,record)));
-    const tomb='DOLE_JF_PRE_REGISTRATION_DELETED_UIDS_V1';if(uid(record))save(tomb,[...new Set([...read(tomb),uid(record)])]);
+    const tomb='DOLE_JF_PRE_REGISTRATION_DELETED_UIDS_V1_PROV20261124';if(uid(record))save(tomb,[...new Set([...read(tomb),uid(record)])]);
     refresh();msg('Pre-Registration deleted from Google Sheets successfully.');
    }catch(e){msg('Delete failed: '+e.message+' — the record was not removed.');}
   };
@@ -10785,7 +10785,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script id="jf-pre-venue-modal-counter-repair-20261026">
 (function(){
  'use strict';
- const KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
+ const KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
  const API='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec';
  const clean=v=>String(v==null?'':v).trim();
  const norm=v=>clean(v).replace(/\s+/g,' ').toUpperCase();
@@ -10801,7 +10801,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
    const response=await fetch(API+'?action=getPreRegistration&_='+Date.now(),{cache:'no-store'});
    if(!response.ok)throw Error('HTTP '+response.status);
    const payload=await response.json();if(payload.ok===false||!Array.isArray(payload.data))throw Error(payload.error||'Invalid response');
-   let pending=[];try{pending=JSON.parse(localStorage.getItem('JF_LF_Q_PRE_V3')||'[]')}catch(e){}
+   let pending=[];try{pending=JSON.parse(localStorage.getItem('JF_LF_Q_PRE_V3_PROV20261124')||'[]')}catch(e){}
    const map=new Map();
    [...payload.data,...(Array.isArray(pending)?pending:[])].forEach((r,i)=>{const k=uid(r)?'ID:'+norm(uid(r)):'NAME:'+norm(full(r))+'|'+norm(pick(r,'birthDate','BIRTH DATE'))+'|'+norm(pick(r,'contactNumber','MOBILE','mobile'));map.set(k||'ROW:'+i,r)});
    localStorage.setItem(KEY,JSON.stringify([...map.values()]));
@@ -10908,7 +10908,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script id="jf-employer-summary-edit-delete-permissions-20261026">
 (function(){
 'use strict';
-const KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+const KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 const API='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec';
 const FIELDS=[['Site','site'],['Venue','venue'],['Employer Name','employerName'],['Employer Type','employerType'],['Office Type','officeType'],['Email','email'],['Job Title','jobTitle'],['No. of Vacancies','noOfVacancies'],['Occupational Group','occupationalGroup'],['Deployment Area','areaOfDeployment'],['Employment Type','employmentType'],['Industry Type','industryType'],['Qualifications','qualifications'],['Job Description','jobDescription']];
 const clean=v=>String(v==null?'':v).trim();
@@ -10936,7 +10936,7 @@ const observer=new MutationObserver(()=>{if(document.getElementById('recordsModa
 (function(){
  'use strict';
  const API='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec';
- const PRE='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
+ const PRE='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
  const provinces=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
  const str=v=>String(v==null?'':v).trim();
  const norm=v=>str(v).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase().replace(/\s+/g,' ');
@@ -10998,7 +10998,7 @@ const observer=new MutationObserver(()=>{if(document.getElementById('recordsModa
 <script id="jf-applicant-limited-edit-script">
 (function(){
  'use strict';
- const KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+ const KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
  const API='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec';
  const getRows=()=>{try{const v=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(v)?v:[]}catch(e){return []}};
  const norm=v=>String(v==null?'':v).trim();
@@ -11074,11 +11074,11 @@ body .notice-bar .dot {
 <script id="jf-cloud-clear-data-secure">
 (function(){'use strict';
  const authorized=new Set(['FRANCIS','CIS','DOLE4A','JM','PAUL','KEANNU']);
- const modules=[{id:'jfPreVenueSummaryModal',key:'preRegistration',title:'PRE-REGISTRATION',storage:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2'},
- {id:'applicantSummaryModal',key:'preRegistration',title:'PRE-REGISTRATION',storage:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2'},
- {id:'tab3SummaryModal',key:'encodeApplicants',title:'ENCODE APPLICANTS',storage:'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2'},
- {id:'employerSummaryModal',key:'encodeEmployers',title:'ENCODE EMPLOYERS',storage:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1'},
- {id:'recordsModal',key:'encodeEmployers',title:'ENCODE EMPLOYERS',storage:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1'}];
+ const modules=[{id:'jfPreVenueSummaryModal',key:'preRegistration',title:'PRE-REGISTRATION',storage:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124'},
+ {id:'applicantSummaryModal',key:'preRegistration',title:'PRE-REGISTRATION',storage:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124'},
+ {id:'tab3SummaryModal',key:'encodeApplicants',title:'ENCODE APPLICANTS',storage:'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124'},
+ {id:'employerSummaryModal',key:'encodeEmployers',title:'ENCODE EMPLOYERS',storage:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124'},
+ {id:'recordsModal',key:'encodeEmployers',title:'ENCODE EMPLOYERS',storage:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124'}];
  function user(){
    const candidates=[window.loggedInUser,window.currentUser,window.loggedUser,window.username,
      sessionStorage.getItem('loggedInUser'),localStorage.getItem('loggedInUser'),
@@ -11351,7 +11351,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 (function(){
   'use strict';
 
-  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
   const PROVINCES=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
 
   const clean=v=>String(v==null?'':v).trim();
@@ -11472,7 +11472,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
     const buttons=refreshButtonsFor('refreshPreRegistrationRecordCount');buttons.forEach(b=>setLoading(b,true));
     const finish=()=>buttons.forEach(b=>setLoading(b,false));
     try{
-      const records=readLocal('DOLE_JF_PRE_REGISTRATION_LOCAL_V2');
+      const records=readLocal('DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124');
       const count=uniqueNames(records).size;
       document.getElementById('preRegUniqueApplicantCount')?.replaceChildren(document.createTextNode(count.toLocaleString()));
       const m=document.getElementById('preRegModalUnique');if(m)m.textContent=count.toLocaleString();
@@ -11647,7 +11647,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 (function(){
   'use strict';
 
-  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
   const PROVINCES=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
   const CLASSIFICATIONS=[
     {key:'REGULAR', label:'Regular jobseeker', match:['REGULAR JOBSEEKER','REGULAR']},
@@ -12042,8 +12042,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 (function(){
   'use strict';
 
-  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-  const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+  const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
   const PROVINCES=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
   const CLASSIFICATIONS=[
     {label:'Regular jobseeker',match:['REGULAR JOBSEEKER','REGULAR']},
@@ -12331,8 +12331,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script id="final-pre-encode-separation-address-submit-fix-v3">
 (function(){
   'use strict';
-  const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
   const clean=v=>String(v==null?'':v).trim();
   const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ');
   const esc=v=>clean(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -12500,9 +12500,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   // ================================================================
   // SEPARATE LOCAL DATABASES - NEVER MIX THESE THREE SOURCES
   // ================================================================
-  const PRE_KEY  = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const ENC_KEY  = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-  const EMP_KEY  = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const PRE_KEY  = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const ENC_KEY  = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+  const EMP_KEY  = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 
   const PROVINCES=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
   const clean=v=>v==null?'':String(v).trim();
@@ -12744,9 +12744,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 (function(){
   'use strict';
 
-  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 
   const clean = v => String(v == null ? '' : v).trim();
   const norm  = v => clean(v).toUpperCase().replace(/\s+/g,' ').trim();
@@ -13073,7 +13073,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 (function () {
   'use strict';
 
-  const KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
   const PROVINCES = ['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
 
   const clean = v => String(v == null ? '' : v)
@@ -13306,9 +13306,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script id="final-independent-summary-hots-positions-v4">
 (function(){
 'use strict';
-const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 const clean=v=>String(v==null?'':v).trim();
 const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ');
 const esc=v=>clean(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -13496,7 +13496,7 @@ setTimeout(boot,250);setTimeout(boot,800);setTimeout(boot,1600);
 </script>
 <script id="final-modal-refresh-columns-fix-v6">
 (function(){
-  const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2', ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2', EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124', ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124', EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
   const readKey=k=>{try{const a=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(a)?a:[]}catch(e){return[]}};
   const txt=v=>String(v==null?'':v);
   const norm2=v=>txt(v).trim().replace(/\s+/g,' ').toUpperCase();
@@ -13663,8 +13663,8 @@ setTimeout(boot,250);setTimeout(boot,800);setTimeout(boot,1600);
 (function(){
   'use strict';
 
-  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
-  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
+  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
 
   function readLocal(key){
     try{
@@ -13988,7 +13988,7 @@ setTimeout(boot,250);setTimeout(boot,800);setTimeout(boot,1600);
         selected Venue / Reporting As Of / Status filters.  That is why
         the numbers changed only after leaving and returning to the tab.
   ================================================================= */
-  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
   const PROVINCES=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
   const clean=function(v){return v==null?'':String(v).trim();};
   const norm=function(v){return clean(v).toUpperCase().replace(/\s+/g,' ').trim();};
@@ -14140,7 +14140,7 @@ setTimeout(boot,250);setTimeout(boot,800);setTimeout(boot,1600);
         a `vacancies` array. Newer records are flattened rows. Form 2A/3A
         must support BOTH formats.
   ================================================================= */
-  const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
   const readEmp=function(){
     try{const a=JSON.parse(localStorage.getItem(EMP_KEY)||'[]');return Array.isArray(a)?a:[];}
     catch(e){console.error('Employer local database read failed:',e);return[];}
@@ -14379,9 +14379,9 @@ setTimeout(boot,250);setTimeout(boot,800);setTimeout(boot,1600);
 /* ================================================================
    FINAL PATCH - EDIT FORMS / COUNT ALERT / HOTS LIVE FILTER / BLE 3A
    ================================================================ */
-const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 
 const $=id=>document.getElementById(id);
 const val=x=>String(x==null?'':x).trim();
@@ -14682,9 +14682,9 @@ window.addEventListener('storage',e=>{if([PRE_KEY,ENC_KEY,EMP_KEY].includes(e.ke
 <script id="final-counts-form4-v9">
 (function(){
 'use strict';
-const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 const PROVINCES=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
 const clean=v=>v==null?'':String(v).trim();
 const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ').trim();
@@ -14875,7 +14875,7 @@ setTimeout(syncAll,500);setTimeout(syncAll,1400);
 <script id="performance-and-form3a-final-v10">
 (function(){
   'use strict';
-  const EMP='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const EMP='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
   const $=id=>document.getElementById(id);
   const txt=x=>String(x==null?'':x).trim();
   const up=x=>txt(x).toUpperCase();
@@ -15003,9 +15003,9 @@ setTimeout(syncAll,500);setTimeout(syncAll,1400);
 (function(){
   'use strict';
 
-  const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-  const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+  const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
   const TOP10_MODAL_ID='top10VacanciesModal';
 
   const txt=v=>String(v==null?'':v).trim();
@@ -15479,7 +15479,7 @@ setTimeout(syncAll,500);setTimeout(syncAll,1400);
 (function(){
   'use strict';
 
-  const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
   const clean=v=>String(v==null?'':v).trim();
   const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ').trim();
   const esc=v=>{const d=document.createElement('div');d.textContent=clean(v);return d.innerHTML;};
@@ -15684,7 +15684,7 @@ setTimeout(syncAll,500);setTimeout(syncAll,1400);
 <script id="absolute-final-form3a-20260916">
 (function(){
   'use strict';
-  const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
   const clean=v=>String(v==null?'':v).replace(/[\u00A0\u2007\u202F]/g,' ').trim();
   const key=v=>clean(v).toUpperCase().replace(/\s+/g,' ').trim();
   const esc=v=>{const d=document.createElement('div');d.textContent=clean(v);return d.innerHTML;};
@@ -16018,9 +16018,9 @@ setTimeout(syncAll,500);setTimeout(syncAll,1400);
 <script id="final-delete-buttons-fix-v2-script">
 (function(){
 'use strict';
-const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 function rd(k){try{const a=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(a)?a:[]}catch(e){return[]}}
 function wr(k,a){try{localStorage.setItem(k,JSON.stringify(a));window.dispatchEvent(new StorageEvent('storage',{key:k,newValue:JSON.stringify(a)}));return true}catch(e){console.error(e);return false}}
 function nm(r){return String(r?.fullName||[r?.firstName,r?.middleName,r?.lastName].filter(Boolean).join(' ')||'this record').trim()}
@@ -16257,7 +16257,7 @@ document.addEventListener('click',function(e){
 (function(){
   'use strict';
 
-  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
 
   const clean = v => String(v==null?'':v)
     .replace(/[\u00A0\u2007\u202F]/g,' ')
@@ -16668,7 +16668,7 @@ document.addEventListener('click',function(e){
 (function(){
 'use strict';
 const API_URL='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec';
-const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 const clean=v=>String(v==null?'':v).trim();
 const escLocal=v=>{const d=document.createElement('div');d.textContent=clean(v);return d.innerHTML;};
 function rowMap(r){
@@ -16800,9 +16800,9 @@ function patchButtons(){
 'use strict';
 
 const API_URL='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec';
-const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-const QUEUE_KEY='DOLE_JF_PRE_REGISTRATION_SYNC_QUEUE_V1';
-const SYNCED_KEY='DOLE_JF_PRE_REGISTRATION_SYNCED_UIDS_V1';
+const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+const QUEUE_KEY='DOLE_JF_PRE_REGISTRATION_SYNC_QUEUE_V1_PROV20261124';
+const SYNCED_KEY='DOLE_JF_PRE_REGISTRATION_SYNCED_UIDS_V1_PROV20261124';
 
 const read=(key)=>{try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[];}catch(e){return[];}};
 const write=(key,v)=>{try{localStorage.setItem(key,JSON.stringify(v));return true;}catch(e){console.error('LocalStorage write failed',e);return false;}};
@@ -16938,13 +16938,13 @@ window.__preRegistrationBackgroundSync={
 (function(){
 'use strict';
 
-const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
 const SYNC_API='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec';
-const PRE_QUEUE='DOLE_JF_PRE_REGISTRATION_SYNC_QUEUE_V2';
-const ENC_QUEUE='DOLE_JF_ENCODED_APPLICANTS_SYNC_QUEUE_V2';
-const PRE_SYNCED='DOLE_JF_PRE_REGISTRATION_SYNCED_UIDS_V2';
-const ENC_SYNCED='DOLE_JF_ENCODED_APPLICANTS_SYNCED_UIDS_V2';
+const PRE_QUEUE='DOLE_JF_PRE_REGISTRATION_SYNC_QUEUE_V2_PROV20261124';
+const ENC_QUEUE='DOLE_JF_ENCODED_APPLICANTS_SYNC_QUEUE_V2_PROV20261124';
+const PRE_SYNCED='DOLE_JF_PRE_REGISTRATION_SYNCED_UIDS_V2_PROV20261124';
+const ENC_SYNCED='DOLE_JF_ENCODED_APPLICANTS_SYNCED_UIDS_V2_PROV20261124';
 const PROVINCES=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
 
 function read(k){try{const a=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(a)?a:[]}catch(e){return[]}}
@@ -17029,7 +17029,7 @@ async function send(record,action){
 let syncingPre=false,syncingEnc=false;
 async function flush(k,sk,action,flag){if(flag.value||!navigator.onLine)return;flag.value=true;try{const q=read(k),remain=[],done=synced(sk);for(const r of q){try{await send(r,action);const id=uid(r);if(id)done.add(id)}catch(e){remain.push(r)}}write(k,remain);write(sk,[...done])}finally{flag.value=false}}
 const preFlag={value:false},encFlag={value:false};
-function queueUnsynced(){const ps=synced(PRE_SYNCED),es=synced(ENC_SYNCED);dedup(read(PRE_KEY)).forEach(r=>{if(uid(r)&&!ps.has(uid(r)))queue(PRE_QUEUE,r)});dedup(read(ENC_KEY)).forEach(r=>{if(uid(r)&&!es.has(uid(r)))queue(ENC_QUEUE,r)})}
+function queueUnsynced(){ /* Never enqueue records merely because they were downloaded. */ }
 async function flushAll(){queueUnsynced();flush(PRE_QUEUE,PRE_SYNCED,'savePreRegistration',preFlag);flush(ENC_QUEUE,ENC_SYNCED,'saveEncodeApplicants',encFlag)}
 window.jfLocalFirstSync=flushAll;
 window.addEventListener('online',flushAll);
@@ -17077,8 +17077,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 (function(){
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec';
-const KEYS={pre:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2',enc:'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2',emp:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1'};
-const QUEUES={pre:'JF_LF_Q_PRE_V3',enc:'JF_LF_Q_ENC_V3',emp:'JF_LF_Q_EMP_V3'};
+const KEYS={pre:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124',enc:'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124',emp:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124'};
+const QUEUES={pre:'JF_LF_Q_PRE_V3_PROV20261124',enc:'JF_LF_Q_ENC_V3_PROV20261124',emp:'JF_LF_Q_EMP_V3_PROV20261124'};
 const PROV=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
 const read=k=>{try{let x=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(x)?x:[]}catch(e){return[]}};
 const write=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(Array.isArray(v)?v:[]));return true}catch(e){console.error(e);return false}};
@@ -17154,8 +17154,8 @@ window.jfLocalFirst={flush:flushAll,renderPre,renderEnc,renderEmp};
 (function(){
 'use strict';
 const API='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec';
-const Q={pre:'JF_LF_Q_PRE_V3',enc:'JF_LF_Q_ENC_V3',emp:'JF_LF_Q_EMP_V3'};
-const K={pre:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2',enc:'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2',emp:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1'};
+const Q={pre:'JF_LF_Q_PRE_V3_PROV20261124',enc:'JF_LF_Q_ENC_V3_PROV20261124',emp:'JF_LF_Q_EMP_V3_PROV20261124'};
+const K={pre:'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124',enc:'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124',emp:'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124'};
 const S=v=>String(v==null?'':v).trim();
 const U=v=>S(v).toUpperCase().replace(/\s+/g,' ');
 function read(k){try{const x=JSON.parse(localStorage.getItem(k)||'[]');return Array.isArray(x)?x:[]}catch(e){return[]}}
@@ -17254,8 +17254,8 @@ window.jfSharedUsers={refresh:pullShared};
 (function () {
   'use strict';
 
-  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const TOMBSTONE_KEY = 'DOLE_JF_PRE_REGISTRATION_DELETED_UIDS_V1';
+  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const TOMBSTONE_KEY = 'DOLE_JF_PRE_REGISTRATION_DELETED_UIDS_V1_PROV20261124';
 
   function clean(v) {
     return String(v == null ? '' : v).trim();
@@ -17795,8 +17795,8 @@ window.jfSharedUsers={refresh:pullShared};
 (function(){
   'use strict';
 
-  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
   const PROVINCES = ['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
 
   const clean = v => String(v == null ? '' : v).replace(/[\u00A0\u2007\u202F]/g,' ').trim();
@@ -18281,7 +18281,7 @@ window.jfSharedUsers={refresh:pullShared};
 (function(){
   'use strict';
 
-  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
   const VAC_MODAL_ID = 'vacanciesListModal';
   const EMP_MODAL_ID = 'deduplicatedEmployersModal';
 
@@ -18659,9 +18659,9 @@ window.jfSharedUsers={refresh:pullShared};
 (function () {
   'use strict';
 
-  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
-  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+  const PRE_KEY = 'DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
+  const ENC_KEY = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+  const EMP_KEY = 'DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
   const PROVINCES = ['BATANGAS', 'CAVITE', 'LAGUNA', 'QUEZON', 'RIZAL'];
 
   const clean = v => String(v == null ? '' : v)
@@ -19217,7 +19217,7 @@ window.jfSharedUsers={refresh:pullShared};
 (function () {
   'use strict';
 
-  const ENC_KEY_FINAL = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+  const ENC_KEY_FINAL = 'DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
   const PROVINCES_FINAL = ['BATANGAS', 'CAVITE', 'LAGUNA', 'QUEZON', 'RIZAL'];
 
   function cleanFinal(v) {
@@ -19624,7 +19624,7 @@ window.jfSharedUsers={refresh:pullShared};
 <script id="jf-unified-dedup-hots-encode-asof-20260920">
 (function(){
 'use strict';
-const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+const ENC_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
 const PROVINCES=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
 const clean=v=>String(v==null?'':v).replace(/[\u00A0\u2007\u202F]/g,' ').trim();
 const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ');
@@ -19893,7 +19893,7 @@ window.addEventListener('storage',e=>{if(e.key===ENC_KEY)setTimeout(refreshAll,0
     }
     function readRows(){
       try{
-        const a = JSON.parse(localStorage.getItem('DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2') || '[]');
+        const a = JSON.parse(localStorage.getItem('DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124') || '[]');
         return Array.isArray(a) ? a : [];
       }catch(e){ return []; }
     }
@@ -19994,7 +19994,7 @@ window.addEventListener('storage',e=>{if(e.key===ENC_KEY)setTimeout(refreshAll,0
 <script id="jf-localstorage-only-transfer-mer-final">
 (function(){
 'use strict';
-const SOURCE_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+const SOURCE_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
 const TRANSFER_KEY='DOLE_MER_TRANSFERRED_APPLICANTS_V1';
 const clean=v=>v==null?'':String(v).trim();
 const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ').trim();
@@ -20057,7 +20057,7 @@ setInterval(()=>{const b=document.getElementById('jfEncTransferMERFinal');if(b)b
 <script id="jf-google-sheets-transfer-mer-final">
 (function(){
 'use strict';
-const SOURCE_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+const SOURCE_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
 const clean=v=>v==null?'':String(v).trim();
 const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ').trim();
 function readRows(){try{const x=JSON.parse(localStorage.getItem(SOURCE_KEY)||'[]');return Array.isArray(x)?x:[]}catch(e){return[]}}
@@ -20112,7 +20112,7 @@ setInterval(()=>{const b=document.getElementById('jfEncTransferMERFinal');if(b)b
 (function(){
 'use strict';
 const GAS_URL='https://script.google.com/macros/s/AKfycbxuFaBy2lAOKC2wjX9PXURu7F3dz9Ytyak9AsnOovfByUaRE0h0pup_VYa5NK_AjLaaAw/exec';
-const SOURCE_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
+const SOURCE_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
 const clean=v=>v==null?'':String(v).trim();
 const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ').trim();
 function rows(){try{const x=JSON.parse(localStorage.getItem(SOURCE_KEY)||'[]');return Array.isArray(x)?x:[]}catch(e){return[]}}
@@ -20299,7 +20299,7 @@ function boot(){
   const el=document.getElementById(id);
   if(el&&!el.dataset.kfsUnifiedCount){el.dataset.kfsUnifiedCount='1';el.addEventListener('change',render);}
  });
- window.addEventListener('storage',e=>{if(!e.key||e.key==='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2')render();});
+ window.addEventListener('storage',e=>{if(!e.key||e.key==='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124')render();});
  render();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
@@ -20359,7 +20359,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script id="jf-pre-edit-original-record-repair-20261026">
 (function(){
  'use strict';
- const KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
+ const KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
  const read=()=>{try{const r=JSON.parse(localStorage.getItem(KEY)||'[]');return Array.isArray(r)?r:[]}catch(e){return []}};
  function attach(){
    const previous=window.jfEditLocal;
@@ -20403,7 +20403,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 (function(){
 'use strict';
 const URL='https://script.google.com/macros/s/AKfycbyEEFRQDplmKwbn7AM6-EO0HIdI93vZ4Se51bMccBaYITsd6nxrU5c01nl7OTzZqihD/exec?action=getPreRegistration';
-const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2';
+const PRE_KEY='DOLE_JF_PRE_REGISTRATION_LOCAL_V2_PROV20261124';
 const clean=x=>String(x==null?'':x).trim();
 const norm=x=>clean(x).toUpperCase().replace(/\s+/g,' ');
 let rows=[],loaded=false,loading=false,signature='',lastError='';
@@ -20523,7 +20523,7 @@ body.jf-employer-summary-active #recordsModal,body.jf-employer-summary-active #e
 </style><script id="jf-employer-stable-modal-v2">
 (function(){
 'use strict';
-const KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+const KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 const FIELDS=[['SITE / PROVINCE','site'],['JF SITE / VENUE','venue'],['NAME OF PARTICIPATING EMPLOYER','employerName'],['EMPLOYER TYPE','employerType'],['TYPE OF OFFICE','officeType'],['EMAIL ADDRESS','email'],['JOB TITLE','jobTitle'],['NO. OF VACANCIES','noOfVacancies'],['OCCUPATIONAL GROUP','occupationalGroup'],['AREA OF DEPLOYMENT','areaOfDeployment'],['TYPE OF EMPLOYMENT','employmentType'],['INDUSTRY TYPE','industryType'],['QUALIFICATIONS','qualifications'],['JOB DESCRIPTION','jobDescription']];
 const PROVS=['BATANGAS','CAVITE','LAGUNA','QUEZON','RIZAL'];
 const clean=x=>String(x??'').trim(), norm=x=>clean(x).toUpperCase().replace(/\s+/g,' ');
@@ -20574,8 +20574,8 @@ window.addEventListener('click',e=>{const b=e.target.closest?.('button');if(!b||
 <script id="jf-asof-hots-registered-reconciliation-20261112">
 (function(){
 'use strict';
-const APP_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2';
-const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1';
+const APP_KEY='DOLE_JF_ENCODED_APPLICANTS_LOCAL_V2_PROV20261124';
+const EMP_KEY='DOLE_JF_PARTICIPATING_EMPLOYERS_PERSISTENT_V1_PROV20261124';
 const clean=v=>String(v==null?'':v).trim();
 const norm=v=>clean(v).toUpperCase().replace(/\s+/g,' ');
 const esc=v=>clean(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
